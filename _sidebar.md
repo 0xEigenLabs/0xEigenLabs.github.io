@@ -21,3 +21,6 @@
 
 - Miner
   - [Hardware Configuration Requirements](/docs/miner.md)
+
+- Usage
+  - [Usage](/docs/usage.md)
