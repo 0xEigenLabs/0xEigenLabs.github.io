@@ -23,4 +23,8 @@
   - [Hardware Configuration Requirements](/docs/miner.md)
 
 - Usage
-  - [Usage](/docs/usage.md)
+  - [Overview](/docs/Usage/Overview.md)
+  - [Send](/docs/Usage/Send.md)
+  - [Exchange](/docs/Usage/Exchange.md)
+  - [Tools](/docs/Usage/Tools.md)
+  - [Multisig Wallet(/docs/Usage/Multisig Wallet.md)
