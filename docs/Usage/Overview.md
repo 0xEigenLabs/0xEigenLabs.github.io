@@ -1,4 +1,4 @@
-## Register ang Login
+## Register and Login
 Open https://secret.ieigen.com/，click the “Connect Wallet”, and log in with your Google account.
 
 ![image001](https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image001.png)
