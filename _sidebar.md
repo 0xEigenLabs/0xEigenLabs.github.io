@@ -15,7 +15,7 @@
 - Miner
   - [Hardware Configuration Requirements](/docs/miner.md)
 
-- Usage
+- User Guide
   - [Overview](/docs/Usage/Overview.md)
   - [Send](/docs/Usage/Send.md)
   - [Exchange](/docs/Usage/Exchange.md)
