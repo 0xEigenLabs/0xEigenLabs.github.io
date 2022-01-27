@@ -14,9 +14,6 @@
 
 [Eigen Secret](https://github.com/ieigen/secret) is a cross-chain wallet for EigenRollup Chain and Ethereum.
 
-## Usage
-
-[Usage](https://github.com/ieigen/ieigen.github.io/blob/main/docs/usage.md) is the usage document.
 
 ## About Eigen
 
