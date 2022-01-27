@@ -1,4 +1,4 @@
-- Eigen Netowork
+- Eigen Network
   - [Overview](/README.md)
   - EigenCC
     - [Operators](/docs/operators.md)
