@@ -25,4 +25,4 @@ Then you can see in the overview, the transcation should be confirmed by signers
 
 If it can be executed, then you can click "Executed" to send the assets finally
 
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image054.png" width="35%" height="35%">
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image054.png" width="40%" height="40%">
