@@ -23,6 +23,6 @@ Then you can see in the overview, the transcation should be confirmed by signers
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image053.png" width="75%" height="75%">
 
-If it can be executed, then you can click "Execute" to send the assets finally
+If it can be executed, then you can click "Executed" to send the assets finally
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image054.png" width="75%" height="75%">
