@@ -7,7 +7,7 @@ Select the corresponding Google Email account to log in and complete the authori
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image002.png" width="75%" height="75%">
 
-After logging in, you need to set a 6-digit password (including at least uppercase and lowercase letters, numbers and special symbols)
+After logging in, you need to set up your fund password (including at least uppercase and lowercase letters, numbers and special symbols)
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image003.png" width="75%" height="75%">
 
