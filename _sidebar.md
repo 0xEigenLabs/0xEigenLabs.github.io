@@ -4,12 +4,11 @@
     - [Operators](/docs/operators.md)
 
 - User Guide
-  - [Overview](/docs/usage/Overview.md)
-  - [Account](/docs/usage/Account.md)
-  - [Send](/docs/usage/Send.md)
-  - [Exchange](/docs/usage/Exchange.md)
-  - [Tools](/docs/usage/Tools.md)
-  - [Multisig Wallet](/docs/usage/MultisigWallet.md)
+  - [Overview](/docs/Usage/Overview.md)
+  - [Send](/docs/Usage/Send.md)
+  - [Exchange](/docs/Usage/Exchange.md)
+  - [Tools](/docs/Usage/Tools.md)
+  - [Multisig Wallet](/docs/Usage/MultisigWallet.md)
 
 
 - EGIP
