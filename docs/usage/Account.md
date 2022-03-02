@@ -1,4 +1,4 @@
-Acount Management
+## Acount Management
 
 **Important**, Before all, You should keep all the Fund password on this DApp the same.
 
