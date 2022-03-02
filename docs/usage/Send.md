@@ -7,7 +7,7 @@ You can choose the Multisig Wallet address to send assets, also.
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image008.png" width="75%" height="75%">
 
-If you choose the Multisig Wallet address to send assets, and the amount of the assets you are going to send is larger than the payment limit (see [here](https://ieigen.github.io/#/docs/Usage/MultisigWallet?id=my-wallet)), it will need the N/2 signers to jointly sign for you to complete the transaction. For example, we can set the max per transation as 0.1 ETH:
+If you choose the Multisig Wallet address to send assets, and the amount of the assets you are going to send is larger than the payment limit (see [here](https://ieigen.github.io/#/docs/usage/MultisigWallet?id=my-wallet)), it will need the N/2 signers to jointly sign for you to complete the transaction. For example, we can set the max per transation as 0.1 ETH:
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image050.png" width="50%" height="50%">
 
