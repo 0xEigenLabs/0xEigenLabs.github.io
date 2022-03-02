@@ -49,8 +49,6 @@ Then input the private key or secret words.
 
 
 2.3  Export Account
-点击右上角头像-”Export Account”，选择要导出账户对应的地址
-
 Click the `Export Account` on the top-right menu, and input the Fund password.
 Choose the account you intend to backup.
 
