@@ -5,6 +5,7 @@
 
 - User Guide
   - [Overview](/docs/usage/Overview.md)
+  - [Login](/docs/usage/Login.md)
   - [Account](/docs/usage/Account.md)
   - [Send](/docs/usage/Send.md)
   - [Exchange](/docs/usage/Exchange.md)
