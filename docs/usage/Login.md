@@ -18,10 +18,10 @@ The specific use steps are as follows:
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/login/sign.png" width="50%" height="50%">
 
 4. Confirm the connection and complete the signature
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/login/sign2.png" width="50%" height="50%">
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/login/sign2.png" width="40%" height="40%">
 
 5. If you log in Eigen with Google account on your computer, MetaMask fast  login will automatically synchronise this Eigen account, you can use this MetaMask to log in your previous Eigen account. If not, the platform will create a new Eigen account for you.
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/login/list.png" width="50%" height="50%">
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/login/list.png" width="40%" height="40%">
 
 
 
