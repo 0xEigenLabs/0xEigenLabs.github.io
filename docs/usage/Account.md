@@ -1,5 +1,3 @@
-## Acount Management
-
 **Important**, Before all, You should keep all the Fund password on this DApp the same.
 
 Click the top-right drop-down menu, it allows you to `Create/Import/Export` your account similar to Metamask, but byond Metmask. The `Export Account` enables you to back up your account private key to your email by MPC technology.
