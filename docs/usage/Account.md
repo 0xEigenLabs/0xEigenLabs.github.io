@@ -6,7 +6,7 @@ Click the top-right drop-down menu, it allows you to `Create/Import/Export` your
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/account/menu.png" width="75%" height="75%">
 
-2.1  Create Account
+### 2.1  Create Account
 
 Click the the user profile picture on top-right, and click the `+Create Account`, type in account description and `Next`.
 
@@ -35,7 +35,7 @@ Authorize the EigenSecret to send email on behalf of you, then, `Send Email`
 
 Now you can see that new account also being presented on the to-right account list.
 
-2.2  Import Account
+### 2.2  Import Account
 
 Click the top-right account menu, and click `Import Account`, then input the Fund Password.
 
@@ -48,7 +48,7 @@ Then input the private key or secret words.
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/account/import-done.png" width="75%" height="75%">
 
 
-2.3  Export Account
+### 2.3  Export Account
 Click the `Export Account` on the top-right menu, and input the Fund password.
 Choose the account you intend to backup.
 
