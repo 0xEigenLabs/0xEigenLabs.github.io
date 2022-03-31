@@ -74,7 +74,7 @@ When the owner's key of the your multisig wallet is lost or stolen (in extreme c
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image046.png" width="75%" height="75%">
 
-Click to sign the request
+sign the request as below.
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image047.png" width="75%" height="75%">
 
