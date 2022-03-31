@@ -52,56 +52,47 @@ Wait for the transaction to complete, and "Create Successfully" appears to compl
 
 
 ### Recover Wallet
-When the Multisig Wallet corresponding to the user's current address is lost (in extreme cases such as the crash of the Multisig Wallet key escrow service), it can be recovered by the following steps.
+When the owner's key of the your multisig wallet is lost or stolen (in extreme cases such as the crash of the Multisig Wallet key escrow service), it can be recovered by the following steps.
 
-Click on the avatar-Import Account in the upper right corner to import any other address of your own.
 
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image037.png" width="75%" height="75%">
+#### Preparation
+1. You need to log in your eigen account;
+2. You need another safe account to replace the old owner of your multisig wallets by `Import` or `Create`, as to the tutorial [here](https://ieigen.github.io/#/docs/usage/Account).
+3. Click recover wallet of left bar and eneter the Eigen account of the smart contract wallet you want to recover，and choose its blockchain addresses.
 
-Enter the 6-digit password you set earlier.
+#### Steps
 
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image038.png" width="75%" height="75%">
+1. For new owner, click the `Recover Wallet`, and choose the wallet you want to recover.
 
-You can choose mnemonic or private key to import.
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/recovery/recovery-choose-wallet.png" width="75%" height="75%">
 
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image039.png" width="75%" height="75%">
+2. Step1, the new owner need click button `Start` to invite at least 50% + signers to sign for your recovery. A single recovery will expire in 48 hours. Please restart the recovery if it's timeout.
 
-Switch to the newly imported address.
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/recovery/recovery-step1.png" width="75%" height="75%">
 
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image040.png" width="75%" height="75%">
-
-Click Multisig Wallet-Recover Wallet, select the wallet to be recovered, and click the "Recovery" button.
-
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image041.png" width="75%" height="75%">
-
-Confirm the wallet information to be restored and click "Confirm".
-
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image042.png" width="75%" height="75%">
-
-Notify Signer to perform the recovery operation (Signer click "Confirm Recover" in Multisig Wallet-My Wallet-I am The Signer, and then sign again. Please refer to step 4 for details).
-
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image043.png" width="75%" height="75%">
-
-After waiting for the signer greater than or equal to 1/2 to confirm, click the "Confirm" button, and then sign to complete the recovery operation. At this time, the Owner address of the wallet is changed to the address that currently initiates the recovery.
-
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image044.png" width="75%" height="75%">
-
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image045.png" width="75%" height="75%">
-
-### Recovery operation performed by Signer
-Signer clicks "Confirm Recover" in Multisig Wallet-My Wallet-I am The Signer
+3. For Signers of your wallet, enter `My Wallet`, and switch to tab `I am The Signer`, and find the wallet which allows you to `Confirm recovery`
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image046.png" width="75%" height="75%">
 
-
-
-Click to sign
+Click to sign the request
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image047.png" width="75%" height="75%">
 
-If the signer is the last signer (greater than or equal to 1/2 the number of signers to restore the wallet), you need to confirm the restoration, click "Confirm" and then sign.
+4. When more than 1/2 signers agree your recovery request, you need one of them to submit the recovery.
+
+If more than 1/2 signers signs, the last one who sign the recovery will be notified automatically to submit the recovery transaction. If he/she does not confirm in time, any signer who signed the recovery  can click "Confirm" and then submit the transaction.
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image048.png" width="75%" height="75%">
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image049.png" width="75%" height="75%">
+
+After this, the Step 2 will be completed automatically if the recovery triggered successfully.
+
+5. Step 3, the new owner click `confirm`, and submit the replacement transaction, and if the transaction success, the new owner will replace the old owner and ownes the multisig wallet.
+
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/recovery/recovery-owner-step3.png" width="75%" height="75%">
+
+6. If you want to cancel the recovery, or the timeout is reached, you can `cancel` the recovery.
+
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/recovery/recovery-cancel.png" width="75%" height="75%">
 
