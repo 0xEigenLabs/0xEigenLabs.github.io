@@ -58,6 +58,7 @@ After the payment is completed, the transaction will be confirmed and wait for t
 Click Add signer to add users. You need to add at least one signer to complete the wallet creation.
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/create_wallet/step2.png" width="75%" height="75%">
+
 After entering the user's Eigen account, select one of his blockchain addresses as the signer. (a person may have multiple blockchain addresses. Please select his commonly used blockchain address as the signer)
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/create_wallet/step2_1.png" width="75%" height="75%">
 
