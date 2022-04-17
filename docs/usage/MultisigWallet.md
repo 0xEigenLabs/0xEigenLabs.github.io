@@ -33,22 +33,45 @@ Click "Confirm", and it will display "Frozen". At this time, the wallet cannot b
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image031.png" width="75%" height="75%">
 
 ### Create Wallet
-Create an entry for Multisig Wallet.Set the wallet name, click the "Add another signer" button to add a Singer, which can support "Google mailbox, ENS, address" to search and add. Please note that the Signer must be a user who has registered with Secret, please add at least one Signer.
+You can click Create Wallet in Multisig Wallet on the left column to create a multi-signature contract wallet.
+The specific process will be divided into the following steps.：
+（You can refer to the detailed description below to complete the operation）
+1. Set smart contract wallet name
+2. Enter the user's Eigen account and select the blockchain address you want to add as signer
+3. Complete the creation of smart contract wallet
 
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image032.png" width="75%" height="75%">
+You can click About Eight Multi Signature Wallet to view the detailed description of the wallet.
 
-Click "Create", then click "Confirm" to sign.
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/create_wallet/intro.png" width="75%" height="75%">
 
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image033.png" width="75%" height="75%">
+#### Step1:
+Set the name of the wallet in set wallet name and enter the payment password to confirm this operation.
+Creating a wallet requires gas fee. Please ensure that the account gas fee is sufficient in advance. After payment, you can proceed to the next step.
 
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image034.png" width="75%" height="75%">
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/create_wallet/step1.png" width="75%" height="75%">
 
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image035.png" width="75%" height="75%">
+After the payment is completed, the transaction will be confirmed and wait for the transaction to be completed automatically.
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/create_wallet/step1_done.png" width="75%" height="75%">
 
 
-Wait for the transaction to complete, and "Create Successfully" appears to complete the wallet creation process.
+#### Step2:
+Click Add signer to add users. You need to add at least one signer to complete the wallet creation.
 
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image036.png" width="75%" height="75%">
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/create_wallet/step2.png" width="75%" height="75%">
+After entering the user's Eigen account, select one of his blockchain addresses as the signer. (a person may have multiple blockchain addresses. Please select his commonly used blockchain address as the signer)
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/create_wallet/step2_1.png" width="75%" height="75%">
+
+After selection, click confirm to confirm.
+
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/create_wallet/step2_2.png" width="75%" height="75%">
+
+After paying the certification gas fee, you can complete the creation of smart contract wallet.
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/create_wallet/step2_done.png" width="75%" height="75%">
+
+
+#### Step3:
+After the creation is successful, you can view the smart contract wallet you have created in My Wallet.
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/create_wallet/step3.png" width="75%" height="75%">
 
 
 ### Recover Wallet
