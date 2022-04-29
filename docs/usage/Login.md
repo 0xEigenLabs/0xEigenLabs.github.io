@@ -8,7 +8,7 @@ Eigen currently supports quick login using MetaMask, which will bring 3 benefits
 The specific use steps are as follows:
 
 1. Click Connect Wallet in the upper right corner and select Continue with MetaMask
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/login/entry.png" width="50%" height="50%">
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/login/entry.png" width="50%" height="75%">
 
 2. Enter your MetaMask password
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/login/metamask.png" width="50%" height="50%">
