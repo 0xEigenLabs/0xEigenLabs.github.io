@@ -2,7 +2,6 @@
 Multisig Wallet offers multiple features including social recovery, multi-signature transactions, payment limits, locking and unlocking, and more, preventing users’ funds from being lost or stolen.
 
 ### My Wallet
-Refers to the Multisig Wallet corresponding to the current account, including "I am The Owner" and "I am The Signer"
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image025.png" width="75%" height="75%">
 
