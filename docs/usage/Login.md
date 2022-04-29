@@ -1,5 +1,5 @@
 ## Account and Wallet
-In EigenSecret, Account is EOA and Wallet is Multisig Wallet. and you can switch between them easily.
+In EigenSecret, [Account](https://ieigen.github.io/#/docs/usage/Account) is an EOA and [Wallet](https://ieigen.github.io/#/docs/usage/MultisigWallet) is a Multisig Wallet. and you can switch between them easily.
 
 ### Social Login with MetaMask
 
