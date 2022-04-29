@@ -9,16 +9,16 @@ If the current account is Multisig Wallet, and the amount of the assets you are 
 
 Suppose you send 0.2 ETH to an address, which is greater than 0.1 ETH
 
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image051.png" width="50%" height="50%">
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image051.png" width="75%" height="75%">
 
 You should receive this information, which means the transacation should be confirmed by signer(s)
 
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image052.png" width="35%" height="35%">
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image052.png" width="75%" height="75%">
 
 Then you can see in the overview, the transcation should be confirmed by signers (more than N/2 signers)
 
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image053.png" width="35%" height="35%">
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image053.png" width="75%" height="75%">
 
 If it can be executed, then you can click "Executed" to send the assets finally
 
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image054.png" width="40%" height="40%">
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image054.png" width="75%" height="75%">
