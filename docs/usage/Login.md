@@ -1,4 +1,7 @@
-## Social Login with MetaMask
+## Account and Wallet
+In EigenSecret, Account is EOA and Wallet is Multisig Wallet. and you can switch between them easily.
+
+### Social Login with MetaMask
 
 Eigen currently supports quick login using MetaMask, which will bring 3 benefits to our users.
 1. More convenient login experience, use MetaMask to log in easily
@@ -22,10 +25,4 @@ The specific use steps are as follows:
 
 5. If you log in Eigen with Google account on your computer, MetaMask fast  login will automatically synchronise this Eigen account, you can use this MetaMask to log in your previous Eigen account. If not, the platform will create a new Eigen account for you.
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/login/list.png" width="40%" height="40%">
-
-
-
-
-
-
 

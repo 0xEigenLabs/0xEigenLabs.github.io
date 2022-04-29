@@ -55,3 +55,13 @@ Choose the account you intend to backup.
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/account/export.png" width="75%" height="75%">
 
 Then it goes to the `Backup by email`, check the steps there. Thanks!
+
+### 2.4 Be a signer or owner of a Multisig Wallet
+
+if you are a signer of someone's Multisig Wallet, you can check out all the Multisig Wallet you are protecting by entering Signers.
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/account/eoa_signers.png" width="75%" height="75%">
+
+and you can trigger the recovery of owner of the Multisig Wallet if the owner acts maliciously.
+
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/account/trigger.png" width="75%" height="75%">
+

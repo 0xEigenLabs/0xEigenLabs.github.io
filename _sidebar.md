@@ -4,9 +4,9 @@
     - [Operators](/docs/operators.md)
 
 - User Guide
+  - [Login](/docs/usage/Login.md)
   - [Overview](/docs/usage/Overview.md)
   - [Activity](/docs/usage/Activity.md)
-  - [Login](/docs/usage/Login.md)
   - [Account](/docs/usage/Account.md)
   - [Send](/docs/usage/Send.md)
   - [Exchange](/docs/usage/Exchange.md)

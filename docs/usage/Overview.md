@@ -14,7 +14,7 @@ After logging in, you need to set up your fund password (including at least uppe
 After setting the fund password, then check out the overview.
 
 ## Overview
-Include: Home, History, Approval management. The Home page displays the asset fluctuation curve under the wallet, where All Assets represents the asset list and the number of assets corresponding to the current address;
+After Login, you can check out your current account's asset.
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/overview/overview.png" width="75%" height="75%">
 
