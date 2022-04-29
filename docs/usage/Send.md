@@ -5,7 +5,7 @@ Send assets to corresponding addresses by selecting different networks. Among th
 
 If the current account is Multisig Wallet, and the amount of the assets you are going to send is larger than the payment limit (see [here](https://ieigen.github.io/#/docs/usage/MultisigWallet?id=my-wallet)), it will need the N/2 signers to jointly sign for you to complete the transaction. For example, we can set the max per transation as 0.1 ETH:
 
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/send/setting.png" width="50%" height="50%">
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/send/setting.png" width="75%" height="75%">
 
 Suppose you send 0.2 ETH to an address, which is greater than 0.1 ETH
 
