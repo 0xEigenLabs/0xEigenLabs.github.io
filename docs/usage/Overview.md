@@ -1,7 +1,7 @@
 ## Register and Login
 Open https://secret.ieigen.com/ ,click the “Connect Wallet”, and log in by Google account or Metamask.
 
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/login/entry.png" width="50%" height="75%">
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/login/entry.png" width="75%" height="75%">
 
 Select the corresponding Google Email account to log in and complete the authorization. 
 
