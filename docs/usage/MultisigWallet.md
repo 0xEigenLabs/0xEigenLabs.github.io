@@ -81,6 +81,7 @@ When the owner's key of the your multisig wallet is lost or stolen (in extreme c
 1. For new owner, click the `Recover Wallet`, and choose the wallet you want to recover.
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/recovery/recovery-choose-wallet.png" width="75%" height="75%">
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/recovery/recovery-choose-wallet2.png" width="75%" height="75%">
 
 2. Step1, the new owner need click button `Start` to invite at least 50% + signers to sign for your recovery. A single recovery will expire in 48 hours. Please restart the recovery if it's timeout.
 
