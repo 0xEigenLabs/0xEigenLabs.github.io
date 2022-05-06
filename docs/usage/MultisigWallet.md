@@ -3,33 +3,26 @@ Multisig Wallet offers multiple features including social recovery, multi-signat
 
 ### My Wallet
 
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image025.png" width="75%" height="75%">
-
-Click “Setting”,  set up the Payment Limit or Security settings.  For Payment Limit, you can limit the maximal payment amount for each transaction by Max per transaction, and maximal total payment each day by Max per day.  If the transaction amount  exceed the value of Max per day or total amount of the day  exceeds the value of Max per day, multi-signature mechanism will be triggered, and you need the N/2 signers to jointly sign for you to complete the transaction.  Now the Limitation can only take effect on ETH payment. 
-
-For the Security, you can set up the Lock expiry and Recover expiry.  The lock expiry can be used to freeze the wallet,  and then  the wallet can not transfer or add new signers.  The recovery expiry is  used to limit the expiry of triggering recovery, only when you execute the recovery before the expiry,  the recovery can be completed.  If it expires, you need to trigger the recovery again.
-
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image026.png" width="75%" height="75%">
-
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image027.png" width="75%" height="75%">
+Check out your Multisig Wallet from the top-left popup menu after login as below.
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/multisig/multisig-overview.png" width="75%" height="75%">
 
 
+### Signers
 
+When you switch to Multisig Wallet，the "Signers" is the list of these account addresses to protect your Multisig Wallet. Click "Detail" to add Signer or delete Signer.
 
-"I am The Owner" is the list of Multisig Wallets owned by this account address. Click "Detail" to add Signer or delete Signer.
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/multisig/signers.png" width="75%" height="75%">
 
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image028.png" width="75%" height="75%">
+When you switch to Account, the 'Signers' is the list of Multisig Wallet who you protect.
 
-"I am The Signer" is the Multisig Wallet list of this account as Signer. Click the "Freeze" button to freeze the wallet.
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/multisig/account-signer.png" width="75%" height="75%">
 
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image029.png" width="75%" height="75%">
-
+Click the "Freeze" button if you want to freeze the wallet.
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/multisig/account-signer-detail.png" width="75%" height="75%">
 
 Click "Confirm", and it will display "Frozen". At this time, the wallet cannot be transferred out. To unfreeze the wallet, you can restore it through Multisig Wallet-Recover Wallet. Note: When the number of Signers is greater than or equal to 1/2, the wallet will be frozen and take effect.
 
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image030.png" width="75%" height="75%">
-
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image031.png" width="75%" height="75%">
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/multisig/freeze.png" width="75%" height="75%">
 
 ### Create Wallet
 You can click Create Wallet in Multisig Wallet on the left column to create a multi-signature contract wallet.
@@ -118,4 +111,13 @@ After this, the Step 2 will be completed automatically if the recovery triggered
 6. If you want to cancel the recovery, or the timeout is reached, you can `cancel` the recovery.
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/recovery/recovery-cancel.png" width="75%" height="75%">
+
+### Setting
+
+Click “Setting”,  set up the Payment Limit or Security settings.  For Payment Limit, you can limit the maximal payment amount for each transaction by Max per transaction, and maximal total payment each day by Max per day.  If the transaction amount  exceed the value of Max per day or total amount of the day  exceeds the value of Max per day, multi-signature mechanism will be triggered, and you need the N/2 signers to jointly sign for you to complete the transaction.  Now the Limitation can only take effect on ETH payment. 
+
+For the Security, you can set up the Lock expiry and Recover expiry.  The lock expiry can be used to freeze the wallet,  and then  the wallet can not transfer or add new signers.  The recovery expiry is  used to limit the expiry of triggering recovery, only when you execute the recovery before the expiry,  the recovery can be completed.  If it expires, you need to trigger the recovery again.
+
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/multisig/setting.png" width="75%" height="75%">
+
 
