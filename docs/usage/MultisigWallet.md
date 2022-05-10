@@ -87,21 +87,21 @@ When the owner's key of the your multisig wallet is lost or stolen (in extreme c
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/recovery/recovery-step1.png" width="75%" height="75%">
 
-3. For Signers of your wallet, enter `My Wallet`, and switch to tab `I am The Signer`, and find the wallet which allows you to `Confirm recovery`
+3. For Signers of your wallet, enter `My Wallet`, find the wallet and `Confirm recovery` to sign for the recovery.
 
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image046.png" width="75%" height="75%">
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/recovery/signer_confirm.png" width="75%" height="75%">
 
 sign the request as below.
 
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image047.png" width="75%" height="75%">
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/recovery/sign_recovery.png" width="75%" height="75%">
 
 4. When more than 1/2 signers agree your recovery request, you need one of them to submit the recovery.
 
 If more than 1/2 signers signs, the last one who sign the recovery will be notified automatically to submit the recovery transaction. If he/she does not confirm in time, any signer who signed the recovery  can click "Confirm" and then submit the transaction.
 
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image048.png" width="75%" height="75%">
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/recovery/sign_confirm.png" width="75%" height="75%">
 
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/image049.png" width="75%" height="75%">
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/recovery/sign_confirm2.png" width="75%" height="75%">
 
 After this, the Step 2 will be completed automatically if the recovery triggered successfully.
 
