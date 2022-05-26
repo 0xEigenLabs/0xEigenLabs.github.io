@@ -9,7 +9,7 @@ Check out your Multisig Wallet from the top-left popup menu after login as below
 
 ### Signers
 
-When you switch to Multisig Wallet，the "Signers" is the list of these account addresses to protect your Multisig Wallet. Click "Detail" to add Signer or delete Signer.
+When you switch to Multisig Wallet，the "Signers" is the list of these account addresses to protect your Multisig Wallet. Click "Add Signer" to add Signer or "Detail" to delete Signer.
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/usage/multisig/signers.png" width="75%" height="75%">
 
