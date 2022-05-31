@@ -70,6 +70,7 @@ Then the proposal could be queued by anyone:
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/queue.png" width="75%" height="75%">
 
 The time when the proposal can be executed will be shown if queued:
+
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/queue_on_chain.png" width="75%" height="75%">
 
 ## Execute
