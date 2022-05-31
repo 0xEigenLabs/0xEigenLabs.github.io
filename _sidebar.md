@@ -21,6 +21,8 @@
   - [Confidential Contract](/docs/egip/00002.md)
   - [Secret Recovery Protocol](/docs/egip/00003.md)
 
+<p hidden>
 - Miner
   - [Hardware Configuration Requirements](/docs/miner.md)
 
+</p>
