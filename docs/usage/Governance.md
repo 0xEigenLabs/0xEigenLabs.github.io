@@ -24,3 +24,50 @@ Or *Cancel*:
 Of course, a third address can be input in the text box. If you want to submit the delegation address, just click the *Submit* button, because it will call a contract, you should confirm it:
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/delegate_submit.png" width="75%" height="75%">
+
+## Proposals
+Any one could see all the proposals:
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/proposal_overview.png" width="75%" height="75%">
+
+Each proposal could show details if you choose one. If a proposal is active, it means that you can vote Yes or No on it. The votings you can vote is shown on the page:
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/vote_overview.png.png" width="75%" height="75%">
+
+For example, you can vote for "Yes" and then submit:
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/vote_submit.png" width="75%" height="75%">
+
+If the transaction is confirmed on the chain:
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/vote_submit_on_chain.png" width="75%" height="75%">
+
+The vote result of the current proposal will be shown (the votings from you will be highlight):
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/vote_display_vote_information.png" width="75%" height="75%">
+
+If you want to create a proposal, you should have enough `GovernanceToken`:
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/create_proposal_add_information.png" width="75%" height="75%">
+
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/create_proposal_submit.png" width="75%" height="75%">
+
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/create_proposal_submit_success.png" width="75%" height="75%">
+
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/create_proposal_submit_on_the_chain.png" width="75%" height="75%">
+
+## Queue
+If a proposal satisfy all the conditions below:
+  - The vote for the proposal last enough time (currently for test, we set a shorter time with 1 hour)
+  - More **Yes** votings than **No**
+  - The **Yes** votings is greater than the quorum (currently 4M `GovernanceToken`)
+
+Then the proposal could be queued by anyone:
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/queue.png" width="75%" height="75%">
+
+The time when the proposal can be executed will be shown if queued:
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/queue_on_chain.png" width="75%" height="75%">
+
+## Execute
+After several hours (currently 0.5h), the proposal which is queued before could be executed by anyone:
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/execute.png" width="75%" height="75%">
+
+If the proposal is successfully execute, the status of the proposal will become **Executed**:
+
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/queue_on_chain.png" width="75%" height="75%">
+
+Gloria! The proposal is finally executed! By the governance DAO.
