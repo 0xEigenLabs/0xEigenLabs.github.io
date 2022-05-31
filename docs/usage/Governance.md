@@ -29,8 +29,8 @@ Of course, a third address can be input in the text box. If you want to submit t
 Any one could see all the proposals:
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/proposal_overview.png" width="75%" height="75%">
 
-Each proposal could show details if you choose one. If a proposal is active, it means that you can vote Yes or No on it. The votings you can vote is shown on the page:
-<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/vote_overview.png.png" width="75%" height="75%">
+Each proposal could show details if you choose one. If a proposal is active, it means that you can vote **Yes** or **No** on it. The votings you can vote is shown on the page:
+<img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/vote_overview.png" width="75%" height="75%">
 
 For example, you can vote for "Yes" and then submit:
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/vote_submit.png" width="75%" height="75%">
