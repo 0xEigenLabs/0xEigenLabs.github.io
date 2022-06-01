@@ -21,6 +21,7 @@ For example, the one who want to delegate `GovernanceToken` to himself/herself, 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/delegate_overview.png" width="75%" height="75%">
 
 A user can edit the current delegate address by click _Edit_ Button:
+
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/delegate_edit.png" width="75%" height="75%">
 
 Delegate to _Self_:
