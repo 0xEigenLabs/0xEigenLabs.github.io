@@ -90,8 +90,8 @@ After several hours (currently 0.5h), the proposal which is queued before could 
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/execute.png" width="75%" height="75%">
 
-If the proposal is successfully execute, the status of the proposal will become **Executed**:
+If the proposal is successfully executed, the status of the proposal will become **Executed**:
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/queue_on_chain.png" width="75%" height="75%">
 
-Gloria! The proposal is finally executed! By the governance DAO.
+Gloria! The proposal is finally executed! By the governance DAO!
