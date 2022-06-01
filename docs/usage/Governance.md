@@ -1,11 +1,18 @@
 # Governance
+
 Provides a DAO which can be used to upgrade modules of multisig wallet, or any other actions (comming soon in the future).
 
-A Governance Proposal can be created by any user who have enough a special ERC20 token (now the token is called `GovernanceToken`). The proposal should incorporate feedback from the Consensus Check and is accompanied by executable on-chain code. In our test environment, in order to submit an on-chain Governance proposal, a delegate must have a minimum balance of 0.2m `GovernanceToken`. The voting period lasts 1 hour and a majority vote with a 4m `GovernanceToken` yes-vote threshold wins.
+A Governance Proposal can be created by any user who have enough a special ERC20 token (now the token is called `GovernanceToken`). The `GovernanceToken` is used to count votings, one token one voting. Besides all ERC20 methods supporting, the `GovernanceToken` supports:
+
+- **Delegation**. You can delegate the votings to someone (including yourself) without transfering them
+- **Checkpoints Recording**. To prevent users from cheating, the voting number for a user is determined by the start time of each proposal. So any user can't gain their votings by any actions. The checkpoints are recorded on the chain to implement this function
+
+The proposal should incorporate feedback from the Consensus Check and is accompanied by executable on-chain code. In our test environment, in order to submit an on-chain Governance proposal, a delegate must have a minimum balance of 0.2m `GovernanceToken`. The voting period lasts 1 hour and a majority vote with a 4m `GovernanceToken` yes-vote threshold wins.
 
 If a proposal wins, it can be queued by anyone. Another 0.5h delay is need to let people know that the proposal is going to be executed. Then the proposal can be executed, of course, by any one.
 
 ## Delegate
+
 A user can delegate votes to the delegatee, self or any other address. Users can delegate to 1 address at a time, and the number of votes added to the delegatee's vote count is equivalent to the balance of `GovernanceToken` in the user's account. Votes are delegated from the current block and onward, until the sender delegates again, or transfers their `GovernanceToken`.
 
 If a user want to create proposal or vote, he/she **must delegate to someone**, either himself/herself or someone else. So a user should firstly enter the `Delegate` page.
@@ -13,22 +20,23 @@ For example, the one who want to delegate `GovernanceToken` to himself/herself, 
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/delegate_overview.png" width="75%" height="75%">
 
-A user can edit the current delegate address by click *Edit* Button:
+A user can edit the current delegate address by click _Edit_ Button:
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/delegate_edit.png" width="75%" height="75%">
 
-Delegate to *Self*:
+Delegate to _Self_:
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/delegate_self.png" width="75%" height="75%">
 
-Or *Cancel*:
+Or _Cancel_:
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/delegate_cancel.png" width="75%" height="75%">
 
-Of course, a third address can be input in the text box. If you want to submit the delegation address, just click the *Submit* button, because it will call a contract, you should confirm it:
+Of course, a third address can be input in the text box. If you want to submit the delegation address, just click the _Submit_ button, because it will call a contract, you should confirm it:
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/delegate_submit.png" width="75%" height="75%">
 
 ## Proposals
+
 Any one could see all the proposals:
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/proposal_overview.png" width="75%" height="75%">
@@ -60,10 +68,12 @@ If you want to create a proposal, you should have enough `GovernanceToken`:
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/create_proposal_submit_on_the_chain.png" width="75%" height="75%">
 
 ## Queue
+
 If a proposal satisfy all the conditions below:
-  - The vote for the proposal last enough time (currently for test, we set a shorter time with 1 hour)
-  - More **Yes** votings than **No**
-  - The **Yes** votings is greater than the quorum (currently 4M `GovernanceToken`)
+
+- The vote for the proposal last enough time (currently for test, we set a shorter time with 1 hour)
+- More **Yes** votings than **No**
+- The **Yes** votings is greater than the quorum (currently 4M `GovernanceToken`)
 
 Then the proposal could be queued by anyone:
 
@@ -74,6 +84,7 @@ The time when the proposal can be executed will be shown if queued:
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/queue_on_chain.png" width="75%" height="75%">
 
 ## Execute
+
 After several hours (currently 0.5h), the proposal which is queued before could be executed by anyone:
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/execute.png" width="75%" height="75%">
