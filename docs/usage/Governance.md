@@ -54,7 +54,7 @@ There're several kinds of status for proposals:
   - *Expired*: The proposal does not execute on a given time (now 14 ays) after queued, the proposal can't be executed then
 
 
-Each proposal could show details if you choose one. If a proposal is active, it means that you can vote **Yes** or **No** on it. The votings you can vote is shown on the page:
+Each proposal could show details if you choose one. If a proposal is *Active*, it means that you can vote **Yes** or **No** on it. The votings you can vote is shown on the page:
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/vote_overview.png" width="75%" height="75%">
 
