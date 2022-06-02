@@ -44,7 +44,7 @@ Any one could see all the proposals:
 
 
 There're several kinds of status for proposals:
-  - *Pending*: The proposal is just created, a short time is delay before users can vote
+  - *Pending*: The proposal is just created, a short time is delayed before users can vote
   - *Active*: The proposal is active for voting now
   - *Canceled*: The proposal has been canceled
   - *Defeated*: The proposal is defeated, which means most people votes for **No** or the quorum is not satisfied
