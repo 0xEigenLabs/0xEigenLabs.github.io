@@ -42,6 +42,18 @@ Any one could see all the proposals:
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/proposal_overview.png" width="75%" height="75%">
 
+
+There're several kinds of status for proposals:
+  - *Pending*: The proposal is just created, a short time is delay before users can vote
+  - *Active*: The proposal is active for voting now
+  - *Canceled*: The proposal has been canceled
+  - *Defeated*: The proposal is defeated, which means most people votes for **No** or the quorum is not satisfied
+  - *Succeeded*: The proposal wins most **Yes** votes and satisfies the quorum, thus the proposal could now be queued
+  - *Queued*: The proposal now is queued, after the queued time is up, it should be executed by anyone
+  - *Executed*: The proposal has been executed
+  - *Expired*: The proposal does not execute on a given time (now 14 ays) after queued, the proposal can't be executed then
+
+
 Each proposal could show details if you choose one. If a proposal is active, it means that you can vote **Yes** or **No** on it. The votings you can vote is shown on the page:
 
 <img src="https://github.com/ieigen/ieigen.github.io/raw/main/docs/images/governance/vote_overview.png" width="75%" height="75%">
