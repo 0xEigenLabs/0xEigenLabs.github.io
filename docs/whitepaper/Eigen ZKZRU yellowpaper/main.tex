@@ -57,11 +57,10 @@
 \maketitle
 
 
-
 \begin{abstract}
-Decentralized Privacy and security are always the most important part of Web3.0. ZCash and Monero have taken great effort to achieve privacy-enabling technology by building their private payment infrastructure and ecosystem. However, it's not easy for holders and investors to achieve achieve privacy and high annual percentage yield, too.
+Decentralized Privacy and security are always the most important part of Web3.0. ZCash and Monero have taken great effort to achieve privacy-enabling technology by building their private payment infrastructure and ecosystem. However, it's not easy to achieve programmable privacy on Smart Contract regarding general assets, such as ERC1155.
 
-In this paper, we present Eigen ZKZRU, an Abstract Balance Leaf Model on ZKVM. Eigen ZKZRU amims to provide adddress anonymity, encrypted balance and confidential smart contract, which is built on a Two-tier architecture, the base layer is a ZKRollup, which is built on R1CS constraints system and transpiled to PLONKish Arithmetization \cite{gabizon2019plonk}, and powered with hardware acceleration. The application layer is Pairing-free and easy-to-audit confidential transaction layer. We adopts Stealth Address, twisted ElGamal encryption and NIZK on ZKRollup protocol to build our stack, and obtain low gas-fee, better composability and high privacy enhancement. 
+In this paper, we present Eigen ZKZRU, an Abstract Balance Leaf Model on ZKRollup on Ethereum ecosystem. Eigen ZKZRU aims to provide address anonymity, encrypted balance and confidential smart contract, which is built on a Two-tier architecture, the base layer is a ZKRollup, which is built on R1CS constraints system and transpiled to PLONKish Arithmetization \cite{gabizon2019plonk}, and powered with hardware acceleration. The application layer is Pairing-free and easy-to-audit confidential transaction layer. We adopts Stealth Address, twisted ElGamal encryption and NIZK on ZKRollup protocol to build our stack, and obtain low gas-fee, better composability and high privacy enhancement. 
 
 As a callback to our \href{https://www.eigen.cash/#/}{whitepaper}, this work gives more detail about the on-chain data privacy preservation. 
 
@@ -183,7 +182,7 @@ Eigen ZKZRU aims to facilitate a drop-in privacy preservation protocol/DApp for 
 
 \subsection{Overview of Eigen ZKZRU}
 
-Eigen ZKZRU is a 2-layer architecture, the base layer is the Zero-knowledge virtual machine, namely ZKVM layer, which empowers applications with zero-knowledge proofs. The upper layer is the confidential transaction layer, which provides high-level interface of confidential asset, which is pegged to the token in Layer 1. The 2-Layer architecture is necessary due to two factors as below.
+Eigen ZKZRU is a 2-layer architecture, the base layer is the Zero-knowledge virtual machine, namely ZKRollup layer, which empowers applications with zero-knowledge proofs. The upper layer is the confidential transaction layer, which provides high-level interface of confidential asset, which is pegged to the token in Layer 1. The 2-Layer architecture is necessary due to two factors as below.
 
 \noindent\textbf{Privacy-oriented protocol}. Eigen ZKZRU is to provide a privacy "Lego" for end-users to protect their asset's confidentiality and security before the asset flowing into other liquidity pool or protocols in DeFi world. Differ from the zkEVM solution, such as ZKSync, we can deploy our confidential transaction layer on other ZKRollup L2s. Hence we design the transaction layer on pair free cryptography scheme to try best to save the gas and lower the implementation complexity, and for privacy concern, we need to generate the Zero-knowledge transaction in user-side, like by browser.
 
@@ -195,7 +194,7 @@ Eigen ZKZRU is a 2-layer architecture, the base layer is the Zero-knowledge virt
     \item Fast Fourier Transforms (FFTs) and Inverse FFTs (although there are techniques for FFT-less proof systems).
 \end{itemize}
 
-In systems where both FFTs and MSMs exist, about 70\% of the time generating a proof is spent on MSMs, and the rest is dominated by FFTs. There are some methods to improve the performance, but hardware acceleration does really matter.  For the ZKVM layer, we design a the proof-of-proving model for miner to participant in the computation, and the miner would provide powerful and optimized computation. 
+In systems where both FFTs and MSMs exist, about 70\% of the time generating a proof is spent on MSMs, and the rest is dominated by FFTs. There are some methods to improve the performance, but hardware acceleration does really matter.  For the ZKRollup layer, we design a the proof-of-proving model for miner to participant in the computation, and the miner would provide powerful and optimized computation. 
 
 
 \subsubsection{Base Layer: ZKRollup}
