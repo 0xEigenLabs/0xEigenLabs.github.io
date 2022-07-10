@@ -1,0 +1,64 @@
+
+\subsection{Address Anonymity}
+
+Eigen ZKZRU adopts fast dual key exchange based stealth address scheme for address anonymity. 
+
+In general, the Stealth address and Nullifier are two widely used scheme for anonymous
+transaction. Compared to Nullifier used by Tornado Cash and AZTEC, Stealth address is account-friendly. Stealth address enables the sender to send the money to an "invisible" recipient, and the real recipient can derive the private key of the "invisible" recipient's address. 
+
+The widely-used Stealth Address protocol is Dual-Key StealthAddress Protocol (DKSAP), which is designed for a wallet solution \href{https://github.com/shadowproject}{ShadowSend} uses two pairs of keys, a scan key pair and a spend keypair to provide decentralised anonymous currency. However, The drawback of DKSAP is that it requires the receiver to continuously calculate and determine whether it is the real receiver of the transaction until it detected a transaction that matches. In this process, the receiver needs to perform many time-consuming elliptic curve scalar multiplication operations, which limits the application of DKSAP. Gary's Enhanced DKSAP protocol \cite{Yu2020BlockchainSA} proposed a efficient approach to eliminate the intensive curve scalar multiplication, we optimizes the Gary's Enhanced DKSAP protocol by binding the txdata to random r, so even the same stealth address can also be reused. 
+
+let l be a pre-consensus constant, and $L = 2^l - 1$, and generate the group parameters (\GG, p, g, h).
+
+\procb[linenumbering]{The Enhanced DKSAP protocol}{
+\textbf{Sender} \> \> \textbf{Receiver} \\
+\> \> (s, S = g^s), (b, B = g^b), salt \\
+\> \> i \sample [1, 2^{31}-1) \\
+\> \> A_i \gets f(S, salt, i) \\
+\> \> B_i \gets f(B, salt, i) \\
+\> \sendmessageleft*{\text{Stealth Address($A_i$, $B_i$, i})} \> \\ 
+rr \sample \ZZ_p \> \>    \\
+r = H(nonce_{sender} || txdata || rr) \> \>    \\
+R = g^r \> \>    \\
+R' = B_i^r\> \>    \\
+h = H(R')\> \>    \\
+P= A_i B_i h^{R' \cdot x}\> \>    \\
+i'= (((i >> l) \xor h) << l) + (i \& L)\> \>    \\
+Create\ TX(P, R, i',...)\> \>    \\
+\> \sendmessageright*{\text{TX(P, R, i', ...)}} \> \\ 
+\> \> b_i \gets f(k', c', i'\&L)   \\
+\> \> B_i = g^{b_i}, R' = R^{b_i}   \\
+\> \> h = H(R') \\
+\> \> i= (((i' >> l) \xor h) << l) + (i' \& L)    \\
+\> \> A_i = f(K, salt, i)  \\
+\> \> P'= A_i B_i h^{R' \cdot x}   \\
+\> \> Check\ P' \overset{?}{=} P
+}
+Where f is the Key Deriviation Function, and the input would be limited to size of $l$.
+We spilt the i into two parts. The lower part is of size $l$, and the higher part is used to hide the shared key' hash R.  The receiver publishes a stealth address $(A_i, B_i, i)$, and uses this address to generate a one-time public key for a transaction $TX$, attaches the (R, i')) to the $TX$, then the receiver collects it from the chain.
+
+% \begin{algorithm}[t]
+%     \caption{Ethereum account-friendly DKSAP protocol}
+%     \label{alg:DKSAP}
+%     \LinesNumbered
+%     \KwIn{choose G as the base point of an elliptic curve group}
+
+%     \begin{itemize}
+%         \item The receiver:  two private/public key pairs (s, S) and (b, B), where S = s·G and B = b·G are ‘scan public key’ and ‘spend public key’;
+%         \item The sender:  generates an ephemeral key pair (r, R), where r = H(message ++ nonce), and R = r·G and transmits it with the transaction. 
+%     \end{itemize}
+    
+%     \KwOut {an anonymous recipient payment transaction}
+    
+    
+%     Both sender and receiver Calculate shared secret using the ECDH:
+%     $ c = H(r \cdot s \cdot G = H(r \cdot S) = H (s \cdot R)) $, where $H(\cdot)$ is an oracle hash function \;
+    
+%     The sender uses $c \cdot G + B$ as the ephemeral destination address for sending the payment\; 
+    
+%     The receiver checks whether some transaction has been sent to the ephemeral destination address above by checking whether the recipient address equals to $ c \cdot G + B = (c + b) \cdot G$. 
+    
+%     If there is a match, the payment can be spent using the corresponding private key c + b. Note that the ephemeral private key c + b can only be computed by the receiver. 
+% \end{algorithm}
+
+% In our DKSAP's scheme, we adopt a proxy server. The receiver can share the ‘scan private key’ s and the ‘spend public key’ B with the proxy server so that those entities can scan the blockchain transaction on behalf of the receiver. However, they are not able the compute the ephemeral private key c + b and spend the payment.
