@@ -12,7 +12,7 @@
   - [Exchange](/docs/usage/Exchange.md)
   - [Tools](/docs/usage/Tools.md)
   - [Multisig Wallet](/docs/usage/MultisigWallet.md)
-  - [Anonymous paymenet](/docs/usage/StealthAddress.md)
+  - [Address Anonymity](/docs/usage/StealthAddress.md)
   - [Governance](/docs/usage/Governance.md)
 
 - Whitepaper
