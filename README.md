@@ -1,25 +1,17 @@
 # Eigen Network
 
-[Eigen Network](https://www.eigen.cash/) is an end-to-end privacy computation network for a better digital economy based on hybrid privacy computation protocols and AI federated machine learning. Eigen focuses on providing a cross-domain valuable data circulation network embedded with full paradigm computing engines and enables developers to build and ship privacy applications easily.
+Eigen Network aims to facilitate a drop-in privacy preservation protocol for every Web3 participant in EVM-compatible ecosystem.
 
-## EigenCC
+The main functionality we provides:
 
-[EigenCC](https://github.com/ieigen/ieigen/tree/main/cc) Confidential Computation Framework.
+* Eigen ZKZRU: a new ZK-ZKRollup protocol to achieve address anonymity, smart contract data and logic confidentiality and offers users capabilities of low gas-fee confidential transaction, full Smart Contract privacy preservation and better composability of supporting most used asset like ERC20,ERC721 and ERC1166, in EVM-compatible ecosystem.
 
-## EigenRollup Chain
-
-[EigenRollup Chain](https://github.com/ieigen/ieigen/tree/main/l2) Optimistical Rollup Chain.
-
-## Eigen Secret
-
-[Eigen Secret](https://github.com/ieigen/secret) is a cross-chain wallet for EigenRollup Chain and Ethereum.
+* Eigen Secret: a decentralized, secure and self-custodial asset managermet platform, which provides keyless signing and social recovery regarding to cross-device, multi-parties collabration and fine-grained payment over Web3.0.
 
 
 ## About Eigen
 
 [Eigen Network](https://www.eigen.cash/)
-
-[Discord](https://discord.gg/CkzGRuKwWU)
 
 [Twitter](https://twitter.com/Eigen_Network)
 
