@@ -16,7 +16,7 @@
   - [Governance](/docs/usage/Governance.md)
 
 - Whitepaper
-  - [v1](docs/whilepaper.md)
+  - [Whitepaper](docs/whilepaper.md)
 
 <p hidden>
 - EGIP
