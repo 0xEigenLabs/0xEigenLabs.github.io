@@ -18,12 +18,12 @@
 - Whitepaper
   - [v1](docs/whilepaper.md)
 
+<p hidden>
 - EGIP
   - [EigenCALL Instruction](/docs/egip/00001.md)
   - [Confidential Contract](/docs/egip/00002.md)
   - [Secret Recovery Protocol](/docs/egip/00003.md)
 
-<p hidden>
 - Miner
   - [Hardware Configuration Requirements](/docs/miner.md)
 
