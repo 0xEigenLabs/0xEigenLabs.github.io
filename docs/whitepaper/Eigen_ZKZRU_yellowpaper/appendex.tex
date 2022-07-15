@@ -1,0 +1,293 @@
+\appendix
+
+%\section{Borromean ring signatures on Pedersen Commitment}
+%\label{appendix:borr}
+%Borromean ring signatures\cite{maxwell2015borromean} 
+%https://blockstream.com/bitcoin17-final41.pdf
+
+\section{Bulletproof protocol}
+\label{appendix:bp}
+
+BulletProof doesn't depends on trust setup. BulletProof use NUMS \ref{appendex:NUMS} strategy, where a hash function is utilized to compute the generator for Pedersen Commitment. The main building block of BulletProof is Inner Product Argument(IPA). We use curve Secp256k1 in our implementation.
+
+
+\begin{algorithm}
+ \DontPrintSemicolon
+    \caption{Compute Generator: ComputesGenerators}
+    \label{alg:ComputesGenerators}
+    \LinesNumbered
+    
+    \KwIn{The elliptic curve public generator $g \in \GG$ and an integer n.}
+    \KwOut{The set of generators for Pedersen Commitment (g, h, \textbf{g}, \textbf{h})}.
+    Compute h = MapToGroup('something', p) \;
+    i = 0 \;
+    \While {i < n} {
+        $c \sample ZZ_p$ \;
+        $d \sample ZZ_p$ \;
+        \textbf{g}[i] $\gets$ $c\cdot G$ \;
+        \textbf{h}[i] $\gets$ $d\cdot G$ \;
+        i $\gets$ i + 1\;
+    }
+    return (g, h, \textbf{g}, \textbf{h});
+\end{algorithm}
+
+\begin{algorithm}
+ \DontPrintSemicolon
+    \caption{$Setup_{IP}$}
+    \label{alg:setup_ip}
+    \LinesNumbered
+    
+    \KwIn{the set of generators(g, h, \textbf{g}, \textbf{h})}
+    \KwOut{$params_{IP}$}
+    
+    u $\gets$  MapToGroup('something', p) \;
+    return $params_{IP}$ = (g, h, \textbf{g}, \textbf{h}, u)
+\end{algorithm}
+
+\begin{algorithm}
+ \DontPrintSemicolon
+    \caption{$Setup_{RP}$}
+    \label{alg:setup_rp}
+    \LinesNumbered
+    
+    \KwIn{the input interval [a, b), and the field modulus p}.
+    \KwOut{$params_{RP}$}
+    \uIf{b is not a power of 2}{
+        return "b must be a power of 2"\;
+    } {
+        $n \gets log_2b$ \;
+        (g, h, \textbf{g}, \textbf{h}) $\gets$ ComputeGenerators(g, n) \;
+        $params_{IP} \gets Setup_{IP}(g, h, \textbf{g}, \textbf{h})$ \;
+        return $params_{RP}$ = ($params_{IP}$, n) \;
+    }
+\end{algorithm}
+
+\begin{algorithm}
+ \DontPrintSemicolon
+    \caption{Vector Commitment: $Commit_{IP}$}
+    \label{alg:vector_commitment}
+    \LinesNumbered
+    
+    \KwIn{$params_{IP}$, \textbf{a, b}}.
+    \KwOut{The commitment C}
+    Compute C $\gets$ $g^ah^b \in \GG$ \;
+    return C.
+\end{algorithm}
+
+\begin{algorithm}
+ \DontPrintSemicolon
+    \caption{Prove of Inner Product: $Prove_{IP}$}
+    \label{alg:prove_ip}
+    \LinesNumbered
+    
+    \KwIn{$params_{IP}, commit_{IP}$,c, \textbf{a, b}}.
+    \KwOut{$proof_{IP}$}
+    x $\gets$ Hash(\textbf{g, h}, P, c) $\in \GG$ \;
+    Compute P' $\gets$ $u^{x\cdot c}P$ \;
+    Allocate arrays \textbf{l, r} $\in \GG^n$ \;
+    ComputeProof(\textbf{g}, \textbf{h}, P',, $u^x$, \textbf{a, b, l, r})\;
+    $proof_{IP}$ $\gets$ (\textbf{g, h}, P', $u^x$, \textbf{a, b, l, r}) \; 
+    return $proof_{IP}$.
+\end{algorithm}
+
+\begin{algorithm}
+    \caption{Prove of Inner Product: ComputeProof}
+    \label{alg:compute_proof}
+    \LinesNumbered
+    \KwIn{\textbf{g, h}, P, u, \textbf{a, b, l, r}}
+    \KwOut{\textbf{g, h}, P, u, \textbf{a, b, l, r}}
+    x = Hash(g, h, P, c $\in \ZZ_p^*$\;
+    Compute P' = $u^{x\cdot c}P$ \;
+    \eIf{n = 1}{
+        return (\textbf{g, h}, P, u, a, b, \textbf{l, r}) \;
+    } {
+        n' $\gets$ n/2 \;
+        $C_L \gets <a_{[:n']}, b_{[n':]}> \in \ZZ_p$\;
+        $C_R \gets <a_{[n':]}, b_{[:n']}> \in \ZZ_p$\;
+        $L \gets g_{[n':]}^{a_{[:n']}} h_{[:n']}^{b_{[n':]}}u^{C_L} \in \GG$ \;
+        $R \gets g_{[n':]}^{a_{[n':]}} h_{[n':]}^{b_{[:n']}}u^{C_R} \in \GG$ \;
+        Append $L, R$ to \textbf{l, r}, respectively\;
+        x $\gets$ Hash($L, R$)\;
+        $g' \gets g_{[:n']}^{x^{-1}} g_{[n':]}^{x} \in \GG^{n'}$ \;
+        $h' \gets g_{[:n']}^{x} g_{[n':]}^{x^{-1}} \in \GG^{n'}$ \;
+        $P' \gets L^{x^2}PR^{x^{-2}} \in \GG$ \;
+        $a' \gets a_{[:n']}x + a_{[n':]}x^{-1} \in \ZZ_p^{n'}$ \;
+        $b' \gets b_{[:n']}x + b_{[n':]}x^{-1} \in \ZZ_p^{n'}$ \;
+        return ComputeProof(\textbf{g', h'}, P', u, \textbf{a', b', l, r})
+    }
+\end{algorithm}
+
+\begin{algorithm}
+ \DontPrintSemicolon
+    \caption{Prove of Inner Product: $Verify_{IP}$}
+    \label{alg:verify_ip}
+    \LinesNumbered
+    
+    \KwIn{$params_{IP}, commit_{IP}, proof_{IP}$}
+    \KwOut{True or false}
+    
+    i $\gets$ 0 \;
+    \While{i < logn}{
+        n' $\gets$ n/2 \;
+        x $\gets$ Hash(\textbf{l}[i], \textbf{r}[i]) \;
+        $g' \gets g_{[:n']}^{x^{-1}} g_{[n':]}^{x} \in \GG^{n'}$ \;
+        $h' \gets g_{[:n']}^{x} g_{[n':]}^{x^{-1}} \in \GG^{n'}$ \;
+        $P' \gets L^{x^2}P R^{x^{-2}}\in \GG$ \;
+        i $\gets$ i + 1 \;
+    }
+    The verifier computes c = a$\cdot$ and accepts if $P = g^ah^bu^c$.
+\end{algorithm}
+
+% https://arxiv.org/pdf/1907.06381.pdf
+\begin{algorithm}
+ \DontPrintSemicolon
+    \caption{Bulletproofs: $Prove_{RP}$}
+    \label{alg:prove_rp}
+    \LinesNumbered
+    
+    \KwIn{$params_{RP}$, v}
+    \KwOut{$proof_{RP}$}
+    
+    $\lambda \sample \ZZ_p$ \;
+    $V \gets g^vh^\lambda \in \GG$ \;
+    $a_L \in \{\bin\}^n$ s.t. $<a_L, 2^n> = v$ \;
+    $a_R - a_L - 1^n \in \ZZ+p^n$ \;
+    $\alpha \sample \ZZ_p$\;
+    $A \gets h^\alpha g^{a_L}h^{a_R} \in \GG$ \;
+    $s_L, s_R \sample \ZZ_p^n$\;
+    $\rho \sample \ZZ_p$\;
+    $S \gets h^\rho g^{s_L} h^{s_R} \in \GG$ \;
+    $ y \gets Hash(A, S) \in \ZZ_p^n$ \;
+    $ z \gets Hash(A, S, y) \in \ZZ_p^n$ \;
+    $\tau_1, \tau_2 \sample \ZZ_p$ \;
+    $T_1 \gets g^{t_1} h^{\tau_1}$ \;
+    $T_2 \gets g^{t_2} h^{\tau_2}$ \;
+    $ x \gets Hash(T_1, T_2) \in \ZZ_p^n$ \;
+    
+    \textbf{l} $\gets$ $l(X) = a_L - z1^n + s_LX \in \ZZ_p^n$ \;
+    \textbf{r} $\gets$ $r(x) = y^n \cdot (a_R + z1^n + s_R X) + z^22^n \in \ZZ_p^n$ \;
+    $\hat{t} \gets $ <\textbf{l, r}> $\in \ZZ_p$ \;
+    $\tau_x \gets r_2x^2 + \tau_1 x + z^2\lambda  \in \ZZ_p$ \;
+    $\mu \gets \alpha + \rho x \in \ZZ_p$ \;
+    $commit_{IP} \gets Commit_{IP}(params_{IP}, l, r)$ \;
+    $proof_{IP} \gets Prove_{IP}(params_{IP}, commit_{IP}, \hat{t}, l, r)$ \;
+    return $proof_{RP} = Prove_{RP}(\tau_x, \mu, \hat{t}, V, A, S, T_1, T_2, commit_{IP}, proof_{IP})$ \;
+\end{algorithm}
+
+\begin{algorithm}
+ \DontPrintSemicolon
+    \caption{Bulletproofs: $Verify_{RP}$}
+    \label{alg:verify_rp}
+    \LinesNumbered
+
+    \KwIn{$params_{RP}, proof_{rp}$}
+    \KwOut{True or false}
+    
+    $ y \gets Hash(A, S) \in \ZZ_p^n$ \;
+    $ z \gets Hash(A, S, y) \in \ZZ_p^n$ \;
+    $ x \gets Hash(T_1, T_2) \in \ZZ_p^n$ \;
+    
+    $h_i \gets h_i^{y^{-i + 1}} \in \GG, \forall i \in [1, n]$\;
+    $P_l \gets p \cdot h^\mu $\;
+    $P_r \gets A\cdot S^x\cdot g^{-z} \cdot (h')^{z\cdot y^2 + z^2 \cdot 2^n} \in \GG$\;
+    $output_1 \gets (P_l \overset{?}{=}P_r)$ \;
+    $output_2 \gets (g^{\hat{t}} h^{r_x} \overset{?}{=} V^{z^2}\cdot g^{\sigma(y, z)\cdot T_1^x \cdot T_2^{x^2}})$ \;
+    $output_3 \gets Verfify_{IP}(proof_{IP})$ \;
+    return $output_1 \land output_2 \land output_3$ 
+\end{algorithm}
+
+\section{Boneh-Boyen Signatures without pairings}
+\label{appendex: bbs-no-pairing}
+Boneh-Boyen Signatures scheme \cite{jao2009boneh} used by the designated authority
+(which could be the verifier) to sign each element of the set $\Phi$ is the one proposed by Boneh and Boyen.
+Based on this scheme, which is secure under the q-SDH assumption, it is possible to prove knowledge of a
+signature on a message, without revealing the signature nor the message.
+
+For a given secret x, and two random generatos $g_1, g_2$ of $G_1$, the signature of a message $m \in \ZZ_p$ is obtained by computing $\sigma = g_1^{1/(x+m)}$. Given a bilinear pairing e, a signature $\sigma$ of m is valid if $e(\sigma, yg_2^m) = e(g_1, g_2)$ holds, where $y = g_2^x$.
+
+\cite{arfaoui2015practical} proposed BB signature without pairing under the DDH assumption. Let G be a cyclic group with prime order p where the
+Decisional Diffie-Hellman (DDH) problem is assumed to be hard and $g_1, g_2$ two random generators of $\GG$. The signer’s private key is $x \in \ZZ_p$ and it's public key is $y = g^x$, so the signature would be $\sigma = g_1^{1/(x+m)}$, which implies that $A^x = g_1 A^{-m}$. So the signer can prove the signature is valid by generating a ZKPK $\pi$:
+\begin{equation}
+    SOK(x: X = g_2^x \land A^x = g_1A^{-m})
+\end{equation}
+which means the discrete logarithm of ($g_1 A^{-m}$) in the base A is equal to the discrete logarithm of $x$ in the base $g_2$.
+
+\section{Set Membership Proof on BB Signature without pairing}
+
+\begin{myDef}
+\label{d5}
+\textbf{Borreomean ring signature\cite{maxwell2015borromean}} let $\mathcal{V}$ be some set of verification keys, and f be a function which maps finite subsets of $\mathcal{V}$ to ${0, 1}$, we call f an admissibility function, then an admissible set V of verification keys is one for which f($\mathcal{V}$) = 1. 
+
+A Borromean ring signature $\sigma$ is a signature on a message m with a set V of verification keys and admissibility function f which satisfy the following:
+\begin{enumerate}
+    \item $\sigma$ can be produced only by parties who together know all the secret keys to an admissible set $\mathcal{V}$ of verification keys.
+    \item Given only $\sigma$ , $\mathcal{V}$ , and $m$, it is statistically indistinguishable which admissible set V was used.
+\end{enumerate}
+\end{myDef}
+
+Proving knowledge of a valid BB Signature $A_k = g^{1/{y+k}}$ on a value $k$ commited in $Com = g_1^k h^v$, without using parings on the prover's side can be done in Algorithm \ref{alg:prove_sm} and Algorithm \ref{alg:verify_sm}. 
+
+\begin{algorithm}
+ \caption{Set Membership Proof: $Prove_{SM}$}
+    \label{alg:prove_sm}
+    \LinesNumbered
+    
+    \KwIn{challenge $ch$, public input=(set $\Phi$), private input = ($k, A_k = g^{1/{y+k}}$)}
+    \KwOut{$proof_{SM}$}
+    
+    $v \sample \ZZ_p^*$\;
+    $Com \gets g_1^k h^v$ \;
+    $A_k \gets g^{1/(y+k)}$ \;
+    $l \sample \ZZ_p^*$ \;
+    $B \gets A_k^l, B_1 \gets B^{-1}, D \gets B_1^kg^l$ \;
+    $k_1, l_1, r_1 \sample \ZZ_p^*$ \;
+    $Com_1 \gets g_1^{k_1}h^{r_1}, D_1 = B_1^{k_1} g^{l_1}$ \;
+    
+    $C \gets H(Com, B, D, Com_1, D_1, ch)$ \;
+    $s_1 \gets k_1 + c \times k \mod p$ \;
+    $s_2 \gets r_1 + c \times r \mod p$ \;
+    $s_3 \gets l_1 + c \times l \mod p$ \;
+    
+    $proof_{SM} = (Com, B, D, s_1, s_2, s_3)$
+\end{algorithm}
+
+\begin{algorithm}
+ \caption{Set Membership Proof: $Verify_{SM}$}
+    \label{alg:verify_sm}
+    \LinesNumbered
+    
+    \KwIn{challenge $ch$, $proof_{SM}$}
+    \KwOut{True or false}
+    
+    $\hat{C} \gets g_1^{s_1}h^{s_2}, \hat{D} = B_1^{s_1}g^{s_3}D^{-c}$ \;
+    $output_1 \gets B \neq 1_{G_1}$ \;
+    $output_2 \gets H(Com, B, D, \hat{C}, \hat{D}, ch)$ \;
+    
+    return $output_1 \land output_2$
+\end{algorithm}
+
+\section{Nothing Up My Sleeve}
+\label{appendex:NUMS}
+This method enables the generation of verifiable random values. NUMS allows a prover to pick values in a way that demonstrates the values were not selected for a "nefarious purpose" - for example, to create a "backdoor" to the algorithm \cite{black2014elliptic}. The algorithm on curve Secp256k1 is described in Algorithm \ref{alg:nums}.
+
+\begin{algorithm}
+ \caption{Nothing Up My Sleeve: MapToGroup}
+    \label{alg:nums}
+    \LinesNumbered
+    
+    \KwIn{The input string m, and the filed prime modules p}
+    \KwOut{AN elliptic curve point if successful or some error}
+    i $\gets$ 0 \;
+    \While {i < 256} {
+        x $\gets$ Hash(m, i) \;
+        rhs $\gets$ $x^3 + 7$ \;
+        \uIf {rhs is a sqaure (mod p) } {
+            $y \gets \sqrt{rhs}$ mod p \;
+            \uIf{(x, y) is not the point at infinity}{
+                return (x, y) \;
+            }
+        }
+        i $\gets$ i + 1\;
+    }
+    return "Can not map to group"\;
+\end{algorithm}
