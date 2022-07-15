@@ -24,9 +24,9 @@ BulletProof doesn't depends on trust setup. BulletProof use NUMS \ref{appendex:N
     \While {i < n} {
         $c \sample ZZ_p$ \;
         $d \sample ZZ_p$ \;
-        \textbf{g}[i]=$c\cdot G$ \;
-        \textbf{h}[i]=$d\cdot G$ \;
-        i = i + 1\;
+        \textbf{g}[i] $\gets$ $c\cdot G$ \;
+        \textbf{h}[i] $\gets$ $d\cdot G$ \;
+        i $\gets$ i + 1\;
     }
     return (g, h, \textbf{g}, \textbf{h});
 \end{algorithm}
@@ -40,7 +40,7 @@ BulletProof doesn't depends on trust setup. BulletProof use NUMS \ref{appendex:N
     \KwIn{the set of generators(g, h, \textbf{g}, \textbf{h})}
     \KwOut{$params_{IP}$}
     
-    u = MapToGroup('something', p) \;
+    u $\gets$  MapToGroup('something', p) \;
     return $params_{IP}$ = (g, h, \textbf{g}, \textbf{h}, u)
 \end{algorithm}
 
@@ -55,9 +55,9 @@ BulletProof doesn't depends on trust setup. BulletProof use NUMS \ref{appendex:N
     \uIf{b is not a power of 2}{
         return "b must be a power of 2"\;
     } {
-        $n = log_2b$ \;
-        (g, h, \textbf{g}, \textbf{h}) = ComputeGenerators(g, n) \;
-        $params_{IP} = Setup_{IP}(g, h, \textbf{g}, \textbf{h})$ \;
+        $n \gets log_2b$ \;
+        (g, h, \textbf{g}, \textbf{h}) $\gets$ ComputeGenerators(g, n) \;
+        $params_{IP} \gets Setup_{IP}(g, h, \textbf{g}, \textbf{h})$ \;
         return $params_{RP}$ = ($params_{IP}$, n) \;
     }
 \end{algorithm}
@@ -70,7 +70,7 @@ BulletProof doesn't depends on trust setup. BulletProof use NUMS \ref{appendex:N
     
     \KwIn{$params_{IP}$, \textbf{a, b}}.
     \KwOut{The commitment C}
-    Compute C = $g^ah^b \in \GG$ \;
+    Compute C $\gets$ $g^ah^b \in \GG$ \;
     return C.
 \end{algorithm}
 
@@ -82,11 +82,11 @@ BulletProof doesn't depends on trust setup. BulletProof use NUMS \ref{appendex:N
     
     \KwIn{$params_{IP}, commit_{IP}$,c, \textbf{a, b}}.
     \KwOut{$proof_{IP}$}
-    x = Hash(\textbf{g, h}, P, c) $\in \GG$ \;
-    Compute P' = $u^{x\cdot c}P$ \;
+    x $\gets$ Hash(\textbf{g, h}, P, c) $\in \GG$ \;
+    Compute P' $\gets$ $u^{x\cdot c}P$ \;
     Allocate arrays \textbf{l, r} $\in \GG^n$ \;
     ComputeProof(\textbf{g}, \textbf{h}, P',, $u^x$, \textbf{a, b, l, r})\;
-    $proof_{IP}$ = (\textbf{g, h}, P', $u^x$, \textbf{a, b, l, r}) \; 
+    $proof_{IP}$ $\gets$ (\textbf{g, h}, P', $u^x$, \textbf{a, b, l, r}) \; 
     return $proof_{IP}$.
 \end{algorithm}
 
@@ -101,18 +101,18 @@ BulletProof doesn't depends on trust setup. BulletProof use NUMS \ref{appendex:N
     \eIf{n = 1}{
         return (\textbf{g, h}, P, u, a, b, \textbf{l, r}) \;
     } {
-        n' = n/2 \;
-        $C_L = <a_{[:n']}, b_{[n':]}> \in \ZZ_p$\;
-        $C_R = <a_{[n':]}, b_{[:n']}> \in \ZZ_p$\;
-        $L = g_{[n':]}^{a_{[:n']}} h_{[:n']}^{b_{[n':]}}u^{C_L} \in \GG$ \;
-        $R = g_{[n':]}^{a_{[n':]}} h_{[n':]}^{b_{[:n']}}u^{C_R} \in \GG$ \;
+        n' $\gets$ n/2 \;
+        $C_L \gets <a_{[:n']}, b_{[n':]}> \in \ZZ_p$\;
+        $C_R \gets <a_{[n':]}, b_{[:n']}> \in \ZZ_p$\;
+        $L \gets g_{[n':]}^{a_{[:n']}} h_{[:n']}^{b_{[n':]}}u^{C_L} \in \GG$ \;
+        $R \gets g_{[n':]}^{a_{[n':]}} h_{[n':]}^{b_{[:n']}}u^{C_R} \in \GG$ \;
         Append $L, R$ to \textbf{l, r}, respectively\;
-        x = Hash($L, R$)\;
-        $g' = g_{[:n']}^{x^{-1}} g_{[n':]}^{x} \in \GG^{n'}$ \;
-        $h' = g_{[:n']}^{x} g_{[n':]}^{x^{-1}} \in \GG^{n'}$ \;
-        $P' = L^{x^2}PR^{x^{-2}} \in \GG$ \;
-        $a' = a_{[:n']}x + a_{[n':]}x^{-1} \in \ZZ_p^{n'}$ \;
-        $b' = b_{[:n']}x + b_{[n':]}x^{-1} \in \ZZ_p^{n'}$ \;
+        x $\gets$ Hash($L, R$)\;
+        $g' \gets g_{[:n']}^{x^{-1}} g_{[n':]}^{x} \in \GG^{n'}$ \;
+        $h' \gets g_{[:n']}^{x} g_{[n':]}^{x^{-1}} \in \GG^{n'}$ \;
+        $P' \gets L^{x^2}PR^{x^{-2}} \in \GG$ \;
+        $a' \gets a_{[:n']}x + a_{[n':]}x^{-1} \in \ZZ_p^{n'}$ \;
+        $b' \gets b_{[:n']}x + b_{[n':]}x^{-1} \in \ZZ_p^{n'}$ \;
         return ComputeProof(\textbf{g', h'}, P', u, \textbf{a', b', l, r})
     }
 \end{algorithm}
@@ -126,14 +126,14 @@ BulletProof doesn't depends on trust setup. BulletProof use NUMS \ref{appendex:N
     \KwIn{$params_{IP}, commit_{IP}, proof_{IP}$}
     \KwOut{True or false}
     
-    i = 0 \;
+    i $\gets$ 0 \;
     \While{i < logn}{
-        n' = n/2 \;
-        x = Hash(\textbf{l}[i], \textbf{r}[i]) \;
-        $g' = g_{[:n']}^{x^{-1}} g_{[n':]}^{x} \in \GG^{n'}$ \;
-        $h' = g_{[:n']}^{x} g_{[n':]}^{x^{-1}} \in \GG^{n'}$ \;
-        $P' = L^{x^2}P R^{x^{-2}}\in \GG$ \;
-        i = i + 1 \;
+        n' $\gets$ n/2 \;
+        x $\gets$ Hash(\textbf{l}[i], \textbf{r}[i]) \;
+        $g' \gets g_{[:n']}^{x^{-1}} g_{[n':]}^{x} \in \GG^{n'}$ \;
+        $h' \gets g_{[:n']}^{x} g_{[n':]}^{x^{-1}} \in \GG^{n'}$ \;
+        $P' \gets L^{x^2}P R^{x^{-2}}\in \GG$ \;
+        i $\gets$ i + 1 \;
     }
     The verifier computes c = a$\cdot$ and accepts if $P = g^ah^bu^c$.
 \end{algorithm}
@@ -149,28 +149,28 @@ BulletProof doesn't depends on trust setup. BulletProof use NUMS \ref{appendex:N
     \KwOut{$proof_{RP}$}
     
     $\lambda \sample \ZZ_p$ \;
-    $V = g^vh^\lambda \in \GG$ \;
-    $a_L \in {0, 1}^n$ s.t. $<a_L, 2^n> = v$ \;
+    $V \gets g^vh^\lambda \in \GG$ \;
+    $a_L \in \{\bin\}^n$ s.t. $<a_L, 2^n> = v$ \;
     $a_R - a_L - 1^n \in \ZZ+p^n$ \;
     $\alpha \sample \ZZ_p$\;
-    $A = h^\alpha g^{a_L}h^{a_R} \in \GG$ \;
+    $A \gets h^\alpha g^{a_L}h^{a_R} \in \GG$ \;
     $s_L, s_R \sample \ZZ_p^n$\;
     $\rho \sample \ZZ_p$\;
-    $S = h^\rho g^{s_L} h^{s_R} \in \GG$ \;
-    $ y = Hash(A, S) \in \ZZ_p^n$ \;
-    $ z = Hash(A, S, y) \in \ZZ_p^n$ \;
+    $S \gets h^\rho g^{s_L} h^{s_R} \in \GG$ \;
+    $ y \gets Hash(A, S) \in \ZZ_p^n$ \;
+    $ z \gets Hash(A, S, y) \in \ZZ_p^n$ \;
     $\tau_1, \tau_2 \sample \ZZ_p$ \;
-    $T_1 = g^{t_1} h^{\tau_1}$ \;
-    $T_2 = g^{t_2} h^{\tau_2}$ \;
-    $ x = Hash(T_1, T_2) \in \ZZ_p^n$ \;
+    $T_1 \gets g^{t_1} h^{\tau_1}$ \;
+    $T_2 \gets g^{t_2} h^{\tau_2}$ \;
+    $ x \gets Hash(T_1, T_2) \in \ZZ_p^n$ \;
     
-    \textbf{l} = $l(X) = a_L - z1^n + s_LX \in \ZZ_p^n$ \;
-    \textbf{r} = $r(x) = y^n \cdot (a_R + z1^n + s_R X) + z^22^n \in \ZZ_p^n$ \;
-    $\hat{t} = $ <\textbf{l, r}> $\in \ZZ_p$ \;
-    $\tau_x = r_2x^2 + \tau_1 x + z^2\lambda  \in \ZZ_p$ \;
-    $\mu = \alpha + \rho x \in \ZZ_p$ \;
-    $commit_{IP} = Commit_{IP}(params_{IP}, l, r)$ \;
-    $proof_{IP} = Prove_{IP}(params_{IP}, commit_{IP}, \hat{t}, l, r)$ \;
+    \textbf{l} $\gets$ $l(X) = a_L - z1^n + s_LX \in \ZZ_p^n$ \;
+    \textbf{r} $\gets$ $r(x) = y^n \cdot (a_R + z1^n + s_R X) + z^22^n \in \ZZ_p^n$ \;
+    $\hat{t} \gets $ <\textbf{l, r}> $\in \ZZ_p$ \;
+    $\tau_x \gets r_2x^2 + \tau_1 x + z^2\lambda  \in \ZZ_p$ \;
+    $\mu \gets \alpha + \rho x \in \ZZ_p$ \;
+    $commit_{IP} \gets Commit_{IP}(params_{IP}, l, r)$ \;
+    $proof_{IP} \gets Prove_{IP}(params_{IP}, commit_{IP}, \hat{t}, l, r)$ \;
     return $proof_{RP} = Prove_{RP}(\tau_x, \mu, \hat{t}, V, A, S, T_1, T_2, commit_{IP}, proof_{IP})$ \;
 \end{algorithm}
 
@@ -183,16 +183,16 @@ BulletProof doesn't depends on trust setup. BulletProof use NUMS \ref{appendex:N
     \KwIn{$params_{RP}, proof_{rp}$}
     \KwOut{True or false}
     
-    $ y = Hash(A, S) \in \ZZ_p^n$ \;
-    $ z = Hash(A, S, y) \in \ZZ_p^n$ \;
-    $ x = Hash(T_1, T_2) \in \ZZ_p^n$ \;
+    $ y \gets Hash(A, S) \in \ZZ_p^n$ \;
+    $ z \gets Hash(A, S, y) \in \ZZ_p^n$ \;
+    $ x \gets Hash(T_1, T_2) \in \ZZ_p^n$ \;
     
-    $h_i = h_i^{y^{-i + 1}} \in \GG, \forall i \in [1, n]$\;
-    $P_l = p \cdot h^\mu $\;
-    $P_r = A\cdot S^x\cdot g^{-z} \cdot (h')^{z\cdot y^2 + z^2 \cdot 2^n} \in \GG$\;
-    $output_1 = (P_l \overset{?}{=}P_r)$ \;
-    $output_2 = (g^{\hat{t}} h^{r_x} \overset{?}{=} V^{z^2}\cdot g^{\sigma(y, z)\cdot T_1^x \cdot T_2^{x^2}})$ \;
-    $output_3 = Verfify_{IP}(proof_{IP})$ \;
+    $h_i \gets h_i^{y^{-i + 1}} \in \GG, \forall i \in [1, n]$\;
+    $P_l \gets p \cdot h^\mu $\;
+    $P_r \gets A\cdot S^x\cdot g^{-z} \cdot (h')^{z\cdot y^2 + z^2 \cdot 2^n} \in \GG$\;
+    $output_1 \gets (P_l \overset{?}{=}P_r)$ \;
+    $output_2 \gets (g^{\hat{t}} h^{r_x} \overset{?}{=} V^{z^2}\cdot g^{\sigma(y, z)\cdot T_1^x \cdot T_2^{x^2}})$ \;
+    $output_3 \gets Verfify_{IP}(proof_{IP})$ \;
     return $output_1 \land output_2 \land output_3$ 
 \end{algorithm}
 
@@ -236,17 +236,17 @@ Proving knowledge of a valid BB Signature $A_k = g^{1/{y+k}}$ on a value $k$ com
     \KwOut{$proof_{SM}$}
     
     $v \sample \ZZ_p^*$\;
-    $Com = g_1^k h^v$ \;
-    $A_k = g^{1/(y+k)}$ \;
+    $Com \gets g_1^k h^v$ \;
+    $A_k \gets g^{1/(y+k)}$ \;
     $l \sample \ZZ_p^*$ \;
-    $B = A_k^l, B_1 = B^{-1}, D = B_1^kg^l$ \;
+    $B \gets A_k^l, B_1 \gets B^{-1}, D \gets B_1^kg^l$ \;
     $k_1, l_1, r_1 \sample \ZZ_p^*$ \;
-    $Com_1 = g_1^{k_1}h^{r_1}, D_1 = B_1^{k_1} g^{l_1}$ \;
+    $Com_1 \gets g_1^{k_1}h^{r_1}, D_1 = B_1^{k_1} g^{l_1}$ \;
     
-    $C = H(Com, B, D, Com_1, D_1, ch)$ \;
-    $s_1 = k_1 + c \times k \mod p$ \;
-    $s_2 = r_1 + c \times r \mod p$ \;
-    $s_3 = l_1 + c \times l \mod p$ \;
+    $C \gets H(Com, B, D, Com_1, D_1, ch)$ \;
+    $s_1 \gets k_1 + c \times k \mod p$ \;
+    $s_2 \gets r_1 + c \times r \mod p$ \;
+    $s_3 \gets l_1 + c \times l \mod p$ \;
     
     $proof_{SM} = (Com, B, D, s_1, s_2, s_3)$
 \end{algorithm}
@@ -259,9 +259,9 @@ Proving knowledge of a valid BB Signature $A_k = g^{1/{y+k}}$ on a value $k$ com
     \KwIn{challenge $ch$, $proof_{SM}$}
     \KwOut{True or false}
     
-    $\hat{C} = g_1^{s_1}h^{s_2}, \hat{D} = B_1^{s_1}g^{s_3}D^{-c}$ \;
-    $output_1 = B \neq 1_{G_1}$ \;
-    $output_2 = H(Com, B, D, \hat{C}, \hat{D}, ch)$ \;
+    $\hat{C} \gets g_1^{s_1}h^{s_2}, \hat{D} = B_1^{s_1}g^{s_3}D^{-c}$ \;
+    $output_1 \gets B \neq 1_{G_1}$ \;
+    $output_2 \gets H(Com, B, D, \hat{C}, \hat{D}, ch)$ \;
     
     return $output_1 \land output_2$
 \end{algorithm}
@@ -277,17 +277,17 @@ This method enables the generation of verifiable random values. NUMS allows a pr
     
     \KwIn{The input string m, and the filed prime modules p}
     \KwOut{AN elliptic curve point if successful or some error}
-    i = 0 \;
+    i $\gets$ 0 \;
     \While {i < 256} {
-        x = Hash(m, i) \;
-        rhs = $x^3 + 7$ \;
+        x $\gets$ Hash(m, i) \;
+        rhs $\gets$ $x^3 + 7$ \;
         \uIf {rhs is a sqaure (mod p) } {
-            $y = \sqrt{rhs}$ mod p \;
+            $y \gets \sqrt{rhs}$ mod p \;
             \uIf{(x, y) is not the point at infinity}{
                 return (x, y) \;
             }
         }
-        i = i + 1\;
+        i $\gets$ i + 1\;
     }
     return "Can not map to group"\;
 \end{algorithm}

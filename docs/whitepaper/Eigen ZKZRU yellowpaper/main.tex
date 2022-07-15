@@ -3,7 +3,6 @@
 % Language setting
 % Replace `english' with e.g. `spanish' to change the document language
 \usepackage[english]{babel}
-
 \usepackage[ruled]{algorithm2e}
 \usepackage{amsthm}
 \usepackage{appendix}
@@ -28,15 +27,14 @@
     complexity,
     asymptotics,
     keys]{cryptocode}
-\createprocedureblock {procb}{center, boxed}{}{}{}
 \usepackage{lipsum}
+\usepackage{dashbox}
 \usepackage{algpseudocode}
 % Set page size and margins
 % Replace `letterpaper' with `a4paper' for UK/EU standard size
 \usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 \usepackage{geometry}
 \geometry{a4paper,scale=0.8}
-
 \usepackage{float}
 \floatstyle{plaintop}
 \restylefloat{table}
@@ -50,7 +48,7 @@
 \newtheorem{myDef}{Definition}
 \SetKwComment{Comment}{/* }{ */}
 
-\title{Eigen ZKZRU: Where Makes Transaction Private and Secure for Web3.0}
+\title{Eigen ZKZRU: A Privacy-specific ZK Rollup}
 \author{Eigen Labs}
 
 \begin{document}
@@ -60,9 +58,9 @@
 \begin{abstract}
 Decentralized Privacy and security are always the most important part of Web3.0. ZCash and Monero have taken great effort to achieve privacy-enabling technology by building their private payment infrastructure and ecosystem. However, it's not easy to achieve programmable privacy on Smart Contract regarding general assets, such as ERC1155.
 
-In this paper, we present Eigen ZKZRU, an Abstract Balance Leaf Model on ZKRollup on Ethereum ecosystem. Eigen ZKZRU aims to provide address anonymity, encrypted balance and confidential smart contract, which is built on a Two-tier architecture, the base layer is a ZKRollup, which is built on R1CS constraints system and transpiled to PLONKish Arithmetization \cite{gabizon2019plonk}, and powered with hardware acceleration. The application layer is Pairing-free and easy-to-audit confidential transaction layer. We adopts Stealth Address, twisted ElGamal encryption and NIZK on ZKRollup protocol to build our stack, and obtain low gas-fee, better composability and high privacy enhancement. 
+In this paper, we present Eigen ZKZRU, a privacy-specific ZKRollup solution on ZKRollup on Ethereum ecosystem to achieve low gas-fee, better composability and high privacy enhancement. Eigen ZKZRU proposes an Abstract Balance Leaf Model, using Twisted ElGamal encryption \cite{chen2020pgc} and Bulletproof \cite{bunz2018bulletproofs} on DDH assumption to build the confidential transaction, and constructs the validity proof of batch transaction on account Merkle tree by algebraic composite NIZK, which is built on a Two-tier architecture, the base layer is a ZKRollup, which is built on R1CS constraints system and transpiled to PLONKish Arithmetization \cite{gabizon2019plonk}, which is naturally friendly to utilize Twisted ElGamal encryption with custom gate, and hardware acceleration. The application layer is Pairing-free and easy-to-audit confidential transaction layer. 
 
-As a callback to our \href{https://www.eigen.cash/#/}{whitepaper}, this work gives more detail about the on-chain data privacy preservation. 
+% As a callback to our \href{https://www.eigen.cash/#/}{whitepaper}, this work gives more detail about the on-chain data privacy preservation. 
 
 \end{abstract}
 
@@ -104,9 +102,9 @@ However, this is not easy to manage such Nullifier, which is secret key for each
 
 \subsection{Vision}
 
-Eigen Network aims to facilitate a drop-in privacy preservation protocol/DApp for every Web3 participant in EVM-compatible ecosystem.
+Eigen Network aims to facilitate a drop-in privacy preservation protocol for every Web3 participant in EVM-compatible ecosystem.
 
-Eigen Network proposes an new ZK-ZKRollup protocol to achieve address anonymity, smart contract data and logic confidentiality and offers users capabilities of low gas-fee confidential transaction, full Smart Contract privacy preservation and better composability of supporting most used asset like ERC20,ERC721 and ERC1166, in EVM-compatible ecosystem.
+Eigen Network focuses on building a new privacy-specific ZKRollup protocol to achieve address anonymity, smart contract data and logic confidentiality and offers users capabilities of low gas-fee confidential transaction, full Smart Contract privacy preservation and better composability of supporting most used asset like ERC20,ERC721 and ERC1166, in EVM-compatible ecosystem.
 
 \subsection{Related Works}
 
@@ -114,7 +112,7 @@ There are some concurrent work to implement address anonymity, transaction and s
 
 Hawk\cite{kosba2016hawk} splits a smart contract into a public contract, which runs on-chain, and a private contract executed off-chain. Hawk requires the figure of a manager to execute the private contract. The manager must be trusted by the participants, as it can see the transactions that take place in a private contract. The manager cannot affect the outcome of the contract, it just could prevent the contract execution, or cause the abortion of the contract, and in both cases, it would be castigated.
 
-Zether\cite{bunz2020zether} is a private transaction scheme built on top of Ethereum. It can be extended to support a limited class of smart contracts with I/O privacy—namely those that can be represented solely via homomorphic addition. This allows us to perform simple sealed-bid auctions (assuming bidders buy all units on offer) and private voting (assuming the votes are binary). Unfortunately, only transactions hiding the users' balances and the transfer amount can currently be implemented on Ethereum due to gas constraints. Unlike the next two constructions, Zether uses a "transparent" ZKP (i.e. a ZKP with no trusted setup) $\Sigma\mbox{-}Bullets$.
+Zether\cite{bunz2020zether} is a private transaction scheme built on top of Ethereum. It can be extended to support a limited class of smart contracts with I/O privacy—namely those that can be represented solely via homomorphic addition. This allows us to perform simple sealed-bid auctions (assuming bidders buy all units on offer) and private voting (assuming the votes are binary). Unfortunately, only transactions hiding the users' balances and the transfer amount can currently be implemented on Ethereum due to gas constraints. Unlike previous two constructions, Zether uses a "transparent" ZKP (i.e. a ZKP with no trusted setup) $\Sigma\mbox{-}Bullets$.
 
 % Zkay\cite{baumann2020zkay} also extends Ethereum's design to support smart contracts with I/O privacy. They rely on the power of ZKPs for private computation, thus offloading the bulk of work to the user to perform offline. However, this design choice also allows them to support a larger class of functions than in Zether.
 
@@ -126,7 +124,6 @@ Eigen Labs proposes Abstract Balance Leaf(ABL) on Account Balance Merkle Tree, a
 
 To sum up, Table \ref{tab:compare} presents the detail on privacy type, approach, expressivity and which blockchain protocol to extend.  
 
-
 \begin{table}
 \resizebox{\textwidth}{!} {
 \begin{tabular}{c|c|c|c|c}
@@ -134,7 +131,7 @@ Scheme & Privacy type & Approach & Expressivity & Extension as \\\hline
 Hawk & I/O & Offchain MPC/TEE & Arbitrary functions & Ethereum L1 \\
 Zether & I/O & Elgamal and $\Sigma$-Bullet & Additive functions & Ethereum L1\\
 AZTEC & I/O, function & Pairing based homomorphic Commitment & Additive functions & Ethereum L2\\
-Eigen ZKZRU & I/O, function & Pair-free commitment and Bulletproof & Arbitrary functions & Ethereum L2
+Eigen ZKZRU & I/O, function & Pair-free Homomorphic PKE and Bulletproof & Arbitrary functions & Ethereum L2
 \end{tabular}
 }
 \caption{\label{tab:compare}A comparison of Privacy-preserving Smart Contract Scheme}
@@ -143,8 +140,8 @@ Eigen ZKZRU & I/O, function & Pair-free commitment and Bulletproof & Arbitrary f
 For privacy type, I/O is corresponding short for Encrypted Input/Output. If end user encrypts the input, and send it to the miner to run the contract, it would be Encrypted Input. Otherwise, the end user need run the contract locally with clear input and encrypts the output, then sends the encrypted output to miners.
 
 There are different approaches to obtain privacy enhancement, The classic methods include Homomorphic arithmetic or some commitment scheme, TEE, MPC and NIZK. Homomorphic arithmetic is deeply limited to to performance in computation, especially fully homomophgic encryption, so the practical approaches would be commitment scheme, like additive or multiplicative to perform special operations like \textbf{Split} and \textbf{Join} in AZTEC Protocol. The MPC needs large of communication complexity and this raises complex interoperability between on-chain and off-chain. The TEE uses special hardware to achieve computing efficiency and code integrity. NIZKs, Non-interactive zero-knowledge proofs, enable a party, known as the prover, to convince another party, known as the verifier, about knowledge of the witness for an NP statement without revealing any information about the witness (besides what is already implied by the statement being true). 
-Expressivity is the scope of the scheme being able to protect.
 
+Expressivity is the scope of the scheme being able to protect.
 
 A deep comparison with AZTEC from implementation perspective on acceleration and architecture in Table \ref{tab:widgets2}. Eigen ZKZRU leverages decentralized proof-Of-Proving mechanism to accelerate the proving computation, and it's naturally for us to utilize hardware acceleration, too, such as GPU and ASIC for NTT computation in polynomial commitment and multi-scalar multiplications on elliptic curves. The second difference is we adopt Stealth Address to implements the address anonymity.
 
@@ -157,7 +154,6 @@ EVM Compatibility & Partial/Language Level & Partial/Language Level \\
 Prover Decentralization & \color{red} Decentralized Eigen Relayer & Wasm in Browser \\
 Circuit DSL & Circom & Noir \\
 Prove System & Plonk & Plonk \\
-Lookup Table & Yes(Plonkup) & Yes(UltraPlonk) \\
 Recursive Proof & Yes & Yes \\
 GPU acceleration enable & \color{red} Yes & No \\
 Anonymous Address & \color{red} Stealth Address & Nullifier \\
@@ -169,20 +165,20 @@ Anonymous Address & \color{red} Stealth Address & Nullifier \\
 
 \section{Eigen ZKZRU Design Rationale}
 
-Eigen ZKZRU aims to facilitate a drop-in privacy preservation protocol/DApp for every Web3 participant in EVM-compatible ecosystem, provides user the capacities as below.
+Eigen ZKZRU aims to facilitate a drop-in privacy preservation application for every Web3 participant in EVM-compatible ecosystem, provides user the capacities as below.
 
 \noindent\textbf{Low Gas-fee}. Free deposit, Batch transfer by ZK-Rollup, Low gas-fee withdrawal.
 
-\noindent\textbf{Composability}. User interface abstract,  support ERC20, ERC721 and Swap.
+\noindent\textbf{Composability}. Not only ERC20,  both ERC721 and Swap are supported.
 
-\noindent\textbf{Privacy}. Eigen ZKZRU uses zero-knowledge (ZK) proofs as an important building block to implement confidential transaction and address anonymity.  
+\noindent\textbf{Privacy Enhancement}. Confidential transaction and address anonymity based on ZK-ZKRollup  
 
-\noindent\textbf{Easy-to-use}. Self-custodial Secret(Key/blinding factors etc.) Management and Multisig Wallet.
+\noindent\textbf{Easy-to-use}. Self-custodial Secret(Private Key/Secret words) Management and Multisig Wallet based Account Abstract.
 
 
 \subsection{Overview of Eigen ZKZRU}
 
-Eigen ZKZRU is a 2-layer architecture, the base layer is the Zero-knowledge virtual machine, namely ZKRollup layer, which empowers applications with zero-knowledge proofs. The upper layer is the confidential transaction layer, which provides high-level interface of confidential asset, which is pegged to the token in Layer 1. The 2-Layer architecture is necessary due to two factors as below.
+Eigen ZKZRU is a Two-Tier architecture, the base layer is ZKRollup layer, which empowers applications with zero-knowledge proofs. The upper layer is the confidential transaction layer, which provides high-level interface of confidential asset, which is pegged to the token in Layer 1. The Two-Tier architecture is necessary due to two factors as below.
 
 \noindent\textbf{Privacy-oriented protocol}. Eigen ZKZRU is to provide a privacy "Lego" for end-users to protect their asset's confidentiality and security before the asset flowing into other liquidity pool or protocols in DeFi world. Differ from the zkEVM solution, such as ZKSync, we can deploy our confidential transaction layer on other ZKRollup L2s. Hence we design the transaction layer on pair free cryptography scheme to try best to save the gas and lower the implementation complexity, and for privacy concern, we need to generate the Zero-knowledge transaction in user-side, like by browser.
 
@@ -194,18 +190,23 @@ Eigen ZKZRU is a 2-layer architecture, the base layer is the Zero-knowledge virt
     \item Fast Fourier Transforms (FFTs) and Inverse FFTs (although there are techniques for FFT-less proof systems).
 \end{itemize}
 
-In systems where both FFTs and MSMs exist, about 70\% of the time generating a proof is spent on MSMs, and the rest is dominated by FFTs. There are some methods to improve the performance, but hardware acceleration does really matter.  For the ZKRollup layer, we design a the proof-of-proving model for miner to participant in the computation, and the miner would provide powerful and optimized computation. 
+In systems where both FFTs and MSMs exist, about 70\% of the time generating a proof is spent on MSMs, and the rest is dominated by FFTs. There are some methods to improve the performance, but hardware acceleration does really matter.  For the ZKRollup layer, we design a the proof-of-proving model for miner to participant in the computation, and the miner would provide powerful and optimized computation.
 
 
-\subsubsection{Base Layer: ZKRollup}
+\subsubsection{Base Layer: ZK Rollup}
 
-The ZKRollup provides a transaction format for a shared, multi-asset, cryptographic ledger. Eigen ZKZRU requires a Node(also known as operator). The node is responsible for data validity, collecting transactions, be batched-up, and forwards the transactions/batches into on-chain inbox. which means putting them into a consistent, global incremental order with no gaps. 
+The ZK Rollup is a very promising approach to scale Ethereum.  The ZK Rollup consists of Rollup contract and A off-chain proving nodes. The Rollup contract maintains a transaction Merkle tree root list and a account Merkle tree. The proving nodes act as:
+\begin{itemize}
+    \item a RPC server for user to interact with ZK Rollup
+    \item a sequencer to sort the transaction and generates the transaction Merkle tree root, submit the root into L1 Rollup contract
+    \item a prover to generate the Rollup block validity proof, and update the global account Merkle tree.
+\end{itemize}
 
-Eigen ZKZRU deploys an inbox contract rollup contract in L1. The inbox contract maintains the transactions submitted from end-user via EigenSecret to the Node, by packing the transactions in batch, and then submitting the batch into L1 inbox. The order of the transaction is determined after inserting into inbox. 
+% The node  data validity, collecting transactions, and bundling up the transactions into a batch, and submits the Merkle proof into L1 contract. which means putting them into a consistent, global incremental order with no gaps. 
 
 The prover generate the validity proof by the \href{https://github.com/ieigen/EigenZKit}{EigenZKit}. EigenZkit is our ZKRollup \textit{compiler}, which make it easy for the developer to write constraints by Circom, transpile the circuits to PLONKish Arithmetization \cite{gabizon2019plonk}, optimize the proving with the Lookup table and aggregation proof, and finally generate the proof and solidity verifier on Plonk argument. 
 
-The rollup contract maintains a state root: the Merkle root of the state of the rollup (meaning, the account balances, contract code, etc, that are "inside" the rollup). And check the validity of the new proof with public input transaction Merkle tree root and new account Merkle tree root.
+The rollup contract maintains a state root: the Merkle root of the state of the Rollup (meaning, the account balances, contract code, etc, that are "inside" the rollup). And check the validity of the new proof with public input transaction Merkle tree root and new account Merkle tree root.
 
 The basic data representation of rollup blockchain's world state see Figure \ref{fig:zkzru}. The depth could be scaled to 28 or larger, which means our ledger merkle depth can reach up to $2^{28}$ accounts.
 
@@ -368,9 +369,9 @@ Furthermore, we construct the set membership proof on this scheme from the work 
 ~\\
 \noindent\textbf{Zero-knowledge proofs on ABL}. In ABL model, we ensure that the encrypted transaction are correct by using ZKP that claiming correctness without revealing any additional information. Since twisted ElGamal compatible with all zero-knowledge proofs whose statement is of the form Pedersen commitment, we can directly employ Bulletproof to generate the balance's range proof. 
 
-We define the a language $L_{transfer}$ to describe our ABL model as below:
+We define the a language $L_{transfer}$ to describe our ABL model in definition \ref{l_transfer}.
 
-\begin{equation}
+\begin{equation}\label{l_transfer}
 \begin{aligned}
     L_{transfer} &= \{((pk_s, pk_r, C_s, C_r, sk_s, v, r_1, r_2)) | \\ 
         pk_s &= sk_sG \land C_s = \mbox{HPKE}.Enc(pk_s,v, r_1) \land \\
@@ -379,29 +380,35 @@ We define the a language $L_{transfer}$ to describe our ABL model as below:
 \end{aligned}
 \end{equation}
 
-The conjunction of $L_{transfer}$ is $\pi_{transfer}$, the sketch of the prove process is described as below.
-
-\procb[linenumbering]{Proof sketch: $\pi_{transfer}$}{
+The conjunction of $L_{transfer}$ is $\pi_{transfer}$, the sketch of the prove process is described as below in Figure \ref{fig:pi_transfer}.
+\begin{figure}[H]
+    \centering
+    \caption{Caption}
+    \label{fig:pi_transfer}
+\dbox{%
+\procedure[linenumbering]{Proof sketch: $\pi_{transfer}$}{
 \textbf{Prover} \> \> \textbf{Verifier} \\
 w \gets (r, v) \> \> \\
 a, b \sample \ZZ_p \> \> \\
 A_1 \gets pk_1^a, A_2 = pk_2^b, \> \> \\
 B \gets g^ah^b \> \> \\
-\> \sendmessageright*{A_1, A_2, B} \> \\ 
+\> \sendmessageright*{\scriptsize A_1, A_2, B} \> \\ 
 \> \> e \sample \ZZ_p \\
-\> \sendmessageleft*{\textbf{e}} \> \\ 
+\> \sendmessageleft*{\textbf{\scriptsize e}} \> \\ 
 z \gets a + er \>\> \\
 t \gets b + ev \>\> \\
-\> \sendmessageright*{z, t} \> \\ 
+\> \sendmessageright*{\scriptsize z, t} \> \\ 
 \> \>  \mbox{check if} \\
 \> \>  pk_1^z = A_1X_1^e \\
 \> \>  pk_2^z = A_2X_2^e \\
 \> \>  g^zh^t = BY^e 
 }
+}
+\end{figure}
 
 \subsection{Payment Mechanism over Abstract Balance Leaf} \label{section:pay-abl}
 
-We use Twisted ElGamal on elliptic curve on DDH assumption, to hide the balance $\sigma$ with users' uniformly random blinding factor $\gamma$, where $\sigma \in [0, \mbox{MAX})$ and $n$ is the bit size of \mbox{MAX}imum balance, which can be guaranteed by Bulletproof \cite{bunz2018bulletproofs} in Appendex \ref{appendix:bp}. Without lose the generality, we also implement set membership proof on our scheme naturally, to support general asset private payment, such as ERC721, and ERC1155, Eigen ZKZRU extends the ABL, and proposal Zero-knowledge computation on ABL to support non-fungible transaction, order-based token exchange etc. For instance, the state in ERC20 token would be describe as below after after transaction $t$ in Table \ref{tab:transfer}. 
+We use Twisted ElGamal encryption \cite{chen2020pgc} and Bulletproof \cite{bunz2018bulletproofs} on DDH assumption to build the confidential transaction, and constructs the validity proof of batch transaction on account Merkle tree by algebraic composite NIZK. Without lose the generality, we also implement set membership proof on our scheme naturally, to support general asset private payment, such as ERC721, and ERC1155, Eigen ZKZRU extends the ABL, and proposal Zero-knowledge computation on ABL to support non-fungible transaction, order-based token exchange etc. For instance, the state in ERC20 token would be describe as below after after transaction $t$ in Table \ref{tab:transfer}. 
 
 \begin{table}
 \centering
@@ -441,9 +448,10 @@ Setup algorithm is formally described in Algorithm \ref{alg:setup}. Apart from s
             \item[$-$] MiMC contract: mimc
             \item[$-$] token registry address: tr
             \item[$-$] updates and updateNumber for keeping track of the rollup blockchain
+            \item[$-$] transaction Merkle tree root array: txRoots
         \end{itemize}
     }
-    Deploy Rollup contract with parameters $pp$, accountTree, minc, tr, \mbox{MAX}, BAL\_DEPTH, TX\_DEPTH
+    Deploy Rollup contract with parameters $pp$, accountTree, txRoots, minc, tr, \mbox{MAX}, BAL\_DEPTH, TX\_DEPTH
     
 \end{algorithm}
 
@@ -500,7 +508,7 @@ Algorithm \ref{alg:payment_mechanism}.
 \end{algorithm}
 
 
-\textbf{Smart Contract}. The Smart Contract describe how users interact with Eigen ZKZRU. \textit{Deposit} deposits the token on Rollup contract, and mint on L2, \textit{Withdraw} does the exact opposite by burning the token on L2 and returns the token left back to L1. \textit{Transfer} does the updates the cipher balance of both sender and receiver, and creates the proof $\pi_{transfer}$ for the state transition on L2.  \textit{BalanceOf} returns the clear balance of the account, and \textit{UpdateState} generates the proof for each transaction batch, and updates the Rollup chain, which is maintained in Rollup contract.
+\textbf{Smart Contract}. The Smart Contract describe how users interact with Eigen ZKZRU. \textit{Deposit} deposits the token on Rollup contract, and mint on L2, \textit{Withdraw} does the exact opposite by burning the token on L2 and returns the token left back to L1. \textit{Transfer} does the updates the cipher balance of both sender and receiver, and creates the proof $\pi_{transfer}$ for the state transition on L2.  \textit{BalanceOf} returns the clear balance of the account, and \textit{UpdateAccountTree} generates the proof for each transaction batch, and updates the Rollup chain, which is maintained in Rollup contract.
 
 In our scheme, users need generate a new key pair for each transaction, the private key acts as the blinding factor for the new commitment of the new transaction, and update previous blinding factors locally.
 
@@ -515,7 +523,8 @@ In our scheme, users need generate a new key pair for each transaction, the priv
   \SetKwFunction{FWithdraw}{Withdraw}
   \SetKwFunction{FTransfer}{Transfer}
   \SetKwFunction{FBalanceOf}{BalanceOf}
-  \SetKwFunction{FUpdateState}{UpdateState}
+  \SetKwFunction{FUpdateAccTree}{UpdateAccTree}
+  \SetKwFunction{FUpdateTxTree}{UpdateTxTree}
 
   \SetKwProg{Fn}{Function}{:}{}
   \Fn{\FDeposit{$b, \hat{C}, R, type, sn$}} {
@@ -586,13 +595,23 @@ In our scheme, users need generate a new key pair for each transaction, the priv
     b = HPKE.BalanceOf(sk, $\hat{C}$) \;
     \KwRet{b}
   }
-
+  
   \SetKwProg{Fn}{Function}{:}{}
-  \Fn{\FUpdateState{$\pi_{block}, stateRoot, txRoot$}} {
+  \Fn{\FUpdateTxTree{$txRoot$}} {
+     require msg.sender is sequencer \;
+     require msg.value > MinDeposit \;
+     txRoots.push({msg, txRoot}) \;
+  }
+  
+  \SetKwProg{Fn}{Function}{:}{}
+  \Fn{\FUpdateAccTree{$\pi_{block}, txRoot, stateRoot$}} {
     \tcp{block proof $\pi_{block}$}
-    \tcp{public input $x = (stateRoot, txRoot)$}
-    currentRoot = stateRoot \;
+    \tcp{public input $x = stateRoot$}
+    
+    require txRoot is in txRoots \;
+    require prev(txRoot) is confirmed \;
     require Verify($\pi_{block}$, $x$) = true \;
+    currentRoot = stateRoot \;
     updateNumber++ \;
     updates[currentRoot] = updateNumber \;
   }
@@ -603,29 +622,35 @@ where the $\pi_{block}$ would be generated by language \ref{l_block}.
 
 \include{anonaddr}
 
-
 \subsection{Proof-of-Proving model}
 
-One of the main advantages of the ZK-Rollups is the fast finality of transactions that validity proofs provide. To enhance the effectiveness, and decentralize proof generation meanwhile, the PoP model aims to cover the key properties that such a consensus model for a L2 zk-rollup requires:
+One of the main advantages of the ZK Rollups is the fast finality of transactions that validity proofs guaranteed. To enhance the effectiveness, and decentralize proof generation, the PoP model aims to cover the key properties that such a consensus model for a L2 ZK Rollup requires:
 \begin{itemize}
-    \item Permissionless access to produce L2 batches
-    \item Efficiency as key to network performance
-    \item Avoid control from any single party
-    \item Protection from malicious attacks
+    \item Permissionless: allow every computing power to participate in.
+    \item Efficiency: sorting batch and generates the batch's validity proof deterministically.
+    \item Decentralization: avoid control from any single party.
+    \item Security: protection from malicious attacks.
 \end{itemize}
 
-Before generating proof, the decentralization of transactions aggregating and batching is the first problem we should figure out. There are lots of solutions, such as \href{https://blog.chain.link/chainlink-fair-sequencing-services-enabling-a-provably-fair-defi-ecosystem/}{Chainklink FSS}, or Polygon Hermez's \href{https://blog.hermez.io/introducing-proof-of-donation/}{Proof-of-Donation}. Eigen ZKZRU separates the transaction submission and proof generation into standalone phases, thus we can introduce existing machanism like FSS or TEE-based CFT-family consensus to realize this. 
+Generally speaking, to speed up the transaction finality under L1's equivalent security guarantee as L1, a PoP model provides two basic capabilities:
 
-Proof generation is a huge computation intensive work for prover and it's very necessary to get production of zk validity proofs with high performance so the network can keep its service level. This is why we introduce a decentralized prover cluster, instead of generating the proof via compiling the prover into WebAssembly and running it user's browser as AZTEC.
+\begin{itemize}
+    \item Transaction sorting: we first sort the transaction by sequencer, and submit the batch Mekle Proof into Rollup contract.
+    \item Proof generation: the prover generates the block validity proof, update the account tree in Rollup contract.
+\end{itemize}
 
-To propose a new batch to the network, because the transactions have been ordered and stored in the L1 inbox, what the prover needs to do is to retrieve the fixed number transactions from inbox, and generates the proof, then submits the proof and public input to L1 rollup contract. and it's easy to observe that, if give a fixed transaction or block gas limit per block, the finality can be quickly reached if and only if the proof is verified successfully.
+
+\noindent\textbf{sequencer}. With regard to sequencer, there exists some general solution from Vitalc's Rollup guide\footnote{An Incomplete Guide to Rollups: https://vitalik.ca/general/2021/01/05/rollup.html}. And existing implementations include \href{https://blog.chain.link/chainlink-fair-sequencing-services-enabling-a-provably-fair-defi-ecosystem/}{Chainklink FSS}, or Polygon Hermez's \href{https://blog.hermez.io/introducing-proof-of-donation/}{Proof-of-Donation}. To achieve more decentralization and efficiency, we use HotStuff \cite{yin2018hotstuff} consensus algorithm to reach a high sorting performance.  Once a batch of transaction selected by the a sequencer, it submits the batch as a proposal, if the proposal get the agreement from more than 2/3 sequencers, and then it submits the batch's txRoot into L1 Rollup contract, and puts down a large deposit. The deposit plus a reward will return to the user after the batch confirmed.
+
+\noindent\textbf{prover}. Proof generation is a huge computation intensive work for prover and it's very necessary to get production of ZK validity proofs with high performance so the network can keep its service level. This is why we introduce a decentralized prover cluster, instead of generating the proof via compiling the prover into WebAssembly and running it user's browser as AZTEC.
+
+To propose a new batch to the network, because the transactions have been ordered, The provers generate the proof, then submits the proof and public input to the Rollup contract. and it's easy to observe that, if give a fixed transaction or block gas limit per block, the finality can be quickly reached if and only if the proof is verified successfully.
 
 Once mined, these data availability L1 transactions define the L2 transactions that will be executed and the specific order. This creates a deterministic new state, which can be computed as a virtual future state by network nodes.
 
-Since the roles of prover are permissionless, the malicious provers maybe exist in proof-of-proving model. A malicious prover may tamper the transactions, or generate validity proof of less transactions than expected to save computation power, a economic incentive and punishment design is necessary to avoid this vulnerability. There are two role for the prover, staker or observer. if a prover stakes L1 token into a Rollup stake contract, it becomes a staker and can stake on blocks in the Rollup chain, and the observer and the prover all can be a challenger(The Bounty Hunter), monitor the Rollup chain and validity proof 
-of new block, and challenge the malicious activities to hunter the bounty. For a staker to add a Rollup block to the chain, they must place their stake on the block they are adding. Staking is permissionless, anyone can stake on any block where staking is possible. Once token staked on a block, the token can't be withdrawn until that block has been confirmed. When users stake a block, users are confirming that the block and every block in the chain between the most recent confirmed block and the block that they are staking is correct, otherwise users will forfeit user's stake. The amount needed to stake is dynamic. There is the base stake amount that is specified as a parameter in the ZKZRU Rollup chain, which will be used most of the time. As a security measure to prevent an attacker slowing down the network despite losing their stake, the stake amount is multiplied by a factor that increases exponentially with respect to time, since the deadline for the first unresolved node passed. This is to increase the cost of such an attack during the length of the attack. This increase in stake is temporary and only occurs when the chain is making slow progress to confirm blocks.
+Since the roles of prover are permissionless, the malicious provers maybe exist in proof-of-proving model. A malicious prover may tamper the transactions, or generate validity proof of less transactions than expected to save computation power. But this is not possible  since the block validity proof includes the transactions' signature proof, and the transaction batch's Merkle proof. The former proof guarantees the individual transaction is valid, and the latter guarantees the transaction batch aggregation proof is valid. 
 
-When two stakers are staked on different blocks, where one block is not a successor of the other, there will be a particular block that they disagree on and a challenge will occur. Most of the challenge occurs on the Rollup chain and is refereed by a L1 contract. If a challenge occurs, the challenge contract will suspend the mining, and execute a simple vote on to determine main branch, if the challenger get more than 2/3 stakers' vote, it win the challenge, and the challenger and voters will win all the staking token as bounty as an incentive, and the malicious miner will lost their staking. The vote period usually last 1-6 blocks time.
+If multiple provers run a race to produce Rollup blocks, the rollup contract will receive the first one. 
 
 \subsection{Rollup mechanism}
 
@@ -638,17 +663,22 @@ Eigen ZKZRU is an implementation of \href{https://vitalik.ca/general/2021/01/05/
 \end{figure}
 
 ~\\
-\noindent\textbf{Node}. The Nodes provide the standard RPC service of Ethereum API for users to interact ZKZRU with native Wallet, like \href{https://secret.eigen.cash}{EigenSecret}, or Metamask. The node would maintain a transaction pool, and execute the Proof-of-Proving model to reach an consensus of the order of the transactions. after the consensus, the node would forwarded the batched-up transactions to L1 inbox. 
+\noindent\textbf{Node}. The Nodes provide the standard RPC service for users to interact ZKZRU with native Wallet, like \href{https://secret.eigen.cash}{EigenSecret}, or Metamask. The node would maintain a transaction pool, and execute the Proof-of-Proving model to reach an consensus of the order of the transactions, and submit the transaction Merkle root in L1 Rollup contract.
 
 \begin{itemize}
-    \item Sequencer: The sequencers are designed to submit the batched-up transactions to Inbox after it puts down a large deposit, if that user ever submits a fraudulent batch, that deposit would be part burned and part given as a reward to the fraud prover. To realize an decentralized sequencing mechanism, we use an BFT based lightweight consensus to reach an agreement of the transaction's order in Inbox.
-    \item Prover:  The provers are the actors that perform basic ZK Rollup functionalities. They are charged with creating blocks, making the transactions into a bundle, and performing the calculations and submitting the data to the main EVM-compatible chain for verification. The Provers retrieve a batch of transactions from L1 Inbox, and generate the validity Zero-knowledge proof via EigenZkit, and submits the proof and public inputs to Rollup contract.
+    \item Sequencer: The sequencers are designed to sort the transaction by PoS consensus, and submit the transaction root into L1  after it puts down a large deposit. if that user ever submits a fraudulent batch, that deposit would be part burned and part given as a reward to the fraud prover. To realize an decentralized sequencing mechanism, we adopt ChainedBFT to reach a consensus of the transaction order in L2.
+    \item Prover:  The provers are the actors that perform basic ZK Rollup functionalities. They are charged with creating blocks, making the transactions into a bundle, and performing the calculations and submitting the data to the main EVM-compatible chain for verification. The Provers retrieve a batch of transactions from L2 txpool, and generate the validity Zero-knowledge proof via EigenZkit, and submits the proof and public inputs to Rollup contract.
 \end{itemize}
 
 ~\\
-\noindent\textbf{Rollup contract}. Rollup contract, in L1,  maintains the Rollup blockchain, which is defined in Table \ref{tab:block}. Once the block is produced by the Node, and submitted to the L1 Rollup contract, the \textit{updateVerifier} is a ZKRollup to verify the validity of the proof $\pi_{block}$ under the current account Merkle Tree. 
+\noindent\textbf{Rollup contract}. The Rollup contract maintains the Rollup blockchain in L1. Once the block is produced by the Node, and submitted to the L1 Rollup contract, the \textit{updateVerifier} is a ZKRollup to verify the validity of the proof $\pi_{block}$ under the current account Merkle Tree. The main fields in the Rollup contract include:
+\begin{itemize}
+    \item updateNumber: uint256, block number
+    \item currentRoot: uint256, merkle root of account tree
+    \item updateVerifier: NIZK Verifier for validity proof verification
+\end{itemize}
 
-We define the language $L_{block}$ on Linear PCP of $L_{transfer}$ in Statement \ref{l_block}.
+We define the language $L_{block}$ on algebraic composition of $L_{transfer}$ in Statement \ref{l_block}.
 
 \begin{equation}
 \begin{aligned} \label{l_block}
@@ -660,21 +690,9 @@ We define the language $L_{block}$ on Linear PCP of $L_{transfer}$ in Statement 
 \end{aligned}
 \end{equation}
 
-We translate above constraints into R1CS, transpile R1CS to Plonk Constraints, and generates the final proof $\pi_{block}$ by PlonK \cite{gabizon2019plonk}, which represents the vector of wire values as well as the different gates selectors as polynomials using interpolation. A polynomial division check ensures that the prover knows satisfying inputs and outputs for each gate, but does not ensure a correct wiring, e.g. that the output of one gate is the input to another. A permutation argument establishes the consistency of the assignment of wires to gates. The implementation is presented at \href{https://github.com/ieigen/EigenZKit}{EigenZKit}.
+We translate above constraints into R1CS, transpile R1CS to Plonk Constraints, and generates the final proof $\pi_{block}$ by PlonK \cite{gabizon2019plonk}, which represents the vector of wire values as well as the different gates selectors as polynomials using interpolation. A polynomial division check ensures that the prover knows satisfying inputs and outputs for each gate, but does not ensure a correct wiring, e.g. that the output of one gate is the input to another.A permutation argument establishes the consistency of the assignment of wires to gates. The main reasons for this transpilation includes the URS setup, Pedersen Commitment/HPKE on custom gate etc.
 
-\begin{table}[]
-    \centering
-    \begin{tabular}{c|c|c}
-       Field  &  type & value \\
-       \hline
-        updateNumber & uint256 & block number \\
-        currentRoot & uint256 & merkle root of account tree \\
-        updates & mapping &  the updateNumber of each currentRoot \\
-        updateVerifier & NIZK Verifier & validity proof verification
-    \end{tabular}
-    \caption{Rollup contract}
-    \label{tab:block}
-\end{table}
+Furthermore, the optimization for recursive proof, such as GPU-based acceleration for EC scalar multiplication and batch opening polynomial commitments, is applied to realize a very fast block validity proof verification on previous confirmed block in Rollup chain. The implementation is presented at \href{https://github.com/ieigen/EigenZKit}{EigenZKit}.
 
 
 % include{zkit}
