@@ -48,7 +48,7 @@
 \newtheorem{myDef}{Definition}
 \SetKwComment{Comment}{/* }{ */}
 
-\title{Eigen ZKZRU: A Privacy-specific ZK Rollup}
+\title{Eigen ZKZRU: A Practical Privacy-specific ZK Rollup}
 \author{Eigen Labs}
 
 \begin{document}
@@ -58,7 +58,7 @@
 \begin{abstract}
 Decentralized Privacy and security are always the most important part of Web3.0. ZCash and Monero have taken great effort to achieve privacy-enabling technology by building their private payment infrastructure and ecosystem. However, it's not easy to achieve programmable privacy on Smart Contract regarding general assets, such as ERC1155.
 
-In this paper, we present Eigen ZKZRU, a privacy-specific ZKRollup solution on ZKRollup on Ethereum ecosystem to achieve low gas-fee, better composability and high privacy enhancement. Eigen ZKZRU proposes an Abstract Balance Leaf Model, using Twisted ElGamal encryption \cite{chen2020pgc} and Bulletproof \cite{bunz2018bulletproofs} on DDH assumption to build the confidential transaction, and constructs the validity proof of batch transaction on account Merkle tree by algebraic composite NIZK, which is built on a Two-tier architecture, the base layer is a ZKRollup, which is built on R1CS constraints system and transpiled to PLONKish Arithmetization \cite{gabizon2019plonk}, which is naturally friendly to utilize Twisted ElGamal encryption with custom gate, and hardware acceleration. The application layer is Pairing-free and easy-to-audit confidential transaction layer. 
+In this paper, we present Eigen ZKZRU, a privacy-specific ZKRollup solution on ZKRollup on Ethereum ecosystem to achieve low gas-fee, better composability and high privacy enhancement. Eigen ZKZRU proposes an Abstract Balance Leaf Model, using Twisted ElGamal encryption \cite{chen2020pgc} and Bulletproof \cite{bunz2018bulletproofs} on DDH assumption to build the confidential transaction, and constructs the validity proof of batch transactions on account Merkle tree by algebraic composite NIZK, which is built on a Two-tier architecture, the base layer is a ZKRollup, which is built on R1CS constraints system and transpiled to PLONKish Arithmetization \cite{gabizon2019plonk}, which is naturally friendly to utilize Twisted ElGamal encryption with custom gate, and hardware acceleration. The application layer is Pairing-free and easy-to-audit confidential transaction layer. 
 
 % As a callback to our \href{https://www.eigen.cash/#/}{whitepaper}, this work gives more detail about the on-chain data privacy preservation. 
 
@@ -74,28 +74,29 @@ Eigen Network proposes Eigen ZKZRU, a brand-new approach to implement confidenti
 
 \subsubsection{Disclosure of PII-Account linkage}
 
-The blockchain technology provides an excellent for people to perform anonymous transaction without exposing their ID on internet, but this capability has been broken as the on-chain data analytic like Nansan and Pack Shield, more and more people are able to exploit the relationship between PII and account. Monaco's paper \cite{monaco2015identifying} 
+The blockchain technology provides an excellent for people to perform anonymous transaction without exposing their ID on internet, but this capability has been broken as the development of on-chain data analysis, such as Nanshan and Dune, this makes it possible for users to exploit the relationship between PII and account. Monaco's paper \cite{monaco2015identifying} 
 proposed an new approach Random time-interval(RTI) model to identify and verify Bitcoin users based on the observation of Bitcoin transactions over time.  Bonifazi et.al's paper \cite{bonifazi2022defining} adopts the social network-based model to represent Ethereum and construct each user's spectrum then classify them into difference clusters on their spectra.  All those works taking efforts to link individual with their blockchain addresses deprive a user of anonymity. Furthermore, cracking the public transaction graph is big business: companies like Chainalysis and Nansen run sophisticated forensic analysis to associate various wallets, monitor activity, and make probabilistic assumptions about who owns what.
 
-Lots of such privacy invasion incidents occurs. In this March, the Juno Network's proposal \href{https://www.mintscan.io/juno/proposals/4}{4} was submitted to voted away an whale wallet's funds to the Juno community pool and executed in proposal \href{https://www.mintscan.io/juno/proposals/16}{16}.  
+Those sort of privacy invasion incidents happen frequently. In this March, the Juno Network's proposal \href{https://www.mintscan.io/juno/proposals/4}{4} was submitted to voted away an whale wallet's funds to the Juno community pool and executed in proposal \href{https://www.mintscan.io/juno/proposals/16}{16}.  
 
 \subsubsection{Vulnerable privacy and confidentiality of Smart Contract}
 
-From the \href{etherscan.io}{Etherscan}, Not only can we see all account transactions, we can see all the amounts, assets, and counterparties. That’s in fact the power of public blockchains! Due to their public nature they are eminently auditable and verifiable. But this also leads lots heavy fairness issue in DeFi world. 
+From the \href{etherscan.io}{Etherscan}, not only can we see all account's balance on different tokens, but also all the counterparties and contracts they interact with. The open and verifiable nature empower the trustless infrastructure of Blockchain, however, this also leads lots of heavy fairness issue in DeFi world. 
 
 First notorious issue is \href{https://ethereum.org/en/developers/docs/mev/}{Miner Extractable Value(MEV)}. Miner extractable value (MEV) is a measure of the profit a miner (or validator, sequencer, etc.) can make through their ability to arbitrarily include, exclude, or re-order transactions within the blocks they produce.  Through MEV, Miner can make profit from exploiting the transaction in the txpool, and inserting specific transaction before or after user's transaction.
 
-Apart from MEV, Slippage on Uniswap and other popular DEXes is a pain. Slippage is the price difference between when users submit a transaction and when the transaction is confirmed on the blockchain.  Slippage can be caused by High  trading volume or low liquidity apparently, but the one of the root causes is that miner choosing the high gas-fee transactions to confirming, and the arbitrators can leverage this and make an impact on others by increasing their gas-fee.
+Apart from MEV, Slippage on Uniswap and other popular DEXes is a pain. Slippage is the price difference between when users submit a transaction and when the transaction is confirmed on the blockchain. Slippage can be caused by high trading volume or low liquidity apparently, but the one of the root causes is that miner choosing the high gas-fee transactions to confirming, and the arbitrators can leverage this and make an impact on others by increasing their gas-fee.
 
 The decentralized Smart Contract is the core feature of Ethereum, however, the lack of confidentiality is a major hindrance towards the broad adoption of it, since financial transactions (e.g., insurance contracts or stock trading) are considered by many individuals and organizations as being highly secret. 
 
 \subsubsection{Dilemma of utility versus privacy protection}
 
-Tornado Cash is leading TVL on anonymous payment of Ethereum ecosystem, as a Layer 1 Dapp, supporting ERC20 only currently, and charging about 50Gwei + 100Gwei + 0.05\%~0.2\% * 0.05ETH for even a 0.05ETH transaction from source\footnote{Fee - how much does it cost to use? https://torn.community/t/fee-how-much-does-it-cost-to-use/68/3}.
+Tornado Cash is the leading anonymous payment DApp in Ethereum ecosystem. As a Layer 1 Dapp, it supports ERC20 only currently, and charges about 50Gwei + 100Gwei + 0.05\%~0.2\% * 0.05ETH for even a single 0.05ETH from source\footnote{Fee - how much does it cost to use? https://torn.community/t/fee-how-much-does-it-cost-to-use/68/3}.
 
-Some well-known public blockchain protocols like Zerocash and Monero provide confidential transaction infrastructure but forgos programmability and unclear a primori how to enable programmability without exposing transaction and data in cleartext to miners.
+Some well-known public blockchain protocols like Zerocash and Monero provide confidential transaction infrastructure but forgo programmability and unclear a primori how to enable programmability without exposing transaction and data in cleartext to miners.
 
 Another utility issue is Nullifier is not account-friendly. The Nullifier is a public input that is sent on-chain to be checked with the smart contract and the Merkle tree data. It avoids double-spending for instance.
+
 Because the Nullifier is irrelevant to the addresses of sender or receiver. So the receiver can do withdraw with the valid Nullifier, and cutting off the relationship between sender and the receiver.
 
 However, this is not easy to manage such Nullifier, which is secret key for each anonymous payment transaction. 
@@ -104,23 +105,24 @@ However, this is not easy to manage such Nullifier, which is secret key for each
 
 Eigen Network aims to facilitate a drop-in privacy preservation protocol for every Web3 participant in EVM-compatible ecosystem.
 
-Eigen Network focuses on building a new privacy-specific ZKRollup protocol to achieve address anonymity, smart contract data and logic confidentiality and offers users capabilities of low gas-fee confidential transaction, full Smart Contract privacy preservation and better composability of supporting most used asset like ERC20,ERC721 and ERC1166, in EVM-compatible ecosystem.
+Eigen Network focuses on building a new privacy-specific ZKRollup protocol to achieve address anonymity, smart contract data and logic confidentiality and offers users capabilities of low gas-fee confidential transaction, full Smart Contract privacy preservation and better composability of supporting most used asset like ERC20,ERC721 and ERC1155, in EVM-compatible ecosystem.
 
 \subsection{Related Works}
 
-There are some concurrent work to implement address anonymity, transaction and smart contract privacy preservation. 
+There exists some related works to implement address anonymity, transaction and smart contract privacy preservation. 
 
-Hawk\cite{kosba2016hawk} splits a smart contract into a public contract, which runs on-chain, and a private contract executed off-chain. Hawk requires the figure of a manager to execute the private contract. The manager must be trusted by the participants, as it can see the transactions that take place in a private contract. The manager cannot affect the outcome of the contract, it just could prevent the contract execution, or cause the abortion of the contract, and in both cases, it would be castigated.
+Hawk\cite{kosba2016hawk} splits a smart contract into a public contract, which runs on-chain, and a private contract executed off-chain. Hawk requires the figure of a manager to execute the private contract. The manager must be trusted by the participants, as it can see the transactions that take place in a private contract. The manager must be considered as trusted party, even it can't affect the outcome of the contract, but could prevent the contract execution, or cause the abortion of the contract.
 
-Zether\cite{bunz2020zether} is a private transaction scheme built on top of Ethereum. It can be extended to support a limited class of smart contracts with I/O privacy—namely those that can be represented solely via homomorphic addition. This allows us to perform simple sealed-bid auctions (assuming bidders buy all units on offer) and private voting (assuming the votes are binary). Unfortunately, only transactions hiding the users' balances and the transfer amount can currently be implemented on Ethereum due to gas constraints. Unlike previous two constructions, Zether uses a "transparent" ZKP (i.e. a ZKP with no trusted setup) $\Sigma\mbox{-}Bullets$.
+Zether\cite{bunz2020zether} is a private transaction scheme built on top of Ethereum. It can be extended to support a limited class of smart contracts with Input/Output privacy, namely those that can be represented solely via homomorphic addition. This allows us to perform simple sealed-bid auctions (assuming bidders buy all units on offer) and private voting (assuming the votes are binary). Unfortunately, only transactions hiding the users' balances and the transfer amount can currently be implemented on Ethereum due to gas constraints. Unlike previous two constructions, Zether proposes a "transparent" ZKP (i.e. a ZKP with no trusted setup) $\Sigma\mbox{-}Bullets$. 
+However, the gas cost of single transaction may reach the upper bound of block gaslimit, leading to impractical to deploy on Ethereum mainnet.
 
 % Zkay\cite{baumann2020zkay} also extends Ethereum's design to support smart contracts with I/O privacy. They rely on the power of ZKPs for private computation, thus offloading the bulk of work to the user to perform offline. However, this design choice also allows them to support a larger class of functions than in Zether.
 
 % Zexe\cite{bowe2020zexe} instead attempts to extend Zcash's design to support arbitrary coin scripts. Unlike the previous two, Zexe can also support function privacy.
 
-The AZTEC Protocol \cite{williamson2018aztec} proposed an Join-split transactions model, and each splits is described as notes, which is UTXO-like and attached with a viewing key and spending key. and the notes can be spent in encrypted state based homomorphic arithmetic and range proof. 
+The AZTEC Protocol \cite{williamson2018aztec} proposed an Join-split transactions model, and each splits is described as notes, which is UTXO-like and attached with a viewing key and spending key. and the notes can be spent in encrypted state based homomorphic arithmetic and range proof. Like other UTXO model, the users need take special measures to avoid privacy leaks from amount when the number of input note and output note is 1, the protocol or user must make some zero value notes to \textit{mix} the non-zero note. Another issue is that the AZTech ZK-ZKRollup perform the pairing based proof generation on user's device, this extremely limit the prove performance. 
 
-Eigen Labs proposes Abstract Balance Leaf(ABL) on Account Balance Merkle Tree, and applies standard ERC20 and ERC721 operations on it based on high-level cryptography primitives, such homomorphic arithmetic and accumulator etc.
+We proposes Eigen ZKZRU, a practical Privacy-specific ZK Rollup with low gas cost, it's a Two-tier architecture of privacy layer and Rollup layer. For privacy layer, it's build on twisted ElGamal with Bulletproof under pairing free assumption and can be performed it on users' device efficiently. For the Rollup layer, we handle the pairing based NIZK proof generation on decentralized nodes by Plonk proof system. We propose a Abstract Balance Leaf(ABL) model to represent the asset, it's mutable, encrypted and computable, which make it easy to apply standard ERC20 and ERC721 operations on ABL based on high-level cryptography primitives, such homomorphic arithmetic and accumulator etc.
 
 To sum up, Table \ref{tab:compare} presents the detail on privacy type, approach, expressivity and which blockchain protocol to extend.  
 
@@ -137,18 +139,18 @@ Eigen ZKZRU & I/O, function & Pair-free Homomorphic PKE and Bulletproof & Arbitr
 \caption{\label{tab:compare}A comparison of Privacy-preserving Smart Contract Scheme}
 \end{table}
 
-For privacy type, I/O is corresponding short for Encrypted Input/Output. If end user encrypts the input, and send it to the miner to run the contract, it would be Encrypted Input. Otherwise, the end user need run the contract locally with clear input and encrypts the output, then sends the encrypted output to miners.
+For privacy type, I/O is corresponding short for Input/Output privacy. If users encrypt the input, and send it to the miner to run the contract, it's considered as Input privacy. Otherwise, the end user need run the contract locally with clear input and encrypts the output, then sends the encrypted output to miners.
 
-There are different approaches to obtain privacy enhancement, The classic methods include Homomorphic arithmetic or some commitment scheme, TEE, MPC and NIZK. Homomorphic arithmetic is deeply limited to to performance in computation, especially fully homomophgic encryption, so the practical approaches would be commitment scheme, like additive or multiplicative to perform special operations like \textbf{Split} and \textbf{Join} in AZTEC Protocol. The MPC needs large of communication complexity and this raises complex interoperability between on-chain and off-chain. The TEE uses special hardware to achieve computing efficiency and code integrity. NIZKs, Non-interactive zero-knowledge proofs, enable a party, known as the prover, to convince another party, known as the verifier, about knowledge of the witness for an NP statement without revealing any information about the witness (besides what is already implied by the statement being true). 
+There are different approaches to obtain privacy enhancement, The typical methods include Homomorphic Encryption, TEE, MPC and NIZK. Homomorphic Encryption(HE) is the conversion of data into ciphertext that can be analyzed and worked with as if it were still in its original form, but Fully HE is still not production ready due to bad performance and fast noises growth. The MPC, creating methods for parties to jointly compute a function over their inputs while keeping those inputs private, needs heavy communication complexity, this raises complex interoperability between on-chain and off-chain. The TEE uses special hardware to achieve computing efficiency and code integrity. NIZKs, Non-interactive zero-knowledge proofs, enable a party, known as the prover, to convince another party, known as the verifier, about knowledge of the witness for an NP statement without revealing any information about the witness (besides what is already implied by the statement being true). HE and NIZK need low communication complexity and is widely used in Blockchain. 
 
-Expressivity is the scope of the scheme being able to protect.
+Expressivity is the scheme's capability to protect with regard to the different computational scenario.
 
 A deep comparison with AZTEC from implementation perspective on acceleration and architecture in Table \ref{tab:widgets2}. Eigen ZKZRU leverages decentralized proof-Of-Proving mechanism to accelerate the proving computation, and it's naturally for us to utilize hardware acceleration, too, such as GPU and ASIC for NTT computation in polynomial commitment and multi-scalar multiplications on elliptic curves. The second difference is we adopt Stealth Address to implements the address anonymity.
 
 \begin{table}
 \centering
 \begin{tabular}{c|c|c}
-Capabilities $\backslash$ Projects & Eigen ZKZRU & AZTEC ZK-ZKRollup \\\hline
+Feature & Eigen ZKZRU & AZTEC ZK-ZKRollup \\\hline
 EVM Compatibility & Partial/Language Level & Partial/Language Level \\
 
 Prover Decentralization & \color{red} Decentralized Eigen Relayer & Wasm in Browser \\
@@ -156,7 +158,7 @@ Circuit DSL & Circom & Noir \\
 Prove System & Plonk & Plonk \\
 Recursive Proof & Yes & Yes \\
 GPU acceleration enable & \color{red} Yes & No \\
-Anonymous Address & \color{red} Stealth Address & Nullifier \\
+Anonymous Address & Stealth Address & Nullifier \\
 
 \end{tabular}
 \caption{\label{tab:widgets2} A comparison between Eigen Network and AZTEC Network}
@@ -178,10 +180,12 @@ Eigen ZKZRU aims to facilitate a drop-in privacy preservation application for ev
 
 \subsection{Overview of Eigen ZKZRU}
 
-Eigen ZKZRU is a Two-Tier architecture, the base layer is ZKRollup layer, which empowers applications with zero-knowledge proofs. The upper layer is the confidential transaction layer, which provides high-level interface of confidential asset, which is pegged to the token in Layer 1. The Two-Tier architecture is necessary due to two factors as below.
+Eigen ZKZRU is a Two-Tier architecture, the base layer is ZKRollup layer, which empowers applications with zero-knowledge proofs. The privacy layer is the confidential transaction layer, which provides high-level user interface of confidential assets. The Two-Tier architecture is necessary due to two factors as below.
 
+~\\
 \noindent\textbf{Privacy-oriented protocol}. Eigen ZKZRU is to provide a privacy "Lego" for end-users to protect their asset's confidentiality and security before the asset flowing into other liquidity pool or protocols in DeFi world. Differ from the zkEVM solution, such as ZKSync, we can deploy our confidential transaction layer on other ZKRollup L2s. Hence we design the transaction layer on pair free cryptography scheme to try best to save the gas and lower the implementation complexity, and for privacy concern, we need to generate the Zero-knowledge transaction in user-side, like by browser.
 
+~\\
 \noindent\textbf{Acceleration of ZK Proving}. Proving a computation requires first translating it from a classical program to a ZK-friendly format, then use proof system, such as Groth16, Plonk, STARK, to generate the validity proof. No matter which proof system used, the bottleneck always ends up being either:
 
 % https://www.paradigm.xyz/2022/04/zk-hardware
@@ -195,7 +199,9 @@ In systems where both FFTs and MSMs exist, about 70\% of the time generating a p
 
 \subsubsection{Base Layer: ZK Rollup}
 
-The ZK Rollup is a very promising approach to scale Ethereum.  The ZK Rollup consists of Rollup contract and A off-chain proving nodes. The Rollup contract maintains a transaction Merkle tree root list and a account Merkle tree. The proving nodes act as:
+The ZK Rollup is a very promising approach to scale Ethereum, which consists of L1 Rollup contract and A off-chain computation blockchain. The Rollup blockchain maintains a transaction Merkle tree and a account Merkle tree. Different from Ethereum protocol, the transaction Merkle tree consists of a list of Merkle tree root in L1 Rollup contract, in which each root is the Merkle root of a batch transactions, and fully transactions in off-chain ledger. The account tree consists of a Merkle tree root in L1 and a NIZK proof in L1 Rollup contract, and the fully account status(in encrypted mode) in off-chain ledger.
+
+To achieve the off-chain's security and decentralization on off-chain computation, we propose a Proof-of-Proving model consisting of proving nodes. The proving nodes act as:
 \begin{itemize}
     \item a RPC server for user to interact with ZK Rollup
     \item a sequencer to sort the transaction and generates the transaction Merkle tree root, submit the root into L1 Rollup contract
@@ -206,9 +212,7 @@ The ZK Rollup is a very promising approach to scale Ethereum.  The ZK Rollup con
 
 The prover generate the validity proof by the \href{https://github.com/ieigen/EigenZKit}{EigenZKit}. EigenZkit is our ZKRollup \textit{compiler}, which make it easy for the developer to write constraints by Circom, transpile the circuits to PLONKish Arithmetization \cite{gabizon2019plonk}, optimize the proving with the Lookup table and aggregation proof, and finally generate the proof and solidity verifier on Plonk argument. 
 
-The rollup contract maintains a state root: the Merkle root of the state of the Rollup (meaning, the account balances, contract code, etc, that are "inside" the rollup). And check the validity of the new proof with public input transaction Merkle tree root and new account Merkle tree root.
-
-The basic data representation of rollup blockchain's world state see Figure \ref{fig:zkzru}. The depth could be scaled to 28 or larger, which means our ledger merkle depth can reach up to $2^{28}$ accounts.
+The Rollup contract consists of a validity proof verifier and an account merkle tree. The verifier checks the validity of the new proof with public input transaction Merkle tree root and new account Merkle tree root. The depth of account Merkle tree could be scaled to 28 or larger regarding trade-off between number of accounts and proving time complexity.  
 
 \begin{figure}
     \centering
@@ -383,7 +387,7 @@ We define the a language $L_{transfer}$ to describe our ABL model in definition 
 The conjunction of $L_{transfer}$ is $\pi_{transfer}$, the sketch of the prove process is described as below in Figure \ref{fig:pi_transfer}.
 \begin{figure}[H]
     \centering
-    \caption{Caption}
+    \caption{${L_{transfer}}$}
     \label{fig:pi_transfer}
 \dbox{%
 \procedure[linenumbering]{Proof sketch: $\pi_{transfer}$}{
@@ -426,7 +430,7 @@ $y_{Cathe}$  & Comm($b_{Cathe}, y_{Cathe}$) & ...   \\
 \caption{\label{tab:transfer}Simple Confidential Transaction Example}
 \end{table}
 
-To stimulate above computation regarding of the constraints, we use homomorphic PKE to encode the balance and transfer amount, use NIZK to enforce senders to build confidential transactions honestly and make validity publicly verifiable, and use digital signature to authenticate transactions. Let $HPKE = (Setup, KeyGen, Sign, Verify, Enc, Dec)$ be homomorphic PKE integrated with EdDSA signature scheme on message space $\ZZ_p$, the $HPKE$ uses same key for encryption and signing, which proposed a general construction from \cite{paterson2011joint}. And let $NIZK = (Setup, CRSGen, Prove, Verify)$ be a NIZK proof system. The privacy-preserving payment mechanism consists of a trusted setup, user algorithm and a smart contract.
+To stimulate above computation regarding of the constraints, we use homomorphic PKE to encode the balance and transfer amount, use NIZK to enforce senders to build confidential transactions honestly and make validity publicly verifiable, and use digital signature to authenticate transactions. Let $HPKE = (Setup, KeyGen, Sign, Verify, Enc, Dec)$ be homomorphic PKE integrated with EdDSA signature scheme on message space $\ZZ_p$, the $HPKE$ uses same key for encryption and signing, which proposed a general construction from \cite{paterson2011joint}. And let $NIZK = (Setup, CRSGen, Prove, Verify)$ be a NIZK proof system. The privacy-preserving payment mechanism consists of a trusted setup, payment algorithm and a smart contract.
 
 \textbf{Setup}. The setup algorithm calls $Setup_{nizk}$ and $Setup_{nizk}$ as subroutines, which are the setup algorithms for the proof system and the signature scheme, respectively. The former setup could depend on the relations for which proofs are constructed. If these subroutines are trustless, then the whole setup is trustless, meaning that its correctness can be verified publicly. we use Plonk argument and EDDSA, the Plonk argument needs an trust setup and EDDSA is trustless.
 
@@ -455,13 +459,13 @@ Setup algorithm is formally described in Algorithm \ref{alg:setup}. Apart from s
     
 \end{algorithm}
 
-\textbf{User algorithm}. A user can run one of the following algorithms to interact with the smart contract. The output of these algorithms are raw transactions. We leave it implicit that they will be signed (using the public key of the Ethereum account from which they are sent) and destined to the Eigen ZKZRU smart contract. All the algorithms get the security parameter as input but we show it explicitly only for the first one. The algorithm is presented in 
+\textbf{Payment algorithm}. A user can run one of the following algorithms to interact with the smart contract. The output of these algorithms are raw transactions. We leave it implicit that they will be signed (using the public key of the Ethereum account from which they are sent) and destined to the Eigen ZKZRU smart contract. All the algorithms get the security parameter as input but we show it explicitly only for the first one. The algorithm is presented in 
 Algorithm \ref{alg:payment_mechanism}.
 
 \begin{algorithm}
  \DontPrintSemicolon
  \LinesNumbered
- \caption{Payment Mechanism on ABL: User algorithm} \label{alg:payment_mechanism}
+ \caption{Payment Mechanism on ABL: Payment algorithm} \label{alg:payment_mechanism}
     \KwIn{$pp_{nizk}, pp_{hpke}, (\GG, p, g, h)$}
     
     % \begin{multicols}{2}
@@ -604,14 +608,15 @@ In our scheme, users need generate a new key pair for each transaction, the priv
   }
   
   \SetKwProg{Fn}{Function}{:}{}
-  \Fn{\FUpdateAccTree{$\pi_{block}, txRoot, stateRoot$}} {
+  \Fn{\FUpdateAccTree{$\pi_{block}, txRoot, accRoot$}} {
     \tcp{block proof $\pi_{block}$}
-    \tcp{public input $x = stateRoot$}
+    \tcp{public input $t = txRoot$}
+    \tcp{public input $x = accRoot$}
     
-    require txRoot is in txRoots \;
-    require prev(txRoot) is confirmed \;
+    require t is in txRoots \;
+    require prev(t) is confirmed \;
     require Verify($\pi_{block}$, $x$) = true \;
-    currentRoot = stateRoot \;
+    currentRoot = x \;
     updateNumber++ \;
     updates[currentRoot] = updateNumber \;
   }
@@ -642,6 +647,7 @@ Generally speaking, to speed up the transaction finality under L1's equivalent s
 
 \noindent\textbf{sequencer}. With regard to sequencer, there exists some general solution from Vitalc's Rollup guide\footnote{An Incomplete Guide to Rollups: https://vitalik.ca/general/2021/01/05/rollup.html}. And existing implementations include \href{https://blog.chain.link/chainlink-fair-sequencing-services-enabling-a-provably-fair-defi-ecosystem/}{Chainklink FSS}, or Polygon Hermez's \href{https://blog.hermez.io/introducing-proof-of-donation/}{Proof-of-Donation}. To achieve more decentralization and efficiency, we use HotStuff \cite{yin2018hotstuff} consensus algorithm to reach a high sorting performance.  Once a batch of transaction selected by the a sequencer, it submits the batch as a proposal, if the proposal get the agreement from more than 2/3 sequencers, and then it submits the batch's txRoot into L1 Rollup contract, and puts down a large deposit. The deposit plus a reward will return to the user after the batch confirmed.
 
+~\\
 \noindent\textbf{prover}. Proof generation is a huge computation intensive work for prover and it's very necessary to get production of ZK validity proofs with high performance so the network can keep its service level. This is why we introduce a decentralized prover cluster, instead of generating the proof via compiling the prover into WebAssembly and running it user's browser as AZTEC.
 
 To propose a new batch to the network, because the transactions have been ordered, The provers generate the proof, then submits the proof and public input to the Rollup contract. and it's easy to observe that, if give a fixed transaction or block gas limit per block, the finality can be quickly reached if and only if the proof is verified successfully.
@@ -650,7 +656,7 @@ Once mined, these data availability L1 transactions define the L2 transactions t
 
 Since the roles of prover are permissionless, the malicious provers maybe exist in proof-of-proving model. A malicious prover may tamper the transactions, or generate validity proof of less transactions than expected to save computation power. But this is not possible  since the block validity proof includes the transactions' signature proof, and the transaction batch's Merkle proof. The former proof guarantees the individual transaction is valid, and the latter guarantees the transaction batch aggregation proof is valid. 
 
-If multiple provers run a race to produce Rollup blocks, the rollup contract will receive the first one. 
+If multiple provers run a race to produce Rollup blocks, the Rollup contract will receive the first one. 
 
 \subsection{Rollup mechanism}
 
@@ -658,7 +664,7 @@ Eigen ZKZRU is an implementation of \href{https://vitalik.ca/general/2021/01/05/
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.6\textwidth]{arch2.drawio.png}
+    \includegraphics[width=0.6\textwidth]{rollup.drawio.png}
     \caption{\label{fig:rollup}The Rollup mechanism}
 \end{figure}
 
