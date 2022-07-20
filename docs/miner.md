@@ -1,4 +1,4 @@
-# Eigen Hardware Configuration Requirements
+# [Deprecated]Eigen Hardware Configuration Requirements
   - CPU：After the 8th generation, Core and Atom (including Celeron and Pentium)；BIOS contains SGX boot items；≥2 Core；
   - System：Ubuntu 18.04/20.04
   - Memory：4G/Core
