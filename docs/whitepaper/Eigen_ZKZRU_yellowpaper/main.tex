@@ -54,7 +54,6 @@
 \begin{document}
 \maketitle
 
-
 \begin{abstract}
 Decentralized Privacy and security are always the most important part of Web3.0. ZCash and Monero have taken great effort to achieve privacy-enabling technology by building their private payment infrastructure and ecosystem. However, it's not easy to achieve programmable privacy on Smart Contract regarding general assets, such as ERC1155.
 
@@ -199,7 +198,7 @@ In systems where both FFTs and MSMs exist, about 70\% of the time generating a p
 
 \subsubsection{Base Layer: ZK Rollup}
 
-The ZK Rollup is a very promising approach to scale Ethereum, which consists of L1 Rollup contract and A off-chain computation blockchain. The Rollup blockchain maintains a transaction Merkle tree and a account Merkle tree. Different from Ethereum protocol, the transaction Merkle tree consists of a list of Merkle tree root in L1 Rollup contract, in which each root is the Merkle root of a batch transactions, and fully transactions in off-chain ledger. The account tree consists of a Merkle tree root in L1 and a NIZK proof in L1 Rollup contract, and the fully account status(in encrypted mode) in off-chain ledger.
+The ZK Rollup is a very promising approach to scale Ethereum, which consists of L1 Rollup contract and an off-chain computation blockchain. The Rollup blockchain maintains a transaction Merkle tree and a account Merkle tree. Different from Ethereum protocol, the transaction Merkle tree consists of a list of Merkle tree root in L1 Rollup contract, in which each root is the Merkle root of a batch transactions, and fully transactions in off-chain ledger. The account tree consists of a Merkle tree root in L1 and a NIZK proof in L1 Rollup contract, and the fully account status(in encrypted mode) in off-chain ledger.
 
 To achieve the off-chain's security and decentralization on off-chain computation, we propose a Proof-of-Proving model consisting of proving nodes. The proving nodes act as:
 \begin{itemize}
