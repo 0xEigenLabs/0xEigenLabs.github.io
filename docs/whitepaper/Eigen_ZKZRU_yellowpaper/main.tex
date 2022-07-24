@@ -90,7 +90,7 @@ The decentralized Smart Contract is the core feature of Ethereum, however, the l
 
 \subsubsection{Dilemma of utility versus privacy protection}
 
-Tornado Cash is the leading anonymous payment DApp in Ethereum ecosystem. As a Layer 1 Dapp, it supports ERC20 only currently, and charges about 50Gwei + 100Gwei + 0.05\%~0.2\% * 0.05ETH for even a single 0.05ETH from source\footnote{Fee - how much does it cost to use? https://torn.community/t/fee-how-much-does-it-cost-to-use/68/3}.
+Tornado Cash is the leading anonymous payment DApp in Ethereum ecosystem. As a Layer 1 Dapp, it supports ERC20 only currently, and charges about 50Gwei + 100Gwei + 0.2\% * 0.05ETH for even a single 0.05ETH from source\footnote{Fee - how much does it cost to use? https://torn.community/t/fee-how-much-does-it-cost-to-use/68/3}.
 
 Some well-known public blockchain protocols like Zerocash and Monero provide confidential transaction infrastructure but forgo programmability and unclear a primori how to enable programmability without exposing transaction and data in cleartext to miners.
 
@@ -119,9 +119,9 @@ However, the gas cost of single transaction may reach the upper bound of block g
 
 % Zexe\cite{bowe2020zexe} instead attempts to extend Zcash's design to support arbitrary coin scripts. Unlike the previous two, Zexe can also support function privacy.
 
-The AZTEC Protocol \cite{williamson2018aztec} proposed an Join-split transactions model, and each splits is described as notes, which is UTXO-like and attached with a viewing key and spending key. and the notes can be spent in encrypted state based homomorphic arithmetic and range proof. Like other UTXO model, the users need take special measures to avoid privacy leaks from amount when the number of input note and output note is 1, the protocol or user must make some zero value notes to \textit{mix} the non-zero note. Another issue is that the AZTech ZK-ZKRollup perform the pairing based proof generation on user's device, this extremely limit the prove performance. 
+The AZTEC Protocol \cite{williamson2018aztec} proposed an Join-split transactions model, and each splits is described as notes, which is UTXO-like and attached with a viewing key and spending key. And the notes can be spent in encrypted state based homomorphic arithmetic and range proof. Like other UTXO model, the users need take special measures to avoid privacy leaks from amount when the number of input note and output note is 1, the protocol or user must make some zero value notes to \textit{mix} the non-zero note. Another issue is that the AZTEC ZK-ZKRollup perform the pairing based proof generation on user's device, this extremely limit the prove performance. 
 
-We proposes Eigen ZKZRU, a practical Privacy-specific ZK Rollup with low gas cost, it's a Two-tier architecture of privacy layer and Rollup layer. For privacy layer, it's build on twisted ElGamal with Bulletproof under pairing free assumption and can be performed it on users' device efficiently. For the Rollup layer, we handle the pairing based NIZK proof generation on decentralized nodes by Plonk proof system. We propose a Abstract Balance Leaf(ABL) model to represent the asset, it's mutable, encrypted and computable, which make it easy to apply standard ERC20 and ERC721 operations on ABL based on high-level cryptography primitives, such homomorphic arithmetic and accumulator etc.
+We proposes Eigen ZKZRU, a practical Privacy-specific ZK Rollup with low gas cost, it's a Two-tier architecture of privacy layer and Rollup layer. For privacy layer, it's built on twisted ElGamal with Bulletproof under pairing free assumption and can be performed it on users' device efficiently. For the Rollup layer, we handle the pairing based NIZK proof generation on decentralized nodes by Plonk proof system. We propose a Abstract Balance Leaf(ABL) model to represent the asset, it's mutable, encrypted and computable, which makes it easy to apply standard ERC20 and ERC721 operations on ABL based on high-level cryptography primitives, such homomorphic arithmetic and accumulator etc.
 
 To sum up, Table \ref{tab:compare} presents the detail on privacy type, approach, expressivity and which blockchain protocol to extend.  
 
@@ -231,7 +231,7 @@ Pedersen commitment \cite{pedersen1991non} uses random public generators $\GG$ a
 
 \begin{myDef}
 \label{d:dla}
-\textbf{Discrate logarithm assumption.} Let $\GG$ be a group of prime order q, a generator $g \in \GG$ and an arbitrary element $y \in \GG$, it's infeasible to find $x \in ZZ_p$, such that $y = g^x$.
+\textbf{Discrate logarithm assumption.} Let $\GG$ be a group of prime order q, a generator $g \in \GG$ and an arbitrary element $y \in \GG$, it's infeasible to find $x \in Z_p$, such that $y = g^x$.
 \end{myDef}
 
 \begin{myDef}
@@ -262,7 +262,7 @@ where each $G_n$ has to be formed using NUMS\cite{black2014elliptic} approach.
 \begin{myDef}
 \label{d:ddh}
 
-\textbf{Decisional Diffie-Hellman assumption}. Given some group \GG, and element element $g$, and the elements $g^a$, $g^b$ and $g^{c}$, determine whether $g^{ab} = g^c$, The DDH assumption holds if for any PPT adversary \adv, we have: 
+\textbf{Decisional Diffie-Hellman assumption}. Given some group \GG, and element $g$, and the elements $g^a$, $g^b$ and $g^{c}$, determine whether $g^{ab} = g^c$, The DDH assumption holds if for any PPT adversary \adv, we have: 
 \begin{equation}
     Pr[\adv(g, g^a, g^b, g^{ab}) = 1] - Pr[\adv(g, g^a, g^b, g^c) = 1] \leq \negl[\lambda]
 \end{equation}
@@ -332,7 +332,7 @@ Another recent work \cite{chen2020pgc} proposed PGC(Pretty Good Confidentiality)
 
 Moreover, twisted ElGamal is very efficient. Compared with the most efficient reported implementation of Paillier PKE, twisted ElGamal is an order of magnitude better in key and ciphertext size and decryption speed (for small message space), two orders of magnitude better in encryption speed. Consequently, we achieve an efficient and effective protection approach for account privacy by designing a twist EIGamal-based homomorphic encryption scheme.
 
-Eigen ZKZRU extends a twisted ElGamal encryption on elliptic curve, and combines with \href{https://datatracker.ietf.org/doc/html/rfc8032}{EdDSA signrature} scheme to , and optimizes the Camenisch and Stadler \cite{camenisch1997efficient} notation for proofs of knowledge \ref{f1}. This scheme can be easily proved that it holds the unconditionally hiding and computational binding same as Pedersen Commitment by the work from \cite{bunz2020zether,chen2020pgc} on the DDH Assumption. Hence, the final proof of Zero-knowledge scheme would be as follow in formula \ref{f1}.
+Eigen ZKZRU extends a twisted ElGamal encryption on elliptic curve, and combines with \href{https://datatracker.ietf.org/doc/html/rfc8032}{EdDSA signature} scheme to , and optimizes the Camenisch and Stadler \cite{camenisch1997efficient} notation for proofs of knowledge \ref{f1}. This scheme can be easily proved that it holds the unconditionally hiding and computational binding same as Pedersen Commitment by the work from \cite{bunz2020zether,chen2020pgc} on the DDH Assumption. Hence, the final proof of Zero-knowledge scheme would be as follow in formula \ref{f1}.
 
 \begin{equation}
  PK\{(m, k, r): PK = g^k \land (X, Y) = (PK^{r}, g^r h^m)\} \land (0 \leq m < \mbox{MAX}) \label{f1}  
@@ -372,7 +372,7 @@ Furthermore, we construct the set membership proof on this scheme from the work 
 ~\\
 \noindent\textbf{Zero-knowledge proofs on ABL}. In ABL model, we ensure that the encrypted transaction are correct by using ZKP that claiming correctness without revealing any additional information. Since twisted ElGamal compatible with all zero-knowledge proofs whose statement is of the form Pedersen commitment, we can directly employ Bulletproof to generate the balance's range proof. 
 
-We define the a language $L_{transfer}$ to describe our ABL model in definition \ref{l_transfer}.
+We define a language $L_{transfer}$ to describe our ABL model in definition \ref{l_transfer}.
 
 \begin{equation}\label{l_transfer}
 \begin{aligned}
@@ -402,16 +402,16 @@ z \gets a + er \>\> \\
 t \gets b + ev \>\> \\
 \> \sendmessageright*{\scriptsize z, t} \> \\ 
 \> \>  \mbox{check if} \\
-\> \>  pk_1^z = A_1X_1^e \\
-\> \>  pk_2^z = A_2X_2^e \\
-\> \>  g^zh^t = BY^e 
+\> \>  pk_1^z = A_1X_1^e,X_1=g^r \\
+\> \>  pk_2^z = A_2X_2^e,X_2=g^v \\
+\> \>  g^zh^t = BY^e,Y=g^rh^v 
 }
 }
 \end{figure}
 
 \subsection{Payment Mechanism over Abstract Balance Leaf} \label{section:pay-abl}
 
-We use Twisted ElGamal encryption \cite{chen2020pgc} and Bulletproof \cite{bunz2018bulletproofs} on DDH assumption to build the confidential transaction, and constructs the validity proof of batch transaction on account Merkle tree by algebraic composite NIZK. Without lose the generality, we also implement set membership proof on our scheme naturally, to support general asset private payment, such as ERC721, and ERC1155, Eigen ZKZRU extends the ABL, and proposal Zero-knowledge computation on ABL to support non-fungible transaction, order-based token exchange etc. For instance, the state in ERC20 token would be describe as below after after transaction $t$ in Table \ref{tab:transfer}. 
+We use Twisted ElGamal encryption \cite{chen2020pgc} and Bulletproof \cite{bunz2018bulletproofs} on DDH assumption to build the confidential transaction, and constructs the validity proof of batch transaction on account Merkle tree by algebraic composite NIZK. Without lose the generality, we also implement set membership proof on our scheme naturally, to support general asset private payment, such as ERC721, and ERC1155. Eigen ZKZRU extends the ABL, and proposes Zero-knowledge computation on ABL to support non-fungible transaction, order-based token exchange etc. For instance, the state in ERC20 token would be describe as below after after transaction $t$ in Table \ref{tab:transfer}. 
 
 \begin{table}
 \centering
@@ -431,9 +431,9 @@ $y_{Cathe}$  & Comm($b_{Cathe}, y_{Cathe}$) & ...   \\
 
 To stimulate above computation regarding of the constraints, we use homomorphic PKE to encode the balance and transfer amount, use NIZK to enforce senders to build confidential transactions honestly and make validity publicly verifiable, and use digital signature to authenticate transactions. Let $HPKE = (Setup, KeyGen, Sign, Verify, Enc, Dec)$ be homomorphic PKE integrated with EdDSA signature scheme on message space $\ZZ_p$, the $HPKE$ uses same key for encryption and signing, which proposed a general construction from \cite{paterson2011joint}. And let $NIZK = (Setup, CRSGen, Prove, Verify)$ be a NIZK proof system. The privacy-preserving payment mechanism consists of a trusted setup, payment algorithm and a smart contract.
 
-\textbf{Setup}. The setup algorithm calls $Setup_{nizk}$ and $Setup_{nizk}$ as subroutines, which are the setup algorithms for the proof system and the signature scheme, respectively. The former setup could depend on the relations for which proofs are constructed. If these subroutines are trustless, then the whole setup is trustless, meaning that its correctness can be verified publicly. we use Plonk argument and EDDSA, the Plonk argument needs an trust setup and EDDSA is trustless.
+\textbf{Setup}. The setup algorithm calls $Setup_{nizk}$ and $Setup_{hpke}$ as subroutines, which are the setup algorithms for the proof system and the signature scheme, respectively. The former setup could depend on the relations for which proofs are constructed. If these subroutines are trustless, then the whole setup is trustless, meaning that its correctness can be verified publicly. We use Plonk argument and EDDSA, the Plonk argument needs an trust setup and EDDSA is trustless.
 
-Setup algorithm is formally described in Algorithm \ref{alg:setup}. Apart from setting up the proof system and signature scheme, it initializes account tree accountTree, minc contract, token registry contract, a last roll over epoch updateNumber to keep track of the last epochs accounts were updated, The setup also specifies an epoch length E and a \mbox{MAX}imum amount value \mbox{MAX}.
+Setup algorithm is formally described in Algorithm \ref{alg:setup}. Apart from setting up the proof system and signature scheme, it initializes account tree accountTree, mimc contract, token registry contract, a last roll over epoch updateNumber to keep track of the last epochs accounts were updated, The setup also specifies an epoch length E and a \mbox{MAX}imum amount value \mbox{MAX}.
 
 \begin{algorithm}
  \caption{Payment Mechanism on ABL: Setup}
@@ -454,7 +454,7 @@ Setup algorithm is formally described in Algorithm \ref{alg:setup}. Apart from s
             \item[$-$] transaction Merkle tree root array: txRoots
         \end{itemize}
     }
-    Deploy Rollup contract with parameters $pp$, accountTree, txRoots, minc, tr, \mbox{MAX}, BAL\_DEPTH, TX\_DEPTH
+    Deploy Rollup contract with parameters $pp$, accountTree, txRoots, mimc, tr, \mbox{MAX}, BAL\_DEPTH, TX\_DEPTH
     
 \end{algorithm}
 
@@ -622,13 +622,13 @@ In our scheme, users need generate a new key pair for each transaction, the priv
 \end{multicols}
 
 \end{algorithm}
-where the $\pi_{block}$ would be generated by language \ref{l_block}.
+And the $\pi_{block}$ would be generated by statement \ref{l_block}.
 
 \include{anonaddr}
 
 \subsection{Proof-of-Proving model}
 
-One of the main advantages of the ZK Rollups is the fast finality of transactions that validity proofs guaranteed. To enhance the effectiveness, and decentralize proof generation, the PoP model aims to cover the key properties that such a consensus model for a L2 ZK Rollup requires:
+One of the main advantages of the ZK Rollup is the fast finality of transactions that validity proofs guaranteed. To enhance the effectiveness, and decentralize proof generation, the PoP model aims to cover the key properties that such a consensus model for a L2 ZK Rollup requires:
 \begin{itemize}
     \item Permissionless: allow every computing power to participate in.
     \item Efficiency: sorting batch and generates the batch's validity proof deterministically.
@@ -639,23 +639,34 @@ One of the main advantages of the ZK Rollups is the fast finality of transaction
 Generally speaking, to speed up the transaction finality under L1's equivalent security guarantee as L1, a PoP model provides two basic capabilities:
 
 \begin{itemize}
-    \item Transaction sorting: we first sort the transaction by sequencer, and submit the batch Mekle Proof into Rollup contract.
+    \item Transaction sorting: we first sort the transaction by sequencer, and submit the batch Merkle Proof into Rollup contract.
     \item Proof generation: the prover generates the block validity proof, update the account tree in Rollup contract.
 \end{itemize}
 
 
-\noindent\textbf{sequencer}. With regard to sequencer, there exists some general solution from Vitalc's Rollup guide\footnote{An Incomplete Guide to Rollups: https://vitalik.ca/general/2021/01/05/rollup.html}. And existing implementations include \href{https://blog.chain.link/chainlink-fair-sequencing-services-enabling-a-provably-fair-defi-ecosystem/}{Chainklink FSS}, or Polygon Hermez's \href{https://blog.hermez.io/introducing-proof-of-donation/}{Proof-of-Donation}. To achieve more decentralization and efficiency, we use HotStuff \cite{yin2018hotstuff} consensus algorithm to reach a high sorting performance.  Once a batch of transaction selected by the a sequencer, it submits the batch as a proposal, if the proposal get the agreement from more than 2/3 sequencers, and then it submits the batch's txRoot into L1 Rollup contract, and puts down a large deposit. The deposit plus a reward will return to the user after the batch confirmed.
+\noindent\textbf{sequencer}. With regard to sequencer, there exists some general solution from Vitalik's Rollup guide\footnote{An Incomplete Guide to Rollups: https://vitalik.ca/general/2021/01/05/rollup.html}. And existing implementations include \href{https://blog.chain.link/chainlink-fair-sequencing-services-enabling-a-provably-fair-defi-ecosystem/}{Chainklink FSS}, or Polygon Hermez's \href{https://blog.hermez.io/introducing-proof-of-donation/}{Proof-of-Donation}. To achieve more decentralization and efficiency, we use HotStuff \cite{yin2018hotstuff} consensus algorithm to reach a high sorting performance.  Once a batch of transaction selected by the a sequencer, it submits the batch as a proposal, if the proposal get the agreement from at least 2f+1 sequencers(f is the malicious node's size of total n nodes), and then it submits the batch's txRoot into L1 Rollup contract, and puts down a large deposit. The deposit plus a reward will return to the user after the batch confirmed.
+
+The sequencers are designed to sort the transactions, and submit the transaction root into L1 after it puts down a large deposit. if that user ever submits a fraudulent batch, that deposit would be part burned and part given as a reward to the fraud prover. To realize an decentralized sequencing mechanism, we extend the Chained-Hotstuff algoritm by adding an additional round to check the transaction batch's Merkle root's on-chain proof. Nodes receive transactions from clients and share them with each other through a shared mempool protocol. The extended Chained-Hotstuff protocol then proceeds in a sequence of rounds. In each round, a sequencer takes the role of leader and proposes a batch of transactions to extend a certified sequence of batches that contain the full previous transaction history. A sequencer receives the proposed batches and checks their voting rules(namely safety rules) to determine if it should vote for certifying this batch. After voting, we need another round to check if the batch's Merkle root has been confirmed in L1. If the sequencer intends to vote for this batch, it calculates the batch’s transactions Merkle root speculatively and without external effect. 
+
+The sequencer then sends a signed vote for the batch to the leader. The leader gathers these votes to form a Quorum Certificate (QC), which provides evidence of $\ge$ 2f + 1 votes for this block and broadcasts the QC to all sequencers.
+
+A block at round k is committed if it has a QC and is confirmed by two more batches and QCs at rounds k + 1, k + 2 and k+3. The commit rule eventually allows honest sequencers to commit a batch. extended Chained-Hotstuff guarantees that all honest sequencer will eventually commit the block (and proceeding sequence of blocks linked from it). Once a sequence of blocks has committed, the state that results from executing their transactions can be persisted and the batch's Merkle root should be stored in L1 Rollup contract.
+
+The the safety rules and liveness rules check work exact same as HotStuff algorithm. Obviously, this algorithm is permissionless, every nodes can be selected as the candidate. And in the view-change phase, a VRF function is used to generate the next block miner with current block as it's seed.
+
+This algorithm is efficient. Even thought each batch's Merkle root must be anchored on L1(which means a view must cut across two L1 blocks), but each view allow the leader to propose $m$ batch with batch size $s$, each layer 1 block consists of m L2 transaction batch's Merkle root. Define L1 blockchain's TPS $p_1$, the performance can be measured by \bigO{m \cdot s \cdot p_1}. And the number of L2 transactions depends the size of transaction batch and the number of L2 transaction batch in one view. The communication complexity to reach a consensus of a transaction batch can be reduced to \bigO{n}, where n is the nodes number. The latency of each batch's confirmation equals to layer 1 block's confirmation latency.
 
 ~\\
 \noindent\textbf{prover}. Proof generation is a huge computation intensive work for prover and it's very necessary to get production of ZK validity proofs with high performance so the network can keep its service level. This is why we introduce a decentralized prover cluster, instead of generating the proof via compiling the prover into WebAssembly and running it user's browser as AZTEC.
 
-To propose a new batch to the network, because the transactions have been ordered, The provers generate the proof, then submits the proof and public input to the Rollup contract. and it's easy to observe that, if give a fixed transaction or block gas limit per block, the finality can be quickly reached if and only if the proof is verified successfully.
+To propose a new batch to the network, because the transactions have been ordered, The provers generate the proof, then submits the proof and public input to the Rollup contract. And it's easy to observe that, if give a fixed transaction or block gas limit per block, the finality can be quickly reached if and only if the proof is verified successfully.
 
 Once mined, these data availability L1 transactions define the L2 transactions that will be executed and the specific order. This creates a deterministic new state, which can be computed as a virtual future state by network nodes.
 
 Since the roles of prover are permissionless, the malicious provers maybe exist in proof-of-proving model. A malicious prover may tamper the transactions, or generate validity proof of less transactions than expected to save computation power. But this is not possible  since the block validity proof includes the transactions' signature proof, and the transaction batch's Merkle proof. The former proof guarantees the individual transaction is valid, and the latter guarantees the transaction batch aggregation proof is valid. 
 
-If multiple provers run a race to produce Rollup blocks, the Rollup contract will receive the first one. 
+If multiple provers run a race to produce Rollup blocks, the Rollup contract will receive the first one.   
+
 
 \subsection{Rollup mechanism}
 
@@ -663,17 +674,13 @@ Eigen ZKZRU is an implementation of \href{https://vitalik.ca/general/2021/01/05/
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.6\textwidth]{rollup.drawio.png}
+    \includegraphics[width=0.8\textwidth]{rollup.drawio.png}
     \caption{\label{fig:rollup}The Rollup mechanism}
 \end{figure}
 
 ~\\
 \noindent\textbf{Node}. The Nodes provide the standard RPC service for users to interact ZKZRU with native Wallet, like \href{https://secret.eigen.cash}{EigenSecret}, or Metamask. The node would maintain a transaction pool, and execute the Proof-of-Proving model to reach an consensus of the order of the transactions, and submit the transaction Merkle root in L1 Rollup contract.
 
-\begin{itemize}
-    \item Sequencer: The sequencers are designed to sort the transaction by PoS consensus, and submit the transaction root into L1  after it puts down a large deposit. if that user ever submits a fraudulent batch, that deposit would be part burned and part given as a reward to the fraud prover. To realize an decentralized sequencing mechanism, we adopt ChainedBFT to reach a consensus of the transaction order in L2.
-    \item Prover:  The provers are the actors that perform basic ZK Rollup functionalities. They are charged with creating blocks, making the transactions into a bundle, and performing the calculations and submitting the data to the main EVM-compatible chain for verification. The Provers retrieve a batch of transactions from L2 txpool, and generate the validity Zero-knowledge proof via EigenZkit, and submits the proof and public inputs to Rollup contract.
-\end{itemize}
 
 ~\\
 \noindent\textbf{Rollup contract}. The Rollup contract maintains the Rollup blockchain in L1. Once the block is produced by the Node, and submitted to the L1 Rollup contract, the \textit{updateVerifier} is a ZKRollup to verify the validity of the proof $\pi_{block}$ under the current account Merkle Tree. The main fields in the Rollup contract include:
