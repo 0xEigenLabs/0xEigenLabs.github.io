@@ -370,7 +370,7 @@ Furthermore, we construct the set membership proof on this scheme from the work 
 \end{algorithm}
 
 ~\\
-\noindent\textbf{Zero-knowledge proofs on ABL}. In ABL model, we ensure that the encrypted transaction are correct by using ZKP that claiming correctness without revealing any additional information. Since twisted ElGamal compatible with all zero-knowledge proofs whose statement is of the form Pedersen commitment, we can directly employ range proof \cite{10.1007/978-3-662-58820-8_4} to generate the balance's range proof. 
+\noindent\textbf{Zero-knowledge proofs on ABL}. In ABL model, we ensure that the encrypted transaction are correct by using ZKP that claiming correctness without revealing any additional information. Since twisted ElGamal compatible with all zero-knowledge proofs whose statement is of the form Pedersen commitment, we can directly employ range proof \cite{bunz2018bulletproofs} to generate the balance's range proof. 
 
 We define a language $L_{transfer}$ to describe our ABL model in definition \ref{l_transfer}.
 
@@ -411,7 +411,7 @@ t \gets b + ev \>\> \\
 
 \subsection{Payment Mechanism over Abstract Balance Leaf} \label{section:pay-abl}
 
-We use Twisted ElGamal encryption \cite{chen2020pgc} and Back-Maxwell Rangeproof \cite{10.1007/978-3-662-58820-8_4} on DDH assumption to build the confidential transaction, and constructs the validity proof of batch transaction on account Merkle tree by algebraic composite NIZK. Without lose the generality, we also implement set membership proof on our scheme naturally, to support general asset private payment, such as ERC721, and ERC1155. Eigen ZKZRU extends the ABL, and proposes Zero-knowledge computation on ABL to support non-fungible transaction, order-based token exchange etc. For instance, the state in ERC20 token would be describe as below after after transaction $t$ in Table \ref{tab:transfer}. 
+We use Twisted ElGamal encryption \cite{chen2020pgc} and Bulletproof \cite{bunz2018bulletproofs} on DDH assumption to build the confidential transaction, and constructs the validity proof of batch transaction on account Merkle tree by algebraic composite NIZK. Without lose the generality, we also implement set membership proof on our scheme naturally, to support general asset private payment, such as ERC721, and ERC1155. Eigen ZKZRU extends the ABL, and proposes Zero-knowledge computation on ABL to support non-fungible transaction, order-based token exchange etc. For instance, the state in ERC20 token would be describe as below after after transaction $t$ in Table \ref{tab:transfer}. 
 
 \begin{table}
 \centering
@@ -705,8 +705,6 @@ We define the language $L_{block}$ on algebraic composition of $L_{transfer}$ in
 We translate above constraints into R1CS, transpile R1CS to Plonk Constraints, and generates the final proof $\pi_{block}$ by PlonK \cite{gabizon2019plonk}, which represents the vector of wire values as well as the different gates selectors as polynomials using interpolation. A polynomial division check ensures that the prover knows satisfying inputs and outputs for each gate, but does not ensure a correct wiring, e.g. that the output of one gate is the input to another.A permutation argument establishes the consistency of the assignment of wires to gates. The main reasons for this transpilation includes the URS setup, Pedersen Commitment/HPKE on custom gate etc.
 
 Furthermore, the optimization for recursive proof by FRI in the accumulation layer, GPU-based acceleration for EC scalar multiplication and batch opening polynomial commitments, are applied to realize a very fast block validity proof verification on previous confirmed block in Rollup chain. The implementation is presented at \href{https://github.com/ieigen/EigenZKit}{EigenZKit}.
-
-\section{Programmability}
 
 
 % include{zkit}
