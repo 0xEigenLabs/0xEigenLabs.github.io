@@ -50,14 +50,14 @@
 
 \title{Eigen ZKZRU: A Practical Privacy-specific ZK Rollup}
 \author{Eigen Labs}
-
+\date{July 26, 2022}
 \begin{document}
 \maketitle
 
 \begin{abstract}
 Decentralized Privacy and security are always the most important part of Web3.0. ZCash and Monero have taken great effort to achieve privacy-enabling technology by building their private payment infrastructure and ecosystem. However, it's not easy to achieve programmable privacy on Smart Contract regarding general assets, such as ERC1155.
 
-In this paper, we present Eigen ZKZRU, a privacy-specific ZKRollup solution on ZKRollup on Ethereum ecosystem to achieve low gas-fee, better composability and high privacy enhancement. Eigen ZKZRU proposes an Abstract Balance Leaf Model, using Twisted ElGamal encryption \cite{chen2020pgc} and Bulletproof \cite{bunz2018bulletproofs} on DDH assumption to build the confidential transaction, and constructs the validity proof of batch transactions on account Merkle tree by algebraic composite NIZK, which is built on a Two-tier architecture, the base layer is a ZKRollup, which is built on R1CS constraints system and transpiled to PLONKish Arithmetization \cite{gabizon2019plonk}, which is naturally friendly to utilize Twisted ElGamal encryption with custom gate, and hardware acceleration. The application layer is Pairing-free and easy-to-audit confidential transaction layer. 
+In this paper, we present Eigen ZKZRU, a privacy-specific ZKRollup solution on ZKRollup on Ethereum ecosystem to achieve low gas-fee, better composability and high privacy enhancement. Eigen ZKZRU proposes an Abstract Balance Leaf Model, using Twisted ElGamal encryption \cite{chen2020pgc} and Bulletproof range proof \cite{bunz2018bulletproofs} under DDH assumption to build the confidential transaction, and constructs the validity proof of batch transactions on account Merkle tree by algebraic composite NIZK, which is built on a Two-tier architecture, the base layer is a ZKRollup, which is built on R1CS constraints system and transpiled to PLONKish Arithmetization \cite{gabizon2019plonk}, which is naturally friendly to utilize Twisted ElGamal encryption with custom gate, and hardware acceleration. The application layer is Pairing-free and easy-to-audit confidential transaction layer. 
 
 % As a callback to our \href{https://www.eigen.cash/#/}{whitepaper}, this work gives more detail about the on-chain data privacy preservation. 
 
@@ -121,7 +121,7 @@ However, the gas cost of single transaction may reach the upper bound of block g
 
 The AZTEC Protocol \cite{williamson2018aztec} proposed an Join-split transactions model, and each splits is described as notes, which is UTXO-like and attached with a viewing key and spending key. And the notes can be spent in encrypted state based homomorphic arithmetic and range proof. Like other UTXO model, the users need take special measures to avoid privacy leaks from amount when the number of input note and output note is 1, the protocol or user must make some zero value notes to \textit{mix} the non-zero note. Another issue is that the AZTEC ZK-ZKRollup perform the pairing based proof generation on user's device, this extremely limit the prove performance. 
 
-We proposes Eigen ZKZRU, a practical Privacy-specific ZK Rollup with low gas cost, it's a Two-tier architecture of privacy layer and Rollup layer. For privacy layer, it's built on twisted ElGamal with Bulletproof under pairing free assumption and can be performed it on users' device efficiently. For the Rollup layer, we handle the pairing based NIZK proof generation on decentralized nodes by Plonk proof system. We propose a Abstract Balance Leaf(ABL) model to represent the asset, it's mutable, encrypted and computable, which makes it easy to apply standard ERC20 and ERC721 operations on ABL based on high-level cryptography primitives, such homomorphic arithmetic and accumulator etc.
+We proposes Eigen ZKZRU, a practical Privacy-specific ZK Rollup with low gas cost, it's a Two-tier architecture of privacy layer and Rollup layer. For privacy layer, it's built on twisted ElGamal with range proof under pairing free assumption and can be performed it on users' device efficiently. For the Rollup layer, we handle the pairing based NIZK proof generation on decentralized nodes by Plonk proof system. We propose a Abstract Balance Leaf(ABL) model to represent the asset, it's mutable, encrypted and computable, which makes it easy to apply standard ERC20 and ERC721 operations on ABL based on high-level cryptography primitives, such homomorphic arithmetic and accumulator etc.
 
 To sum up, Table \ref{tab:compare} presents the detail on privacy type, approach, expressivity and which blockchain protocol to extend.  
 
@@ -132,7 +132,7 @@ Scheme & Privacy type & Approach & Expressivity & Extension as \\\hline
 Hawk & I/O & Offchain MPC/TEE & Arbitrary functions & Ethereum L1 \\
 Zether & I/O & Elgamal and $\Sigma$-Bullet & Additive functions & Ethereum L1\\
 AZTEC & I/O, function & Pairing based homomorphic Commitment & Additive functions & Ethereum L2\\
-Eigen ZKZRU & I/O, function & Pair-free Homomorphic PKE and Bulletproof & Arbitrary functions & Ethereum L2
+Eigen ZKZRU & I/O, function & Pair-free Homomorphic PKE and Range Proof & Arbitrary functions & Ethereum L2
 \end{tabular}
 }
 \caption{\label{tab:compare}A comparison of Privacy-preserving Smart Contract Scheme}
@@ -328,7 +328,7 @@ Where $\tau$ should be thought of as local state stored by the simulator (passed
 Another recent work \cite{chen2020pgc} proposed PGC(Pretty Good Confidentiality) scheme on twisted ElGamal scheme, admits transparent setup, and its security is based solely on the widely-used discrete logarithm assumption. 
 
 ~\\
-\noindent\textbf{Twisted ElGamal encryption \cite{chen2020pgc}}. Twisted ElGamal encryption is a public key encryption scheme improved based on the simplified version of the ElGamal. Twisted ElGamal encryption retains additive homomorphism and is as efficient and secure as the standard exponential ElGamal. More importantly, it is zero-knowledge friendly. Note that the second part of twisted ElGamal ciphertext can be viewed as Pedersen commitment [9] under the same commitment key, whose DL (discrete logarithm) relation is unknown to all users. Such structure of twisted ElGamal makes it compatible with all zero-knowledge proofs whose statement is of the form Pedersen commitment. In particular, one can directly employ Bulletproofs\cite{bunz2018bulletproofs} to generate range proofs for values encrypted by twisted ElGamal in a black-box manner, and these proofs can be easily aggregated. Therefore, Twisted ElGamal enables us to easily devise zero-knowledge proofs for essential correctness of transactions and various application-dependent policies in a modular fashion. 
+\noindent\textbf{Twisted ElGamal encryption \cite{chen2020pgc}}. Twisted ElGamal encryption is a public key encryption scheme improved based on the simplified version of the ElGamal. Twisted ElGamal encryption retains additive homomorphism and is as efficient and secure as the standard exponential ElGamal. More importantly, it is zero-knowledge friendly. Note that the second part of twisted ElGamal ciphertext can be viewed as Pedersen commitment [9] under the same commitment key, whose DL (discrete logarithm) relation is unknown to all users. Such structure of twisted ElGamal makes it compatible with all zero-knowledge proofs whose statement is of the form Pedersen commitment. In particular, one can directly employ Bulletproofs\cite{bunz2018bulletproofs} or Back-Maxwell Rangeproof\cite{10.1007/978-3-662-58820-8_4} to generate range proofs for values encrypted by twisted ElGamal in a black-box manner, and these proofs can be easily aggregated. Therefore, Twisted ElGamal enables us to easily devise zero-knowledge proofs for essential correctness of transactions and various application-dependent policies in a modular fashion. 
 
 Moreover, twisted ElGamal is very efficient. Compared with the most efficient reported implementation of Paillier PKE, twisted ElGamal is an order of magnitude better in key and ciphertext size and decryption speed (for small message space), two orders of magnitude better in encryption speed. Consequently, we achieve an efficient and effective protection approach for account privacy by designing a twist EIGamal-based homomorphic encryption scheme.
 
@@ -350,7 +350,7 @@ There are four primary algorithms in twisted ElGamal, as presented below.
 
 The above scheme can be proved \indcpa\ secure(1-plaintext/2-recipient) base on the divisible DDH assumption from \cite{chen2020pgc}.
 
-Furthermore, we construct the set membership proof on this scheme from the work \cite{camenisch2008efficient} and Boneh-Boyen signatures \cite{jao2009boneh}, and extend it to a pairing free scheme in Appendex \ref{appendex: bbs-no-pairing}.
+Furthermore, we construct the set membership proof on this scheme from the work \cite{camenisch2008efficient} and Boneh-Boyen signatures \cite{jao2009boneh}, and extend it to a pairing free scheme in Appendix \ref{appendix: bbs-no-pairing}.
 
 ~\\
 \noindent\textbf{Edwards-curve Digital Signature Algorithm}. Edwards-curve Digital Signature Algorithm (EdDSA\footnote{EdDSA: https://datatracker.ietf.org/doc/html/rfc8032}) is a digital signature scheme using a variant of Schnorr signature based on twisted Edwards curves. It is designed to be faster than existing digital signature schemes without sacrificing security. The sketch of EdDSA is presented in Algorithm \ref{eddsa}.
@@ -370,7 +370,7 @@ Furthermore, we construct the set membership proof on this scheme from the work 
 \end{algorithm}
 
 ~\\
-\noindent\textbf{Zero-knowledge proofs on ABL}. In ABL model, we ensure that the encrypted transaction are correct by using ZKP that claiming correctness without revealing any additional information. Since twisted ElGamal compatible with all zero-knowledge proofs whose statement is of the form Pedersen commitment, we can directly employ Bulletproof to generate the balance's range proof. 
+\noindent\textbf{Zero-knowledge proofs on ABL}. In ABL model, we ensure that the encrypted transaction are correct by using ZKP that claiming correctness without revealing any additional information. Since twisted ElGamal compatible with all zero-knowledge proofs whose statement is of the form Pedersen commitment, we can directly employ range proof \cite{10.1007/978-3-662-58820-8_4} to generate the balance's range proof. 
 
 We define a language $L_{transfer}$ to describe our ABL model in definition \ref{l_transfer}.
 
@@ -411,7 +411,7 @@ t \gets b + ev \>\> \\
 
 \subsection{Payment Mechanism over Abstract Balance Leaf} \label{section:pay-abl}
 
-We use Twisted ElGamal encryption \cite{chen2020pgc} and Bulletproof \cite{bunz2018bulletproofs} on DDH assumption to build the confidential transaction, and constructs the validity proof of batch transaction on account Merkle tree by algebraic composite NIZK. Without lose the generality, we also implement set membership proof on our scheme naturally, to support general asset private payment, such as ERC721, and ERC1155. Eigen ZKZRU extends the ABL, and proposes Zero-knowledge computation on ABL to support non-fungible transaction, order-based token exchange etc. For instance, the state in ERC20 token would be describe as below after after transaction $t$ in Table \ref{tab:transfer}. 
+We use Twisted ElGamal encryption \cite{chen2020pgc} and Back-Maxwell Rangeproof \cite{10.1007/978-3-662-58820-8_4} on DDH assumption to build the confidential transaction, and constructs the validity proof of batch transaction on account Merkle tree by algebraic composite NIZK. Without lose the generality, we also implement set membership proof on our scheme naturally, to support general asset private payment, such as ERC721, and ERC1155. Eigen ZKZRU extends the ABL, and proposes Zero-knowledge computation on ABL to support non-fungible transaction, order-based token exchange etc. For instance, the state in ERC20 token would be describe as below after after transaction $t$ in Table \ref{tab:transfer}. 
 
 \begin{table}
 \centering
@@ -711,7 +711,7 @@ Furthermore, the optimization for recursive proof by FRI in the accumulation lay
 
 % include{zkit}
 \begin{appendices}
-\include{appendex}
+\include{appendix}
 \end{appendices}
 
 
