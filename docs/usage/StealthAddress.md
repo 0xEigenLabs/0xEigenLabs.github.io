@@ -7,24 +7,24 @@ If Alice wants to initiate an anonymous payment to Bob, what do they need to do?
 
 First, Bob needs to provide Alice with the public key to his address. Bob can select **Copy Public Key** from the address of **My Account**, and tell Alice the public key.
 
-<img src="https://github.com/0xEigenLabs/ieigen.github.io/raw/main/docs/images/usage/stealth_address/0.png" width="75%" height="75%">
+<img src="https://github.com/0xEigenLabs/0xeigenlabs.github.io/raw/main/docs/images/usage/stealth_address/0.png" width="75%" height="75%">
 
 When Alice knows Bob's public key, Alice needs to enter the **Send** page and click the button **Hide**, indicating that an anonymous payment will be initiated, then enter Bob's public key, and click **Send**. The difference from ordinary transfers is that it no longer receives Bob's address, but Bob's public key.
 
-<img src="https://github.com/0xEigenLabs/ieigen.github.io/raw/main/docs/images/usage/stealth_address/1.png" width="75%" height="75%">
+<img src="https://github.com/0xEigenLabs/0xeigenlabs.github.io/raw/main/docs/images/usage/stealth_address/1.png" width="75%" height="75%">
 
 When Bob receives an anonymous payment transaction, there will be an additional record on the **Stealth Address** page, He can click **Unhide** to export the stealth address as a normal address.
 
-<img src="https://github.com/0xEigenLabs/ieigen.github.io/raw/main/docs/images/usage/stealth_address/2.png" width="75%" height="75%">
+<img src="https://github.com/0xEigenLabs/0xeigenlabs.github.io/raw/main/docs/images/usage/stealth_address/2.png" width="75%" height="75%">
 
 After clicking the button **Unhide**, the prompt of **Unhide Submitted** will appear.
 
-<img src="https://github.com/0xEigenLabs/ieigen.github.io/raw/main/docs/images/usage/stealth_address/3.png" width="75%" height="75%">
+<img src="https://github.com/0xEigenLabs/0xeigenlabs.github.io/raw/main/docs/images/usage/stealth_address/3.png" width="75%" height="75%">
 
 After the submission is successful, the button **Unhide** will become **Unhided**, indicating that it has been exported as a normal address.
 
-<img src="https://github.com/0xEigenLabs/ieigen.github.io/raw/main/docs/images/usage/stealth_address/4.png" width="75%" height="75%">
+<img src="https://github.com/0xEigenLabs/0xeigenlabs.github.io/raw/main/docs/images/usage/stealth_address/4.png" width="75%" height="75%">
 
 If everything goes well, Bob can see a newly generated address in **My Account**, and then He can use this stealth address like a normal address.
 
-<img src="https://github.com/0xEigenLabs/ieigen.github.io/raw/main/docs/images/usage/stealth_address/5.png" width="75%" height="75%">
+<img src="https://github.com/0xEigenLabs/0xeigenlabs.github.io/raw/main/docs/images/usage/stealth_address/5.png" width="75%" height="75%">
