@@ -33,7 +33,7 @@ pk \gets H_0(S)G + \sum{H_i(S)}B_i  \>\>    \>\> \\
 \label{fig:edksap}
 \end{figure}
 
-We extend the language $L_{transfer}$ previously in definition \ref{l_transfer} to support stealth address.  For simplicity, we always withdraw the asset in the stealth address to the $B_0$, whose balance is in encryption.
+We extend the language $L_{transfer}$ previously in definition \ref{l_transfer} to support stealth address and cut off the linkage between stealth address with it's original address by transiting the asset from stealth address to it's original address with a ZKP on our ZKRollup Chain. We enable the users to transfer the money from one account to another if it provides a proofs that he knows the secret key of the address. This mechanism works similar to Mixer, but the sender have no need to manage the Nullifier manually. 
 
 % \subsection{Combine Address Anonymity with Confidential Transaction} \label{section:caact}
 

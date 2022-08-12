@@ -209,7 +209,7 @@ To achieve the off-chain's security and decentralization on off-chain computatio
 
 % The node  data validity, collecting transactions, and bundling up the transactions into a batch, and submits the Merkle proof into L1 contract. which means putting them into a consistent, global incremental order with no gaps. 
 
-The prover generate the validity proof by the \href{https://github.com/ieigen/EigenZKit}{EigenZKit}. EigenZkit is our ZKRollup \textit{compiler}, which make it easy for the developer to write constraints by Circom, transpile the circuits to PLONKish Arithmetization \cite{gabizon2019plonk}, optimize the proving with the Lookup table and aggregation proof, and finally generate the proof and solidity verifier on Plonk argument. 
+The prover generate the validity proof by the \href{https://github.com/0xEigenLabs/EigenZKit}{EigenZKit}. EigenZkit is our ZKRollup \textit{compiler}, which make it easy for the developer to write constraints by Circom, transpile the circuits to PLONKish Arithmetization \cite{gabizon2019plonk}, optimize the proving with the Lookup table and aggregation proof, and finally generate the proof and solidity verifier on Plonk argument. 
 
 The Rollup contract consists of a validity proof verifier and an account merkle tree. The verifier checks the validity of the new proof with public input transaction Merkle tree root and new account Merkle tree root. The depth of account Merkle tree could be scaled to 28 or larger regarding trade-off between number of accounts and proving time complexity.  
 
@@ -386,7 +386,7 @@ We define a language $L_{transfer}$ to describe our ABL model in definition \ref
 The conjunction of $L_{transfer}$ is $\pi_{transfer}$, the sketch of the prove process is described as below in Figure \ref{fig:pi_transfer}.
 \begin{figure}[H]
     \centering
-    \caption{${L_{transfer}}$}
+    \caption{Interactive Proof of $L_{transfer}$}
     \label{fig:pi_transfer}
 \dbox{%
 \procedure[linenumbering]{Proof sketch: $\pi_{transfer}$}{
@@ -408,6 +408,8 @@ t \gets b + ev \>\> \\
 }
 }
 \end{figure}
+
+The Fiat-Shamir transformation is applied here to transmit the interactive proof to non-interactive zero knowledge proof. Easy to prove that such a public coin is Honest Verifier Zero Knowledge Proofs.
 
 \subsection{Payment Mechanism over Abstract Balance Leaf} \label{section:pay-abl}
 
@@ -704,7 +706,7 @@ We define the language $L_{block}$ on algebraic composition of $L_{transfer}$ in
 
 We translate above constraints into R1CS, transpile R1CS to Plonk Constraints, and generates the final proof $\pi_{block}$ by PlonK \cite{gabizon2019plonk}, which represents the vector of wire values as well as the different gates selectors as polynomials using interpolation. A polynomial division check ensures that the prover knows satisfying inputs and outputs for each gate, but does not ensure a correct wiring, e.g. that the output of one gate is the input to another.A permutation argument establishes the consistency of the assignment of wires to gates. The main reasons for this transpilation includes the URS setup, Pedersen Commitment/HPKE on custom gate etc.
 
-Furthermore, the optimization for recursive proof by FRI in the accumulation layer, GPU-based acceleration for EC scalar multiplication and batch opening polynomial commitments, are applied to realize a very fast block validity proof verification on previous confirmed block in Rollup chain. The implementation is presented at \href{https://github.com/ieigen/EigenZKit}{EigenZKit}.
+Furthermore, the optimization for recursive proof by FRI in the accumulation layer, GPU-based acceleration for EC scalar multiplication and batch opening polynomial commitments, are applied to realize a very fast block validity proof verification on previous confirmed block in Rollup chain. The implementation is presented at \href{https://github.com/0xEigenLabs/EigenZKit}{EigenZKit}.
 
 
 % include{zkit}
