@@ -152,11 +152,10 @@ A deep comparison with AZTEC from implementation perspective on acceleration and
 Feature & Eigen ZKZRU & AZTEC ZK-ZKRollup \\\hline
 EVM Compatibility & Partial/Language Level & Partial/Language Level \\
 
-Prover Decentralization & \color{red} Decentralized Eigen Relayer & Wasm in Browser \\
-Circuit DSL & Circom & Noir \\
-Prove System & Plonk & Plonk \\
-Recursive Proof & Yes & Yes \\
-GPU acceleration enable & \color{red} Yes & No \\
+Data Encryption & Twisted ElGamal Scheme & Commitment Scheme\\
+Account Model & Account Balance & UTXO \\
+Proof System & Mixed Proof System(KZG+FRI) & PlonK(TurboPlonk) \\
+GPU acceleration enable & Yes & Unknown \\
 Anonymous Address & Stealth Address & Nullifier \\
 
 \end{tabular}
