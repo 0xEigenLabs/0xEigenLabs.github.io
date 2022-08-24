@@ -10,9 +10,9 @@
   - [Account](/docs/usage/Account.md)
   - [Send](/docs/usage/Send.md)
   - [Exchange](/docs/usage/Exchange.md)
-  - [Tools](/docs/usage/Tools.md)
   - [Multisig Wallet](/docs/usage/MultisigWallet.md)
   - [Address Anonymity](/docs/usage/StealthAddress.md)
+  - [Privacy](/docs/usage/privacy.md)
   - [Governance](/docs/usage/Governance.md)
 
 - Whitepaper
