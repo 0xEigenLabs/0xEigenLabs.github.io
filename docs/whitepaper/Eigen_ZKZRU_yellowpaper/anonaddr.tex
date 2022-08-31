@@ -42,7 +42,7 @@ Normally, the withdrawal can be completed by proof of knowledge language \ref{si
                 \begin{array}{c}
                         (x, w) = ((M, PK, to, amount), (SIG, k)) | \\ 
                     SIG = EdDSA\_Sign(k, M) \land PK = kG \land \\
-                        EdDSA\_verify(PK, SIG, M) == true \land to.transfer(amount)
+                        EdDSA\_verify(PK, SIG, M) = true \land to.transfer(amount)
                 \end{array}    
                     \right\} 
     \end{aligned}
@@ -57,7 +57,7 @@ We simply define the Stealth Address's public key as $PK = (h + b)G$, where $h =
                 \begin{array}{c}
                         (x, w) = ((M, H, to, amount), (SIG, h, b)) | \\ 
                     SIG = EdDSA\_Sign(h+b, M) \land H = hG \land B = bG \land \\
-                        EdDSA\_verify(B + H, SIG, M) == true \land to.transfer(amount)
+                        EdDSA\_verify(B + H, SIG, M) = true \land to.transfer(amount)
                 \end{array}    
                     \right\} 
     \end{aligned}
