@@ -33,7 +33,37 @@ pk \gets H_0(S)G + \sum{H_i(S)}B_i  \>\>    \>\> \\
 \label{fig:edksap}
 \end{figure}
 
-We extend the language $L_{transfer}$ previously in definition \ref{l_transfer} to support stealth address and cut off the linkage between stealth address with it's original address by transiting the asset from stealth address to it's original address with a ZKP on our ZKRollup Chain. We enable the users to transfer the money from one account to another if it provides a proofs that he knows the secret key of the address. This mechanism works similar to Mixer, but the sender have no need to manage the Nullifier manually. 
+We extend the language $L_{transfer}$ previously in definition \ref{l_transfer} to cut off the linkage between Stealth Address with it's original address by providing a zero knowledge proof.  
+
+Normally, the withdrawal can be completed by proof of knowledge language \ref{sig_proof} on message M and public key PK.
+\begin{equation}\label{sig_proof}
+    \begin{aligned}
+        L_{withdraw} = \left\{
+                \begin{array}{c}
+                        (x, w) = ((M, PK, to, amount), (SIG, k)) | \\ 
+                    SIG = EdDSA\_Sign(k, M) \land PK = kG \land \\
+                        EdDSA\_verify(PK, SIG, M) == true \land to.transfer(amount)
+                \end{array}    
+                    \right\} 
+    \end{aligned}
+\end{equation}
+
+But the the PK in the public input can be still extracted and the rebuild the linkage to the receiver address $to$.
+We simply define the Stealth Address's public key as $PK = (h + b)G$, where $h = H_0(rV), b = \sum{H_i(S)b_i}$. To shield the linkage between $PK$ and receiver address $to$, we must hide $PK$, so we can let the random part of $PK$ be the public input, and the $B=bG$ be the private input. Hence, the proof of knowledge language can be transformed to Eq. \ref{anon_withdraw}.
+
+\begin{equation}\label{anon_withdraw}
+    \begin{aligned}
+        L_{anon\_withdraw} = \left\{
+                \begin{array}{c}
+                        (x, w) = ((M, H, to, amount), (SIG, h, b)) | \\ 
+                    SIG = EdDSA\_Sign(h+b, M) \land H = hG \land B = bG \land \\
+                        EdDSA\_verify(B + H, SIG, M) == true \land to.transfer(amount)
+                \end{array}    
+                    \right\} 
+    \end{aligned}
+\end{equation}
+
+So anyone holding the public input $H$ and $to$ can not detect the linkage between $PK$ and $to$.
 
 % \subsection{Combine Address Anonymity with Confidential Transaction} \label{section:caact}
 
