@@ -6,6 +6,7 @@
 - Eigen Secret
   - [Overview](/docs/secret/overview.md)
   - [Private Send](/docs/secret/send.md)
+  - [Local Deployment](/docs/secret/deployment.md)
 <p hidden>
 - User Guide
   - [Login](/docs/usage/Login.md)
