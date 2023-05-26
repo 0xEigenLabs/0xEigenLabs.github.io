@@ -3,6 +3,10 @@
   - EigenCC
     - [Operators](/docs/operators.md)
 
+- Eigen Secret
+  - [Overview](/docs/secret/overview.md)
+  - [Private Send](/docs/secret/send.md)
+<p hidden>
 - User Guide
   - [Login](/docs/usage/Login.md)
   - [Overview](/docs/usage/Overview.md)
@@ -14,6 +18,7 @@
   - [Address Anonymity](/docs/usage/StealthAddress.md)
   - [Privacy](/docs/usage/privacy.md)
   - [Governance](/docs/usage/Governance.md)
+</p>
 
 - Whitepaper
   - [Whitepaper](docs/whitepaper.md)
