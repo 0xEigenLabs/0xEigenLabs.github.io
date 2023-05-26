@@ -1,14 +1,19 @@
 - Eigen Network
   - [Overview](/README.md)
+
+<p hidden>
   - EigenCC
     - [Operators](/docs/operators.md)
+
+</p>
 
 - Eigen Secret
   - [Overview](/docs/secret/overview.md)
   - [Private Send](/docs/secret/send.md)
   - [Local Deployment](/docs/secret/deployment.md)
+
 <p hidden>
-- User Guide
+- Eigen NCW
   - [Login](/docs/usage/Login.md)
   - [Overview](/docs/usage/Overview.md)
   - [Activity](/docs/usage/Activity.md)
