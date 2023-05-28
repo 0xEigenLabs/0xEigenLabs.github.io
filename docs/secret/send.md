@@ -12,8 +12,10 @@ Join our TG and receive the Test Token before shielding your transaction.
 
 Starting your first private transaction via Eigen Secret is easy.
 
-1. Open [https://secret.eigen.cash](https://secret.eigen.cash/), and just `sign-up` by your Metamask;
+1. Visit [https://secret.eigen.cash](https://secret.eigen.cash/), and just `sign-up` by your Metamask;
 
-2. `deposit` the TestToken(Address: 0x0Cec6Fe05474F57E5158328E36abf2aA3BF00e70) or test MATIC to Eigen Secret L2;
+2. `deposit` test MATIC to Eigen Secret L2;
 
 3. send to L2, or wthdraw the token back to L1 as your will.
+
+![eigen-secret](./eigen-secret.png)
