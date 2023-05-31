@@ -16,6 +16,6 @@ Starting your first private transaction with test MATIC via Eigen Secret is easy
 
 2. `deposit` test MATIC to Eigen Secret L2;
 
-3. send to L2, or wthdraw the token back to L1 as your will.
+3. send to L2, or wthdraw the token back to L1 as your will. Notice that the first deposit will be super slow since we need to download the SRS files.
 
 ![eigen-secret](./send.png)
