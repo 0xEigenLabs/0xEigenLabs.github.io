@@ -4,10 +4,9 @@ Eigen Network aims to facilitate a drop-in privacy preservation protocol for eve
 
 The main functionality we provides:
 
-* Eigen ZKZRU: a new ZK-ZKRollup protocol to achieve address anonymity, smart contract data and logic confidentiality and offers users capabilities of low gas-fee confidential transaction, full Smart Contract privacy preservation and better composability of supporting most used asset like ERC20,ERC721 and ERC1166, in EVM-compatible ecosystem.
+* Eigen zkVM: a private zkVM for real Web3 mass adoption.
 
-* Eigen Secret: a decentralized, secure and self-custodial asset managermet platform, which provides keyless signing and social recovery regarding to cross-device, multi-parties collabration and fine-grained payment over Web3.0. Multi-parties ECDSA of EOA and Multisig Smart Contract Wallet are enabled for Account Abstraction.
-
+* Eigen Secret: a self-custodial private L2.
 
 # About Eigen Labs
 
@@ -17,8 +16,8 @@ The main functionality we provides:
 
 [Telegram](https://t.me/Eigen_Network)
 
-[Medium](https://medium.com/@iEigen)
+[Medium](https://eigenlab.medium.com/)
 
 # We are hiring!
 
-If you are interesting in privacy computing and blockchain, Welcome to join us!
+If you are interesting in privacy-enhancement technology and blockchain, Welcome to join us!
