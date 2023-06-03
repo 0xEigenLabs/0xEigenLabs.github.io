@@ -34,9 +34,10 @@ cd eigen-secret
 5. Update contract.json and launch the UI service
 
 ```
-cd eigen-secret-ui;
+cd eigen-secret-ui
 
-cp ../eigen-secret/.contract.json src/artifacts/contract.json
+vim eigen-secret-ui/src/NET_WORK_CONFIG.json
+
 npm run serve
 ```
 

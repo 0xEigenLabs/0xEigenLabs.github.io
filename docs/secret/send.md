@@ -4,6 +4,8 @@
 
 All the contracts of Eigen Secret on Mumbai Testnet can be found [here](https://raw.githubusercontent.com/0xEigenLabs/eigen-secret/zkpay_dev/.contract.json).
 
+The other networks we support: [Scroll](https://scroll.io/alpha), [zkSync](https://zksync.io/), [hermez zkEVM](https://wallet.polygon.technology/zkEVM-Bridge/bridge) and [Arbitrum](https://arbitrum.io/).
+
 ## Quick start
 
 Join our [TG](https://web.telegram.org/k/#@Eigen_Network) and get the Test ERC20 Token before shielding your transaction.
