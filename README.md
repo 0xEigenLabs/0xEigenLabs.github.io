@@ -6,7 +6,7 @@ The main functionality we provides:
 
 * Eigen zkVM: a private zkVM for real Web3 mass adoption.
 
-* Eigen Secret: a self-custodial private L2.
+* [Eigen Secret](https://0xeigenlabs.github.io/#/docs/secret/overview): a self-custodial private L2.
 
 # About Eigen Labs
 
@@ -17,6 +17,8 @@ The main functionality we provides:
 [Telegram](https://t.me/Eigen_Network)
 
 [Medium](https://eigenlab.medium.com/)
+
+[Link3](https://link3.to/eigen)
 
 # We are hiring!
 

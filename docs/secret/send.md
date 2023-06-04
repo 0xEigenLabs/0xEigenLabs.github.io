@@ -1,10 +1,23 @@
 # Private Transaction
 
-**NOTE**: The test network has only been deployed on [Mumbai](https://mumbai.polygonscan.com/), so make sure you have some MATIC from Mumbai Testnet before registration.
+**NOTE**: The test network has only been deployed on Scroll.
 
-All the contracts of Eigen Secret on Mumbai Testnet can be found [here](https://raw.githubusercontent.com/0xEigenLabs/eigen-secret/zkpay_dev/.contract.json).
+All the contracts of Eigen Secret on Scroll Alpha lists below.
 
-The other networks we support: [Scroll](https://scroll.io/alpha), [zkSync](https://zksync.io/), [hermez zkEVM](https://wallet.polygon.technology/zkEVM-Bridge/bridge) and [Arbitrum](https://arbitrum.io/).
+```
+{
+  "spongePoseidon": "0xE6a8BB9791448Dd2fC56abbe5A2fa9ebbF58B47a",
+  "tokenRegistry": "0x09Ad895832Cd49433125e3d265a631e06F0af434",
+  "poseidon2": "0x24f8d0e49d9F6AE15eB41EBcf3cEEA5ab077d03C",
+  "poseidon3": "0xA1d941749fBBc97852110FDa4AeD384E3C05eaCf",
+  "poseidon6": "0x8F939A14370dbd917f7B1DcC7106180a644102a8",
+  "rollup": "0x928657eBC6Ff703E3Cc9917407eC602fcF05C8A3",
+  "testToken": "0xA468870b2a5B9063356818362FbEf73fc8Ae5ECC",
+  "smtVerifier": "0x40aCa564e5B70C1a93896D814b24023cC5F7C862"
+}
+```
+
+The networks we support: [Scroll](https://scroll.io/alpha), [Mumbai](https://mumbai.polygonscan.com/). And will support [zkSync](https://zksync.io/), [hermez zkEVM](https://wallet.polygon.technology/zkEVM-Bridge/bridge) and [Arbitrum](https://arbitrum.io/).
 
 ## Quick start
 

@@ -10,6 +10,7 @@
 - Eigen Secret
   - [Overview](/docs/secret/overview.md)
   - [Private Send](/docs/secret/send.md)
+  - [Integration](/docs/secret/integration.md)
   - [Local Deployment](/docs/secret/deployment.md)
 
 <p hidden>
