@@ -43,7 +43,7 @@ EigenSecret uses an account ID/alias as Stealth Address, and binds both L1 and L
 
 EigenSecret imports an alias, so it supports Account Recovery natually.
 
-The L2 account(we call it Secret Account) has an account key and a signing key, and all are EdDSA key pair currently. the account key is used to hold the users' asset and the signing key is used to signing the L2 transaction. All the two keys can be upgraded once you found they are compromised.
+The L2 account(we call it Secret Account) has an account key and a signing key, and all are EdDSA key pair currently and are changing to EcDSA meanwhile. the account key is used to hold the users' asset and the signing key is used to signing the L2 transaction. All the two keys can be upgraded once you found they are compromised.
 
 Once you found the account key leaked, The [migrateAccount](https://0xeigenlabs.github.io/eigen-secret/classes/sdk.SecretSDK.html#migrateAccount) can be used to replace the old, and mark the old as nullifier and insert the new account into SMT on-chain.
 For signing key upgrade, [updateAccount](https://0xeigenlabs.github.io/eigen-secret/classes/sdk.SecretSDK.html#updateAccount) is provided.
@@ -65,8 +65,6 @@ Now EigenSecret is deploy on Scroll Alpha and Polygon Mumbai. Check out the [tut
 
 ### The next step
 
-* EcDSA for L2 signing scheme
+* Transparent Proving: using [starkjs](https://github.com/0xEigenLabs/eigen-zkvm/tree/main/starkjs) on user-side, and recursively prove on server-side, and finally aggreagted and synced to Layer 1.
 
-* Fast Proving
-
-* Data Availability
+* Data Availability: The L2 transaction would be stored in L1 once EIP4844 supported.
