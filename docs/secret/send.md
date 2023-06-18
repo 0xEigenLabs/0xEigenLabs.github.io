@@ -1,6 +1,6 @@
 # Private Transaction
 
-**NOTE**: The test network has only been deployed on Scroll.
+**NOTE**: The test network has been deployed on Scroll Alpha and Polygon Mumbai.
 
 All the contracts of Eigen Secret on Scroll Alpha lists below.
 
