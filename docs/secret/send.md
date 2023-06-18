@@ -25,7 +25,7 @@ Join our [TG](https://web.telegram.org/k/#@Eigen_Network) and get the Test ERC20
 
 Starting your first private transaction with test MATIC via Eigen Secret is easy.
 
-1. Visit [https://secret.eigen.cash](https://secret.eigen.cash/), and just `sign-up` by your Metamask;
+1. Visit [Eigen Secret on Scroll Alpha](https://secret.eigen.cash/) or [Eigen Secret on Polygon Mumbai](https://polysecret.eigen.cash/), and just `sign-up` by your Metamask;
 
 ![login](./login.png)
 
