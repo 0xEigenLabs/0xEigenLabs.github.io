@@ -34,3 +34,7 @@ Starting your first private transaction with test MATIC via Eigen Secret is easy
 3. send to L2, or wthdraw the token back to L1 as your will. Notice that the first deposit will be super slow since we need to download the SRS files.
 
 ![eigen-secret](./send.png)
+
+4. After the trade, you can click the transaction hitory and check out the transaction detail
+
+![transcation](./explorer.png)
