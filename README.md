@@ -4,7 +4,7 @@ Eigen Network aims to facilitate a drop-in privacy preservation protocol for eve
 
 The main functionality we provides:
 
-* Eigen zkVM: a private zkVM for real Web3 mass adoption.
+* [Eigen zkVM](https://github.com/0xEigenLabs/eigen-zkvm): a private zkVM for real Web3 mass adoption.
 
 * [Eigen Secret](https://0xeigenlabs.github.io/#/docs/secret/overview): a self-custodial private L2.
 
