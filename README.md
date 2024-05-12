@@ -1,25 +1,99 @@
-# Eigen Network
+# Eigen zkVM Developer Documentation Site
+Eigen Network builds the general-purpose zkVM with native privacy-preserving technology support on its modular proof system.
 
-Eigen Network aims to facilitate a drop-in privacy preservation protocol for every Web3 participant in EVM-compatible ecosystem.
+## Highlights
+* Developer friendly
+Built on RISCV microarchitecture and making it possible for most of the RISCV program to be proved
+Enable the developer to write Rusty circuits
 
-The main functionality we provides:
+* Modular proof system:
+The first Rust eSTARK implementation, and support eSTARK-to-Groth16/Plonk
+Support BN12381 and BN254 for on-chain verification
 
-* [Eigen zkVM](https://github.com/0xEigenLabs/eigen-zkvm): a private zkVM for real Web3 mass adoption.
+* Continuation and proof composition
+Allow the program to be split into multiple chunks, and all the chunks are proved parallelly.
 
-* [Eigen Secret](https://0xeigenlabs.github.io/#/docs/secret/overview): a self-custodial private L2.
+* Universal proof aggregation
+Aggregates proofs for different circuits to reduce the average gas cost for end users.
 
-# About Eigen Labs
 
-[Eigen Network](https://www.eigen.cash/)
+## Dependencies
+To work on this site you will need:
+- Linux or macOS (Windows may work, but is unsupported).
+- Ruby, version 2.3.1 or newer
+- Bundler — If Ruby is already installed, but the bundle command doesn't work,
+just run `gem install bundler:1.16.3` in a terminal.
+- [Pandoc](https://pandoc.org/installing.html)
 
-[Twitter](https://twitter.com/Eigen_Network)
+## Build
 
-[Telegram](https://t.me/Eigen_Network)
+Build site and slate API docs from the project's root directory:
+```bash
+./bin/build
+```
 
-[Medium](https://eigenlab.medium.com/)
+## Run
 
-[Link3](https://link3.to/eigen)
+To view the site locally, execute the build command first, and then run a simple
+http server from the project's `/build` directory:
 
-# We are hiring!
+```bash
+$ cd build
+```
 
-If you are interesting in privacy-enhancement technology and blockchain, Welcome to join us!
+Python2:
+
+```bash
+$ python -m SimpleHTTPServer 8080
+```
+
+Python3:
+
+```bash
+$ python -m http.server 8080
+```
+
+Ruby:
+```bash
+$ ruby -run -e httpd . -p 8080
+```
+
+Node.js:
+```bash
+$ npm install -g http-server
+$ http-server -p 8080
+```
+
+The site will run at [http://localhost:8080](http://localhost:8080).
+
+## Updating API Docs
+The [API Documentation](https://0xeigenlabs.github.io/api-docs/index.html)
+runs on the Open Source [Slate Framework](https://github.com/lord/slate).
+To make an update, fork the repo and make the changes to the appropriate
+markdown in this [file directory](https://github.com/0xEigenLabs/0xEigenLabs.github.io/tree/master/src/api-docs/source/includes/).
+To use livereload while working on the API docs, use middleman livereload like so:
+``` bash
+$ cd ./0xeigenlabs.github.io/src/api-docs/
+$ bundle install
+$ bundle exec middleman server
+```
+
+When your PR is merged the new docs will be deployed to the live docs page.
+
+## Guide Contribution Guidelines
+### Submitting Ideas
+Have an idea for a guide or tutorial? First head on over to the
+[GitHub issues](https://github.com/0xEigenLabs/0xeigenlabs.github.io/issues)
+and see if your idea is already posted. If not, create an issue.
+
+### Don't commit built files
+Pull requests should only include changes to files in the `src` directory.
+Releases will be done that build and deploy.
+
+### Adding a New Guide
+To add a new guide, just a submit a pull request (PR) with a markdown
+file added to the `src/guides` directory in this repo (take a look at
+some of the other guides [here](https://github.com/0xEigenLabs/0xeigenlabs.github.io/tree/master/src/guides)).
+If your PR is accepted, it will added to the website.
+
+Be sure to build the site before submitting your PR.

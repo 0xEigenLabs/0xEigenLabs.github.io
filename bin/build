@@ -1,0 +1,54 @@
+#!/bin/bash
+set -e
+
+# enter project root dir
+cd `dirname $0`
+cd ../
+
+# convert .md to .html files
+echo 'converting markdown files to html...'
+
+mkdir -p ./build/install
+cp -r ./static/* ./build
+
+# find ./src -iname '*.md' | grep -v './src/api-docs.*$'
+files=`find ./src -iname '*.md' | grep -v '^./src/api-docs.*$'`
+
+for file in $files;
+do
+  prefix=`basename $file | cut -d. -f1`
+  # e.g. ./src/guides or ./src
+  dirname=`dirname $file`
+  # e.g. /guides or empty (if ./src)
+  dir_prefix=${dirname/#.\/src/}
+
+  dir_class_prefix=""
+  dir_path=""
+
+  if [[ $dir_prefix != "" ]]; then
+    # replace / with - (that's why we left it there)
+    # makes /guides to -guides (/guides/something to -guides-something)
+    dir_class_prefix=${dir_prefix//\//-}
+
+    # clean version (w/o prefix)
+    # /guides to guides/ (/guides/something to guides/something/)
+    dir_path=${dir_prefix/#\//}/
+  fi
+
+  output="./build/${dir_path}${prefix}.html"
+  mkdir -p `dirname $output`
+
+  pandoc $file -T $prefix \
+    -V "active${dir_class_prefix}-$prefix:true" \
+    -V "ghpath:${dir_path}${prefix}" \
+    -V "pagetitle:${prefix}" \
+    -o "./build/${dir_path}${prefix}.html" \
+    -w html5 --template ./src/templates/layout.html
+done
+echo "Finished."
+
+# build API documentation
+echo 'building api documentation...'
+cd ./src/api-docs
+BUNDLE_PATH="../../build/vendor" bundle install --jobs 4
+BUNDLE_PATH="../../build/vendor" bundle exec middleman build --clean --build-dir=../../build/api-docs
