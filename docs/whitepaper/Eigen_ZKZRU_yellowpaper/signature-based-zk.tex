@@ -1,0 +1,121 @@
+
+Signature-based\cite{camenisch2008efficient} Membership scheme is simple, efficient and easy to implement ZKSM and ZKRP.  Eigen ZKZRU uses this scheme, and implements the Boneh-Boyen signatures \cite{jao2009boneh} based ZKRP and ZKSM.
+
+
+\subsubsection{Signature-based Approach for ZKSM and ZKRP}
+
+The main idea of this protocols is that the verifier with key pair $<x, y = g^x>$ initially computes digital signature($\sigma = g^{1/(x+m)}$) for each element in the target set $\Phi$. The prover then blinds this digital signature by raising it to randomly chosen exponent $v \in \ZZ_p$, such that it's computationally infeasible to determine which element is signed. The prover then uses the pairing to compute the proof and this pairing allows the verifier to check that indeed one of the element from $\Phi$ were initially chosen,via checking $e(\sigma, yg^m) \overset{?}{=} e(g, g)$.
+
+The Signature-based ZKSM is presented in Algorithm \ref{alg:sig-sm} and the Signature-based ZKRP is presented in Algorithm \ref{alg:sig-rp}. The ZKRP is built on ZKSM by transforming the elements in the range to a set.
+
+The communication complexity of Signature-based ZKRP would be 
+\begin{equation}
+    Com(u, l) = O(\frac{k}{logk - loglogk})
+\end{equation}
+
+where given $u = \frac{k}{logk}$ 
+and which is asymptotically smaller than O(k) from the evaluation result of \cite{camenisch2008efficient}. In our implementation, we set u = 2, and k will be equals to l exactly.
+
+
+\begin{algorithm}
+ \caption{Signature-based ZKSM: Zero-knowledge Set Membership proof}
+    \label{alg:sig-sm}
+    \LinesNumbered
+
+    \KwIn{choose $\mathcal{G}$ as the base point of an elliptic curve group, g and h are two different generators of $\mathcal{G}$, a oracle hash function H, and a commitment scheme C}.
+
+    \KwOut{$proof_{ZKSM}$}
+    
+  \SetKwFunction{FSetup}{Setup}
+  \SetKwFunction{FProve}{Prove}
+  \SetKwFunction{FVerify}{Verify}
+  % Write Function with word ``Function''
+  \SetKwProg{Fn}{Function}{:}{}
+  \Fn{\FSetup{$S: set$}}{
+        choose $ x \in_{R} \ZZ_p$ \; 
+        let $y = g^x$ \; 
+        \For {$i \in S$ } {  
+            $A_i = g^{\frac{1}{x+i}}$ \; 
+        }
+        \KwRet y, [$A_i$]\;
+  }
+  \;
+
+  \SetKwProg{Fn}{Function}{:}{}
+  \Fn{\FProve{}}{
+        $\tau \in_R \ZZ_p$ \;
+        $V = A_\delta^\tau$ \;
+        $s, t, m \in_R \ZZ_p$ \;
+        $a = e(V, g)^{-s}\cdot e(g, g)^t$ \;
+        $D = g^sh^m$ \;
+        $c = H(V, a, D)$ \;
+        $z_\delta = s - \delta c$ \;
+        $z_\tau = t - \tau c$ \;
+        $z_\gamma = m - \gamma c$ \;
+        \KwRet $C = g^\delta h^\gamma, proof_{ZKSM} = (V, a, D, z_\delta, z_\tau, z_\gamma)$ \;
+  }
+  \;
+
+  \SetKwProg{Fn}{Function}{:}{\KwRet}
+  \Fn{\FVerify{$C, proof_{ZKSM}$}}{
+        \KwRet $D \overset{?}{=} C^c h^{z_\gamma} g^{z_\delta} \land a \overset{?}{=}e(V, y)^c \cdot e(V, g)^{-z_\delta}\cdot e(g,g)^{z_\tau}$ \;
+  }
+
+\end{algorithm}
+
+
+\begin{algorithm}
+ \caption{Signature-based ZKRP: Zero-knowledge Range Proof for interval $[0, u^l)$}
+    \label{alg:sig-rp}
+    \LinesNumbered
+
+    \KwIn{choose $\mathcal{G}$ as the base point of an elliptic curve group, g and h are two different generators of $\mathcal{G}$, a oracle hash function H, and a commitment C, $u, l \in N$}.
+    
+  \SetKwFunction{FSetup}{Setup}
+  \SetKwFunction{FProve}{Prove}
+  \SetKwFunction{FVerify}{Verify}
+  % Write Function with word ``Function''
+  \SetKwProg{Fn}{Function}{:}{}
+  \Fn{\FSetup{$S: set$}}{
+        choose $ x \in_{R} \ZZ_p$ \; 
+        let $y = g^x$ \; 
+        \For {$i \in S$ } {  
+            $A_i = g^{\frac{1}{x+i}}$ \; 
+        }
+        \KwRet y, [$A_i$]\;
+  }
+  \;
+
+  \SetKwProg{Fn}{Function}{:}{}
+  \Fn{\FProve{}}{
+        Find $[\delta_j]$ s.t. $\delta = \sum_j\delta_j u^j$ \;
+        $\tau_j \in_R \ZZ_p$ \;
+        Set D to the identity element in $\mathcal{G}$ \;
+        \For {$j \in Z_l $} {
+            $V_j = A_{\delta_j}^{\tau_j}$ \;
+            $s_j, t_j, m_j \in_R \ZZ_p$ \;
+            $a_j = e(V_j, g)^{- s_j} \cdot e(g, g)^{t_j}$ \;
+            $ D = D g^{u^j s_j} g^{m_j}$.
+        }
+        $c = H([V_j], a, D)$. \\
+        \For {$ j \in Z_l$} {
+            $z_{\delta_j} = s_j-\delta_j c$ \;
+            $z_{\tau_j} = s_j-\tau_j c$ \;
+        }
+        $z_{\gamma} = m-\gamma c$ \;
+        \KwRet $proof_{ZKRP} = (z_\gamma, [z_{\delta_j}], [z_{\tau_j}])$;
+  }
+  \;
+
+  \SetKwProg{Fn}{Function}{:}{\KwRet}
+  \Fn{\FVerify{$C, proof_{ZKSM}$}}{
+        Set $a = true$
+        \For {$j \in Z_l$} {
+            $a = a \land (a_j \overset{?}{=} e(V_j, y)^c \cdot e(V_j, g)^{-z_{\delta_j}} \cdot e(g, g)^{z_\gamma{_j}})$.
+        }
+        \KwRet $D \overset{?}{=} C^c h^{z_r} \prod_j {u^j z_{\delta_j}} \land a$\;
+  }
+
+\end{algorithm}
+
+The signature-based ZKSM and ZKRP is simple to implement, and the time/communication complexity is low. For a big interval, Boudot's \cite{boudot2000efficient} is better, since the verification doesn't depend on the size of the secret, but the Prove algorithm becomes $O(n^4)$. To sum up, Eigen ZKZRU executes the universal trustup in TEE or by a trusted third party for all the range between 1-1e14 (GWEI). We implements Algorithm \ref{alg:sig-sm} and Algorithm\ref{alg:sig-rp} by \href{https://github.com/iden3/circom}{Circom}.
