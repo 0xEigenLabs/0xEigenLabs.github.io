@@ -57,33 +57,15 @@
    \/__/  
 </pre>
 
-<h2 id="integration-with-your-dapps">Integration with your DApps</h2>
-<p>It’s easy to integrate DApps with EigenSecret via <a href="https://0xeigenlabs.github.io/eigen-secret/classes/sdk.SecretSDK.html">SecretSDK</a>. To initialize the SecretSDK instance, you need ,</p>
-<pre><code>user: ethers.Signer = &lt;your address&gt;
-const signature = await signEOASignature(user, rawMessage, user.address, timestamp);
-const ctx = new Context(
-  alias,
-  user.address,
-  rawMessage,
-  timestamp,
-  signature
-);
-const contractJson = require(defaultContractFile);
-
-let secretSDK = await SecretSDK.initSDKFromAccount(
-    ctx, defaultServerEndpoint, password, user, contractJson, defaultCircuitPath, defaultContractABI
-);</code></pre>
-<p>The password is to encrypt your L2 account currently, but will be deprecated and replaced by Google Drive, or external TSS key service to host in the next version.</p>
-<p>The SecretSDK provides quite simple account and transaction interface.</p>
-<ul>
-<li>Account: the <a href="https://0xeigenlabs.github.io/eigen-secret/classes/sdk.SecretSDK.html#createAccount">create</a>, <a href="https://0xeigenlabs.github.io/eigen-secret/classes/sdk.SecretSDK.html#migrateAccount">migrate</a> and <a href="https://0xeigenlabs.github.io/eigen-secret/classes/sdk.SecretSDK.html#updateAccount">update</a> interface are used to create a new L2 account, change account key and change signing key correspondingly.</li>
-<li>Transaction: the <a href="https://0xeigenlabs.github.io/eigen-secret/classes/sdk.SecretSDK.html#deposit">deposit</a>, <a href="https://0xeigenlabs.github.io/eigen-secret/classes/sdk.SecretSDK.html#send">send</a> and <a href="https://0xeigenlabs.github.io/eigen-secret/classes/sdk.SecretSDK.html#withdraw">withdraw</a> are used to send asset from L1 to L2, L2 to L2 and L2 to L1 correspondingly.</li>
-</ul>
-<p>Check out <a href="https://github.com/0xEigenLabs/eigen-secret/tree/main/tasks">tasks</a> and learn how to use the interfaces.</p>
+<p hidden>
+<a href="https://github.com/0xEigenLabs/0xeigenlabs.github.io/blob/main/docs/whitepaper/Eigen_Network_Whitepaper_v1.0.pdf">Eigen Network Whitepaper v1</a>
+</p>
+<p><a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/0xEigenLabs/0xEigenLabs.github.io/main/docs/whitepaper/Eigen_ZKZRU_yellowpaper.pdf">Eigen zk-zkRollup(Prerelease)</a></p>
+<p><a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/0xEigenLabs/0xEigenLabs.github.io/main/docs/whitepaper/Eigen_zkVM.pdf">Eigen zkVM</a></p>
 
 <hr/>
 <h4>See a mistake? Open a pull request.</h4>
-<a href="https://github.com/0xEigenLabs/0xeigenlabs.github.io/blob/main/src/secret/integration.md">https://github.com/0xEigenLabs/0xeigenlabs.github.io/blob/master/src/secret/integration.md</a>
+<a href="https://github.com/0xEigenLabs/0xeigenlabs.github.io/blob/main/src/whitepaper/overview.md">https://github.com/0xEigenLabs/0xeigenlabs.github.io/blob/master/src/whitepaper/overview.md</a>
 </section>
 </main>
 
