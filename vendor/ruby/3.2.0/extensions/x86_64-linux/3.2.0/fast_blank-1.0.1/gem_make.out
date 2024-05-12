@@ -1,0 +1,18 @@
+current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io/build/vendor/ruby/3.2.0/gems/fast_blank-1.0.1/ext/fast_blank
+/opt/hostedtoolcache/Ruby/3.2.0/x64/bin/ruby -I /opt/hostedtoolcache/Ruby/3.2.0/x64/lib/ruby/3.2.0 extconf.rb
+creating Makefile
+
+current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io/build/vendor/ruby/3.2.0/gems/fast_blank-1.0.1/ext/fast_blank
+make DESTDIR\= sitearchdir\=./.gem.20240512-2078-sg2hrw sitelibdir\=./.gem.20240512-2078-sg2hrw clean
+
+current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io/build/vendor/ruby/3.2.0/gems/fast_blank-1.0.1/ext/fast_blank
+make DESTDIR\= sitearchdir\=./.gem.20240512-2078-sg2hrw sitelibdir\=./.gem.20240512-2078-sg2hrw
+compiling fast_blank.c
+linking shared-object fast_blank.so
+
+current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io/build/vendor/ruby/3.2.0/gems/fast_blank-1.0.1/ext/fast_blank
+make DESTDIR\= sitearchdir\=./.gem.20240512-2078-sg2hrw sitelibdir\=./.gem.20240512-2078-sg2hrw install
+/usr/bin/install -c -m 0755 fast_blank.so ./.gem.20240512-2078-sg2hrw
+
+current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io/build/vendor/ruby/3.2.0/gems/fast_blank-1.0.1/ext/fast_blank
+make DESTDIR\= sitearchdir\=./.gem.20240512-2078-sg2hrw sitelibdir\=./.gem.20240512-2078-sg2hrw clean
