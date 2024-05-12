@@ -9,10 +9,10 @@ creating extconf.h
 creating Makefile
 
 current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io/build/vendor/ruby/3.2.0/gems/ffi-1.15.5/ext/ffi_c
-make DESTDIR\= sitearchdir\=./.gem.20240512-2102-5s7v8s sitelibdir\=./.gem.20240512-2102-5s7v8s clean
+make DESTDIR\= sitearchdir\=./.gem.20240512-2035-4xh91k sitelibdir\=./.gem.20240512-2035-4xh91k clean
 
 current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io/build/vendor/ruby/3.2.0/gems/ffi-1.15.5/ext/ffi_c
-make DESTDIR\= sitearchdir\=./.gem.20240512-2102-5s7v8s sitelibdir\=./.gem.20240512-2102-5s7v8s
+make DESTDIR\= sitearchdir\=./.gem.20240512-2035-4xh91k sitelibdir\=./.gem.20240512-2035-4xh91k
 compiling AbstractMemory.c
 compiling ArrayType.c
 compiling Buffer.c
@@ -39,8 +39,8 @@ compiling ffi.c
 linking shared-object ffi_c.so
 
 current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io/build/vendor/ruby/3.2.0/gems/ffi-1.15.5/ext/ffi_c
-make DESTDIR\= sitearchdir\=./.gem.20240512-2102-5s7v8s sitelibdir\=./.gem.20240512-2102-5s7v8s install
-/usr/bin/install -c -m 0755 ffi_c.so ./.gem.20240512-2102-5s7v8s
+make DESTDIR\= sitearchdir\=./.gem.20240512-2035-4xh91k sitelibdir\=./.gem.20240512-2035-4xh91k install
+/usr/bin/install -c -m 0755 ffi_c.so ./.gem.20240512-2035-4xh91k
 
 current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io/build/vendor/ruby/3.2.0/gems/ffi-1.15.5/ext/ffi_c
-make DESTDIR\= sitearchdir\=./.gem.20240512-2102-5s7v8s sitelibdir\=./.gem.20240512-2102-5s7v8s clean
+make DESTDIR\= sitearchdir\=./.gem.20240512-2035-4xh91k sitelibdir\=./.gem.20240512-2035-4xh91k clean
