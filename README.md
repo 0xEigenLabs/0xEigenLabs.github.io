@@ -1,22 +1,6 @@
 # Eigen zkVM Developer Documentation Site
 Eigen Network builds the general-purpose zkVM with native privacy-preserving technology support on its modular proof system.
 
-## Highlights
-* Developer friendly
-Built on RISCV microarchitecture and making it possible for most of the RISCV program to be proved
-Enable the developer to write Rusty circuits
-
-* Modular proof system:
-The first Rust eSTARK implementation, and support eSTARK-to-Groth16/Plonk
-Support BN12381 and BN254 for on-chain verification
-
-* Continuation and proof composition
-Allow the program to be split into multiple chunks, and all the chunks are proved parallelly.
-
-* Universal proof aggregation
-Aggregates proofs for different circuits to reduce the average gas cost for end users.
-
-
 ## Dependencies
 To work on this site you will need:
 - Linux or macOS (Windows may work, but is unsupported).

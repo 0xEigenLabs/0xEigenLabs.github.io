@@ -19,7 +19,7 @@ For the best experience of Privacy on ETH, EigenSecret aims to achieve Decentral
 The asset model is built on extended UTXO, each UTXO is attached to a SMT leaf, and also the transition on UTXO is proved by zkSnark.
 
 <center>
-<img src="https://raw.githubusercontent.com/0xEigenLabs/ieigen.github.io/main/docs/secret/zk-smt.png" width="75%">
+<img src="/img/secret/zk-smt.png" width="75%">
 </center>
 
 * Stealth Address
@@ -30,7 +30,7 @@ Here we use one typical digram from above post to do a brief introduction.
 
 
 <center>
-<img src="https://raw.githubusercontent.com/0xEigenLabs/ieigen.github.io/main/docs/secret/zk_stealth.png">
+<img src="/img/secret/zk_stealth.png">
 </center>
 
 Similarly with classical Key Exchange Protocol, as the basic of TLS/HTTPS, is used to build an encryption communication channel between two individuals without middleman attacks or stealings.
@@ -53,7 +53,7 @@ The signing key is also used to encrypt the transaction to prevent
 
 * Aggregation Proof
 
-All circuits are implemented by Circom 2 and proved by [eigen-zkit](https://github.com/0xEigenLabs/eigen-zkvm/tree/main/zkit). The eigen-zkit allow the proof of each transaction being aggregated to decrease the user's gas cost.
+All circuits are implemented by Circom 2 and proved by [eigen-zkvm/zkit](https://github.com/0xEigenLabs/eigen-zkvm/tree/main/zkit). The eigen-zkit allow the proof of each transaction being aggregated to decrease the user's gas cost.
 
 
 ### How to use it
