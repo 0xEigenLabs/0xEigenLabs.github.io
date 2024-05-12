@@ -17,3 +17,12 @@ Allow the program to be split into multiple chunks, and all the chunks are prove
 * Universal proof aggregation
 Aggregates proofs for different circuits to reduce the average gas cost for end users.
 
+
+## Architecture
+
+We focues on build the Proof market and Aggregation layer for zkVM ecosystem.
+
+<center>
+<img src="/img/overview/proof-market.png">
+</center>
+
