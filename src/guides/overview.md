@@ -26,3 +26,13 @@ We focues on build the Proof market and Aggregation layer for zkVM ecosystem.
 <img src="/img/overview/proof-market.png">
 </center>
 
+
+## Learn more
+
+[Eigen Network](https://www.eigen.cash/)
+
+[Twitter](https://twitter.com/Eigen_Network)
+
+[Telegram](https://t.me/Eigen_Network)
+
+[Medium](https://eigenlab.medium.com/)

@@ -21,15 +21,26 @@ eigen-sdk-js:  Like web3.js for Ethereum, it’s a Javascript SDK to interact wi
 eigen-zeth:  a customized zkEVM node.
 
 ## How it works
-For Cardano/TON,  the address is derived from different elliptic curves from ETH.
+For Cardano/TON account, the address is derived from different elliptic curves from ETH, so is the EC pairing scheme. 
+
+|   | Signature Scheme | EC Pairings|
+|---|---|---|
+| Ethereum | ECDSA  | BN254  |
+| Cadano  |  Ed25519 | BLS12381  | 
+|  TON |  Ed25519 | BLS12381  | 
+
+
 
 **L1 -> L2**
 
 * Deposit on L1:
 
-insert a new leaf on the L1 Merkle tree, and the user gets the Merkle proof p_1.
+The user calls the `bridgeAsset` method on L1 smart contract, and deposits an amount of asset into the bridge contract, the `bridgeAsset` inserts a new leaf on the L1 Merkle tree and emits an event of the `bridgeAsset` paramters, the user watches the on-chain events and calculates the Merkle Proof p_1 locally, where:
+
+```
 Leaf := amount and public key(pk_l2)
-Merkle proof := <leaf, merkle path>
+Merkle Proof := <Leaf, Merkle path>
+```
 
 * Claim on L2:
 
@@ -46,9 +57,12 @@ In the L2 bridge contract, it does:
 
 **L2 -> L1**
 
-insert a new leaf on the L2 Merkle tree, and the user gets the Merkle proof p_2.
+The user calls the `bridgeAsset` method on L2 smart contract, and deposits an amount of asset into the bridge contract, the `bridgeAsset` inserts a new leaf on the L2 Merkle tree and emits an event of the `bridgeAsset` paramters, the user watches the on-chain events and calculates the Merkle Proof p_2 locally, where:
+
+```
 Leaf := amount and public key(pk_l1)
-Merkle proof := <leaf, merkle path>
+Merkle Proof := <Leaf, merkle path>
+```
 
 In the L1 bridge contract, it does:
 

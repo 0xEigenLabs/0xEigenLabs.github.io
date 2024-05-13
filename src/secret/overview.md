@@ -60,7 +60,7 @@ All circuits are implemented by Circom 2 and proved by [eigen-zkvm/zkit](https:/
 
 Easy-to-integrate and Easy-to-use means developer and user friendly, which is EigenSecet's design rationale. We provide Web and Node [SDK](https://0xeigenlabs.github.io/eigen-secret/classes/sdk.SecretSDK.html) and a very simple UX.
 
-Now EigenSecret is deploy on Scroll Alpha and Polygon Mumbai. Check out the [tutoral](https://0xeigenlabs.github.io/#/docs/secret/send) for a try.
+Now EigenSecret is deploy on Scroll Alpha and Polygon Mumbai. Check out the [tutoral](/secret/send.html) for a try.
 
 
 ### The next step

@@ -9,3 +9,11 @@
 * Proof Aggregation Layer
     - We focus on building a universal proof aggregation layer on our distributed proof generation service, deployed on the third-party prover network.
 
+
+# Business Parnters
+
+* Fourier Labs
+* zkPass
+* Powdr Labs
+* Ever4land
+* Metis Foundation
