@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Eigen zkVM Developer Documentation</title>
+
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link rel="icon" type="image/ico" href="/img/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/css/github-markdown.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/main.css" />
+</head>
+
+<body>
+<header>
+  <a href="/"><img alt="Eigen zkVM logo" src="/img/logo.png" /></a>
+</header>
+
+<main>
+<nav><div class="wrapper">
+  <ul>
+    <li><strong>Eigen Labs</strong></li>
+    <li><a id="eigen-labs"   href="/guides/overview.html">Overview</a></li>
+    <li><a id="eigen-apps"   href="/guides/application.html">Application</a></li>
+  </ul>
+  <ul>
+    <li><strong>Eigen zkVM</strong></li>
+    <li><a id="guides-zkvm"   href="/guides/zkvm.html">Eigen zkVM</a></li>
+    <li><a id="guides-trustless-bridge"  class="active"  href="/guides/trustless-bridge.html">Trustless Bridge</a></li>
+    <li><a id="guides-eigen-prover"   href="/guides/prover.html">Eigen Prover</a></li>
+    <li><a id="guides-eigen-zeth"   href="/guides/zeth.html">Eigen Zeth</a></li>
+  </ul>
+  <ul>
+    <li><strong>Eigen Secret</strong></li>
+    <li><a id="eigen-secret-overview"   href="/secret/overview.html">Overview</a></li>
+    <li><a id="eigen-secret-send"   href="/secret/send.html">Eigen Send</a></li>
+    <li><a id="eigen-secret-deployment"   href="/secret/deployment.html">Deployment</a></li>
+    <li><a id="eigen-secret-integration"   href="/secret/integration.html">Integration</a></li>
+  </ul>
+  <ul>
+    <li><strong>White Paper</strong></li>
+    <!-- <li><a href="/api-docs">API Docs</a></li> -->
+    <li><a id="whitepaper"   href="/whitepaper/overview.html">Overview</a></li>
+  </ul>
+</div></nav>
+
+<section class="markdown-body">
+<pre class="lynx">
+    ___   
+   /\__\  
+  /:/__/_ 
+ /::\/\__\
+ \/\::/  /
+   /:/  / 
+   \/__/  
+</pre>
+
+<h1 id="eigen-trustless-bridge">Eigen Trustless Bridge</h1>
+<p>The bridge handles the asset briding between L1 and L2.</p>
+<center>
+<img src="/img/zkvm/zkvm-bridge.png">
+</center>
+<p>Bridge.sol: A smart contract deployed on both L1 and L2, allowing the end user to deposit assets into, the smart contract mains a Merkle Tree, and each deposit will generate a Merkle Proof. The end user uses this Merkle Proof to claim its asset on L2/L1.</p>
+<p>GlobalExitRoot.sol/GlobalExitRoot.sol: maintain the valid Merkle Tree Root for L1/L2.</p>
+<p>Verifier.sol: A smart contract verifying the Groth16 proof from L2.</p>
+<p>Bridge-service: A L1 smart contract client built on eigen-sdk-js. The Cardano and TON should integrate its <code>web3.js</code> into the bridge service.</p>
+<p>eigen-sdk-js: Like web3.js for Ethereum, it’s a Javascript SDK to interact with Ethereum Smart contract and L2 node(eigen-zeth). The Cardano and TON use it to communicate with L2 only.</p>
+<p>eigen-zeth: a customized zkEVM node.</p>
+<h2 id="how-it-works">How it works</h2>
+<p>For Cardano/TON, the address is derived from different elliptic curves from ETH.</p>
+<p><strong>L1 -&gt; L2</strong></p>
+<ul>
+<li>Deposit on L1:</li>
+</ul>
+<p>insert a new leaf on the L1 Merkle tree, and the user gets the Merkle proof p_1. Leaf := amount and public key(pk_l2) Merkle proof := &lt;leaf, merkle path&gt;</p>
+<ul>
+<li>Claim on L2:</li>
+</ul>
+<p>The user submits a transaction to eigen-zeth, which contains the Merkle proof p_1 as it’s calldata.</p>
+<p>In the L2 bridge contract, it does:</p>
+<ol type="1">
+<li><p>[NOT NEED]Verify the public key(pk_l1) in the leaf, is well mapped to the user’s L2 public key, pk_l2;</p></li>
+<li><p>Verify the Merkle proof with the leaf;</p></li>
+<li><p>If step 2 succeeds, Mint the L2 token to pk_l2 with <code>leaf.amount</code>; or deny the minting request.</p></li>
+</ol>
+<p><strong>L2 -&gt; L1</strong></p>
+<p>insert a new leaf on the L2 Merkle tree, and the user gets the Merkle proof p_2. Leaf := amount and public key(pk_l1) Merkle proof := &lt;leaf, merkle path&gt;</p>
+<p>In the L1 bridge contract, it does:</p>
+<ol type="1">
+<li><p>Verify the ZKP, the ZKP is to verify the correct execution of the L2 state tree. The state tree keeps track of the state transition in the L2 smart contract. The problem is that we can not bind the ZKP with transactions/batch content right now.</p></li>
+<li><p>Verify the Merkle proof with the leaf;</p></li>
+<li><p>If step 2 succeeds, Unlock the L1 token to pk_l1 with <code>leaf.amount</code>; or deny the unlocking request.</p></li>
+</ol>
+
+<hr/>
+<h4>See a mistake? Open a pull request.</h4>
+<a href="https://github.com/0xEigenLabs/0xeigenlabs.github.io/blob/main/src/guides/trustless-bridge.md">https://github.com/0xEigenLabs/0xeigenlabs.github.io/blob/master/src/guides/trustless-bridge.md</a>
+</section>
+</main>
+
+<footer id="footer">
+  &copy;&nbsp;2024 EigenLabs Community<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">(Creative Commons Attribution-ShareAlike 4.0 International License)</a>
+</footer>
+</body>
+
+</html>
