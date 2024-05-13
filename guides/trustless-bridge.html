@@ -36,7 +36,7 @@
   <ul>
     <li><strong>Eigen Secret</strong></li>
     <li><a id="eigen-secret-overview"   href="/secret/overview.html">Overview</a></li>
-    <li><a id="eigen-secret-send"   href="/secret/send.html">Eigen Send</a></li>
+    <li><a id="eigen-secret-send"   href="/secret/send.html">Send</a></li>
     <li><a id="eigen-secret-deployment"   href="/secret/deployment.html">Deployment</a></li>
     <li><a id="eigen-secret-integration"   href="/secret/integration.html">Integration</a></li>
   </ul>
@@ -70,7 +70,33 @@
 <p>eigen-sdk-js: Like web3.js for Ethereum, it’s a Javascript SDK to interact with Ethereum Smart contract and L2 node(eigen-zeth). The Cardano and TON use it to communicate with L2 only.</p>
 <p>eigen-zeth: a customized zkEVM node.</p>
 <h2 id="how-it-works">How it works</h2>
-<p>For Cardano/TON account, the address is derived from different elliptic curves from ETH.</p>
+<p>For Cardano/TON account, the address is derived from different elliptic curves from ETH, so is the EC pairing scheme.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Signature Scheme</th>
+<th>EC Pairings</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ethereum</td>
+<td>ECDSA</td>
+<td>BN254</td>
+</tr>
+<tr class="even">
+<td>Cadano</td>
+<td>Ed25519</td>
+<td>BLS12381</td>
+</tr>
+<tr class="odd">
+<td>TON</td>
+<td>Ed25519</td>
+<td>BLS12381</td>
+</tr>
+</tbody>
+</table>
 <p><strong>L1 -&gt; L2</strong></p>
 <ul>
 <li>Deposit on L1:</li>
