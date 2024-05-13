@@ -3,8 +3,8 @@
 * Proof Market
     - ZkEVM: The team is building the zkEVM for Cardano and will reuse the same solution for TON.
     - Zk middleware
-        - Zk Identity: we used to back some ZK Pass projects  to implement their ZKP circuit;
-        - We built eigen-secret, which is a zkRollup for the private transaction
+        - Zk Identity: implement Credible Claims with inherenting limitations of centralized identity system designs
+        - Eigen Secret: implement private transaction layer support ERC20 and ERC721.
 
 * Proof Aggregation Layer
     - We focus on building a universal proof aggregation layer on our distributed proof generation service, deployed on the third-party prover network.
