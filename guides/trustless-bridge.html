@@ -75,7 +75,9 @@
 <ul>
 <li>Deposit on L1:</li>
 </ul>
-<p>The user calls the <code>bridgeAsset</code> method on L1 smart contract, deposit an amount of asset into the bridge contract, insert a new leaf on the L1 Merkle tree, and the user gets the Merkle proof p_1. Leaf := amount and public key(pk_l2) Merkle proof := &lt;leaf, merkle path&gt;</p>
+<p>The user calls the <code>bridgeAsset</code> method on L1 smart contract, and deposits an amount of asset into the bridge contract, the <code>bridgeAsset</code> inserts a new leaf on the L1 Merkle tree and emits an event of the <code>bridgeAsset</code> paramters, the user watches the on-chain events and calculates the Merkle Proof p_1 locally, where:</p>
+<pre><code>Leaf := amount and public key(pk_l2)
+Merkle Proof := &lt;Leaf, Merkle path&gt;</code></pre>
 <ul>
 <li>Claim on L2:</li>
 </ul>
@@ -87,7 +89,9 @@
 <li><p>If step 2 succeeds, Mint the L2 token to pk_l2 with <code>leaf.amount</code>; or deny the minting request.</p></li>
 </ol>
 <p><strong>L2 -&gt; L1</strong></p>
-<p>Insert a new leaf on the L2 Merkle tree, and the user gets the Merkle proof p_2. Leaf := amount and public key(pk_l1) Merkle proof := &lt;leaf, merkle path&gt;</p>
+<p>The user calls the <code>bridgeAsset</code> method on L2 smart contract, and deposits an amount of asset into the bridge contract, the <code>bridgeAsset</code> inserts a new leaf on the L2 Merkle tree and emits an event of the <code>bridgeAsset</code> paramters, the user watches the on-chain events and calculates the Merkle Proof p_2 locally, where:</p>
+<pre><code>Leaf := amount and public key(pk_l1)
+Merkle Proof := &lt;Leaf, merkle path&gt;</code></pre>
 <p>In the L1 bridge contract, it does:</p>
 <ol type="1">
 <li><p>Verify the ZKP, the ZKP is to verify the correct execution of the L2 state tree. The state tree keeps track of the state transition in the L2 smart contract. The problem is that we can not bind the ZKP with transactions/batch content right now.</p></li>
