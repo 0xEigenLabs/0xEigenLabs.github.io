@@ -70,12 +70,12 @@
 <p>eigen-sdk-js: Like web3.js for Ethereum, it’s a Javascript SDK to interact with Ethereum Smart contract and L2 node(eigen-zeth). The Cardano and TON use it to communicate with L2 only.</p>
 <p>eigen-zeth: a customized zkEVM node.</p>
 <h2 id="how-it-works">How it works</h2>
-<p>For Cardano/TON, the address is derived from different elliptic curves from ETH.</p>
+<p>For Cardano/TON account, the address is derived from different elliptic curves from ETH.</p>
 <p><strong>L1 -&gt; L2</strong></p>
 <ul>
 <li>Deposit on L1:</li>
 </ul>
-<p>insert a new leaf on the L1 Merkle tree, and the user gets the Merkle proof p_1. Leaf := amount and public key(pk_l2) Merkle proof := &lt;leaf, merkle path&gt;</p>
+<p>The user calls the <code>bridgeAsset</code> method on L1 smart contract, deposit an amount of asset into the bridge contract, insert a new leaf on the L1 Merkle tree, and the user gets the Merkle proof p_1. Leaf := amount and public key(pk_l2) Merkle proof := &lt;leaf, merkle path&gt;</p>
 <ul>
 <li>Claim on L2:</li>
 </ul>
@@ -87,7 +87,7 @@
 <li><p>If step 2 succeeds, Mint the L2 token to pk_l2 with <code>leaf.amount</code>; or deny the minting request.</p></li>
 </ol>
 <p><strong>L2 -&gt; L1</strong></p>
-<p>insert a new leaf on the L2 Merkle tree, and the user gets the Merkle proof p_2. Leaf := amount and public key(pk_l1) Merkle proof := &lt;leaf, merkle path&gt;</p>
+<p>Insert a new leaf on the L2 Merkle tree, and the user gets the Merkle proof p_2. Leaf := amount and public key(pk_l1) Merkle proof := &lt;leaf, merkle path&gt;</p>
 <p>In the L1 bridge contract, it does:</p>
 <ol type="1">
 <li><p>Verify the ZKP, the ZKP is to verify the correct execution of the L2 state tree. The state tree keeps track of the state transition in the L2 smart contract. The problem is that we can not bind the ZKP with transactions/batch content right now.</p></li>
