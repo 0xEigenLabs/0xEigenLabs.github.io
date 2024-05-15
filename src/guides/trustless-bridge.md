@@ -29,7 +29,7 @@ For Cardano/TON account, the address is derived from different elliptic curves f
 | Cadano  |  Ed25519 | BLS12381  | 
 |  TON |  Ed25519 | BLS12381  | 
 
-
+More details can be found on our [Medium](https://eigenlab.medium.com/ecdsa-vs-ed25519-7b31c9698831).
 
 **L1 -> L2**
 
