@@ -8,15 +8,15 @@ The bridge handles the asset briding between L1 and L2.
 </center>
 
 
-Bridge.sol: A smart contract deployed on both L1 and L2, allowing the end user to deposit assets into, the smart contract mains a Merkle Tree, and each deposit will generate a Merkle Proof. The end user uses this Merkle Proof to claim its asset on L2/L1.
+Bridge.sol: a smart contract deployed on both L1 and L2, allowing the end user to deposit assets into, the smart contract maintains a Merkle Tree, and each deposit will generate a Merkle Proof. The end user uses this Merkle Proof to claim its asset on L2/L1.
 
-GlobalExitRoot.sol/GlobalExitRoot.sol:  maintain the valid Merkle Tree Root for L1/L2.
+GlobalExitRoot.sol/GlobalExitRootL2.sol:  maintain the valid Merkle Tree Root for L1/L2.
 
-Verifier.sol: A smart contract verifying the Groth16 proof from L2.
+Verifier.sol: a smart contract verifying the Groth16 proof from L2.
 
-Bridge-service:  A L1 smart contract client built on eigen-sdk-js. The Cardano and TON should integrate its `web3.js` into the bridge service.
+Bridge-service:  a L1 smart contract client built on eigen-sdk-js. The Cardano and TON should integrate its `web3.js` into the bridge service.
 
-eigen-sdk-js:  Like web3.js for Ethereum, it’s a Javascript SDK to interact with Ethereum Smart contract and L2 node(eigen-zeth). The Cardano and TON use it to communicate with L2 only.
+eigen-sdk-js:  like web3.js for Ethereum, it’s a Javascript SDK to interact with Ethereum Smart contract and L2 node(eigen-zeth). The Cardano and TON use it to communicate with L2 only.
 
 eigen-zeth:  a customized zkEVM node.
 
@@ -41,6 +41,7 @@ The user calls the `bridgeAsset` method on L1 smart contract, and deposits an am
 Leaf := amount and public key(pk_l2)
 Merkle Proof := <Leaf, Merkle path>
 ```
+After deposit, the Bridge.sol contract will call the GlobalExitRoot.sol contract to update the new L1 EMT root, thereby calculating the new GEMT root. The bridge service listens for events from the GlobalExitRoot.sol contract to get the new GEMT root. The new GEMT root is submitted to the GlobalExitRootL2.sol contract. The L2 bridge contract can get the GMT.
 
 * Claim on L2:
 
@@ -63,6 +64,7 @@ The user calls the `bridgeAsset` method on L2 smart contract, and deposits an am
 Leaf := amount and public key(pk_l1)
 Merkle Proof := <Leaf, merkle path>
 ```
+The Bridge.sol contract will call the GlobalExitRootL2.sol contract to update the new L2 EMT. The bridge service listens for events from the GlobalExitRootL2.sol contract to get the new GEMT root. The new GEMT root is submitted to the GlobalExitRoot.sol contract. The L1 bridge contract can get the GMT.
 
 In the L1 bridge contract, it does:
 
