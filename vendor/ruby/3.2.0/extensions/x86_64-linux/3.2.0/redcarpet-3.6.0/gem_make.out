@@ -3,10 +3,10 @@ current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io
 creating Makefile
 
 current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io/build/vendor/ruby/3.2.0/gems/redcarpet-3.6.0/ext/redcarpet
-make DESTDIR\= sitearchdir\=./.gem.20240513-2068-xlmywt sitelibdir\=./.gem.20240513-2068-xlmywt clean
+make DESTDIR\= sitearchdir\=./.gem.20240515-2074-bxt0ca sitelibdir\=./.gem.20240515-2074-bxt0ca clean
 
 current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io/build/vendor/ruby/3.2.0/gems/redcarpet-3.6.0/ext/redcarpet
-make DESTDIR\= sitearchdir\=./.gem.20240513-2068-xlmywt sitelibdir\=./.gem.20240513-2068-xlmywt
+make DESTDIR\= sitearchdir\=./.gem.20240515-2074-bxt0ca sitelibdir\=./.gem.20240515-2074-bxt0ca
 compiling autolink.c
 compiling buffer.c
 buffer.c: In function ‘bufcstr’:
@@ -103,8 +103,8 @@ compiling stack.c
 linking shared-object redcarpet.so
 
 current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io/build/vendor/ruby/3.2.0/gems/redcarpet-3.6.0/ext/redcarpet
-make DESTDIR\= sitearchdir\=./.gem.20240513-2068-xlmywt sitelibdir\=./.gem.20240513-2068-xlmywt install
-/usr/bin/install -c -m 0755 redcarpet.so ./.gem.20240513-2068-xlmywt
+make DESTDIR\= sitearchdir\=./.gem.20240515-2074-bxt0ca sitelibdir\=./.gem.20240515-2074-bxt0ca install
+/usr/bin/install -c -m 0755 redcarpet.so ./.gem.20240515-2074-bxt0ca
 
 current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io/build/vendor/ruby/3.2.0/gems/redcarpet-3.6.0/ext/redcarpet
-make DESTDIR\= sitearchdir\=./.gem.20240513-2068-xlmywt sitelibdir\=./.gem.20240513-2068-xlmywt clean
+make DESTDIR\= sitearchdir\=./.gem.20240515-2074-bxt0ca sitelibdir\=./.gem.20240515-2074-bxt0ca clean

@@ -3,10 +3,10 @@ current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io
 creating Makefile
 
 current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io/build/vendor/ruby/3.2.0/gems/sassc-2.4.0/ext
-make DESTDIR\= sitearchdir\=./.gem.20240513-2068-qzkz1f sitelibdir\=./.gem.20240513-2068-qzkz1f clean
+make DESTDIR\= sitearchdir\=./.gem.20240515-2074-j5f0r3 sitelibdir\=./.gem.20240515-2074-j5f0r3 clean
 
 current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io/build/vendor/ruby/3.2.0/gems/sassc-2.4.0/ext
-make DESTDIR\= sitearchdir\=./.gem.20240513-2068-qzkz1f sitelibdir\=./.gem.20240513-2068-qzkz1f
+make DESTDIR\= sitearchdir\=./.gem.20240515-2074-j5f0r3 sitelibdir\=./.gem.20240515-2074-j5f0r3
 compiling ./libsass/src/ast.cpp
 compiling ./libsass/src/ast2c.cpp
 compiling ./libsass/src/ast_fwd_decl.cpp
@@ -76,8 +76,8 @@ compiling ./libsass/src/values.cpp
 linking shared-object sassc/libsass.so
 
 current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io/build/vendor/ruby/3.2.0/gems/sassc-2.4.0/ext
-make DESTDIR\= sitearchdir\=./.gem.20240513-2068-qzkz1f sitelibdir\=./.gem.20240513-2068-qzkz1f install
-/usr/bin/install -c -m 0755 libsass.so ./.gem.20240513-2068-qzkz1f/sassc
+make DESTDIR\= sitearchdir\=./.gem.20240515-2074-j5f0r3 sitelibdir\=./.gem.20240515-2074-j5f0r3 install
+/usr/bin/install -c -m 0755 libsass.so ./.gem.20240515-2074-j5f0r3/sassc
 
 current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io/build/vendor/ruby/3.2.0/gems/sassc-2.4.0/ext
-make DESTDIR\= sitearchdir\=./.gem.20240513-2068-qzkz1f sitelibdir\=./.gem.20240513-2068-qzkz1f clean
+make DESTDIR\= sitearchdir\=./.gem.20240515-2074-j5f0r3 sitelibdir\=./.gem.20240515-2074-j5f0r3 clean
