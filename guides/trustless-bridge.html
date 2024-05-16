@@ -69,7 +69,6 @@
 <p>Bridge-service: a L1 smart contract client built on eigen-sdk-js. The Cardano and TON should integrate its <code>web3.js</code> into the bridge service.</p>
 <p>eigen-sdk-js: like web3.js for Ethereum, it’s a Javascript SDK to interact with Ethereum Smart contract and L2 node(eigen-zeth). The Cardano and TON use it to communicate with L2 only.</p>
 <p>eigen-zeth: a customized zkEVM node.</p>
-<h2 id="how-it-works">How it works</h2>
 <p>For Cardano/TON account, the address is derived from different elliptic curves from ETH, so is the EC pairing scheme.</p>
 <table>
 <thead>
@@ -97,6 +96,8 @@
 </tr>
 </tbody>
 </table>
+<p>More details can be found on our <a href="https://eigenlab.medium.com/ecdsa-vs-ed25519-7b31c9698831">Medium</a>.</p>
+<h2 id="how-it-works">How it works</h2>
 <p><strong>L1 -&gt; L2</strong></p>
 <ul>
 <li>Deposit on L1:</li>
