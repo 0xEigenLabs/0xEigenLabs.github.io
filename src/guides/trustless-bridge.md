@@ -20,7 +20,6 @@ eigen-sdk-js:  like web3.js for Ethereum, it’s a Javascript SDK to interact wi
 
 eigen-zeth:  a customized zkEVM node.
 
-## How it works
 For Cardano/TON account, the address is derived from different elliptic curves from ETH, so is the EC pairing scheme. 
 
 |   | Signature Scheme | EC Pairings|
@@ -29,7 +28,10 @@ For Cardano/TON account, the address is derived from different elliptic curves f
 | Cadano  |  Ed25519 | BLS12381  | 
 |  TON |  Ed25519 | BLS12381  | 
 
+More details can be found on our [Medium](https://eigenlab.medium.com/ecdsa-vs-ed25519-7b31c9698831).
 
+
+## How it works
 
 **L1 -> L2**
 
