@@ -60,6 +60,30 @@
 
 <h1 id="eigen-zeth">Eigen Zeth</h1>
 <p>A “Type 0” zkEVM.</p>
+<h2 id="eigen-zeth-architecture">Eigen Zeth Architecture</h2>
+<center>
+<img src="/img/zkvm/zeth/zeth-architecture.png">
+</center>
+<p>As illustrated in the figure above, Eigen Zeth include these components:</p>
+<ul>
+<li><strong>Watcher</strong>: Monitors and synchronizes blocks confirmed by the Layer 2 sequencer.</li>
+<li><strong>Proposer</strong>: Packages a specified number of blocks into a batch in sequential order.</li>
+<li><strong>Settlement</strong>: Generates a proof for the batched blocks and calls the settlement layer’s verify function for final settlement.</li>
+<li><strong>Custom Eigen Reth Node</strong>: A custom Layer 2 node based on Reth, designed to receive transactions, determine their order on Layer 2, and generate and confirm Layer 2 blocks.</li>
+</ul>
+<h2 id="transaction">Transaction</h2>
+<h3 id="transaction-lifecycle">Transaction Lifecycle</h3>
+<center>
+<img src="/img/zkvm/zeth/transaction-lifecycle.png">
+</center>
+<p>The transaction life cycle in the Eigen Network contains the following three phases:</p>
+<ol type="1">
+<li><strong>Pending</strong>: The user submits a transaction to the L2 sequencer. The transaction enters the transaction pool and becomes Pending, waiting to be included in a block by the sequencer.</li>
+<li><strong>Sequenced</strong>: The sequencer packages the transaction into a block. At this stage, the transaction is confirmed on Layer 2, and the transactions in this block become Committed.</li>
+<li><strong>Batching</strong>: A certain number of Layer 2 blocks are packaged sequentially into a batch. The transactions in the batch enter the Batching state.</li>
+<li><strong>Submitted</strong>: Once the batch is complete, it is sent to the DA layer. The transactions in this batch are now Submitted.</li>
+<li><strong>Finalized</strong>: The Settlement component generates a proof for the batch and calls the Layer 1 Verify contract for final settlement. After verification and inclusion in Layer 1, these transactions become Finalized.</li>
+</ol>
 <h2 id="deployment">Deployment</h2>
 <p><a href="https://github.com/0xEigenLabs/eigen-prover?tab=readme-ov-file#server">Document</a></p>
 
