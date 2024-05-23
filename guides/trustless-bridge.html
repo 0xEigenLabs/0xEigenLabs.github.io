@@ -114,7 +114,8 @@ Merkle Proof := &lt;Leaf, Merkle path&gt;</code></pre>
 <p>In the L2 bridge contract, it does:</p>
 <ol type="1">
 <li><p>[NOT NEED]Verify the public key(pk_l1) in the leaf, is well mapped to the user’s L2 public key, pk_l2;</p></li>
-<li><p>Verify the Merkle proof with the leaf;</p></li>
+<li><p>The sequencer synchronizes the L1 EMT root and update the EMT manager on L2.</p></li>
+<li><p>Verify the Merkle proof with the leaf over the L1 EMT root;</p></li>
 <li><p>If step 2 succeeds, Mint the L2 token to pk_l2 with <code>leaf.amount</code>; or deny the minting request.</p></li>
 </ol>
 <p><strong>L2 -&gt; L1</strong></p>
