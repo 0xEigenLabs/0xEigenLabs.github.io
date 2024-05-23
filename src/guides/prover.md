@@ -1,6 +1,6 @@
 # Eigen Prover
 
-Eigen zkVM Proof Network
+Eigen zkVM Proving Service
 
 ## Workspace Layout 
 The work space is organized as below.
@@ -101,7 +101,9 @@ RUSTFLAGS='-C target-cpu=native' FORCE_BIT=18 RUST_MIN_STACK=2073741821 RUST_BAC
 ```
 
 ## Proving Architecture
-![proving-architecture](/img/zkvm/proving-architecture.png)
+<center>
+<img src="/img/zkvm/proving-architecture.png">
+</center>
 
 
 ## Request Lifecycle
