@@ -53,9 +53,11 @@ In the L2 bridge contract, it does:
 
 1. [NOT NEED]Verify the public key(pk_l1) in the leaf,  is well mapped to the user’s L2 public key, pk_l2;
 
-2. Verify the Merkle proof with the leaf;
+2. The sequencer synchronizes the L1 EMT root and update the EMT manager on L2. 
 
-3. If step 2 succeeds, Mint the L2 token to pk_l2 with `leaf.amount`; or deny the minting request.
+3. Verify the Merkle proof with the leaf over the L1 EMT root;
+
+4. If step 2 succeeds, Mint the L2 token to pk_l2 with `leaf.amount`; or deny the minting request.
 
 
 **L2 -> L1**
