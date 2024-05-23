@@ -60,7 +60,7 @@
 </pre>
 
 <h1 id="eigen-prover">Eigen Prover</h1>
-<p>Eigen zkVM Proof Network</p>
+<p>Eigen zkVM Proving Service</p>
 <h2 id="workspace-layout">Workspace Layout</h2>
 <p>The work space is organized as below.</p>
 <pre><code>basedir/
@@ -147,9 +147,9 @@ RUSTFLAGS=&#39;-C target-cpu=native&#39; FORCE_BIT=18 RUST_MIN_STACK=2073741821 
     STARK_VERIFIER_BN128=$STARKJS/node_modules/pil-stark/circuits.bn128 \
     cargo test --release integration_test</code></pre>
 <h2 id="proving-architecture">Proving Architecture</h2>
-<figure>
-<img src="/img/zkvm/proving-architecture.png" alt="" /><figcaption>proving-architecture</figcaption>
-</figure>
+<center>
+<img src="/img/zkvm/proving-architecture.png">
+</center>
 <h2 id="request-lifecycle">Request Lifecycle</h2>
 <center>
 <img src="/img/zkvm/eigen-prover/prover-dataflow.png">
