@@ -33,7 +33,7 @@
     <li><a id="guides-eigen-prover"   href="/guides/prover.html">Eigen Prover</a></li>
     <li><a id="guides-eigen-zeth"   href="/guides/zeth.html">Eigen Zeth</a></li>
     <li><a id="guides-sequencer"   href="/guides/sequencer.html">Sequencer</a></li>
-    <li><a id="guides-da"   href="/guides/da.html">Data Availablity</a></li>
+    <li><a id="guides-da"  class="active"  href="/guides/da.html">Data Availablity</a></li>
   </ul>
   <ul>
     <li><strong>Eigen Secret</strong></li>
@@ -60,34 +60,14 @@
    \/__/  
 </pre>
 
-<h1 id="applications">Applications</h1>
-<ul>
-<li>Proof Market
-<ul>
-<li>ZkEVM: The team is building the zkEVM for Cardano and will reuse the same solution for TON.</li>
-<li>Zk middleware
-<ul>
-<li>Zk Identity: implement Credible Claims with inherenting limitations of centralized identity system designs</li>
-<li>Eigen Secret: implement private transaction layer support ERC20 and ERC721.</li>
-</ul></li>
-</ul></li>
-<li>Proof Aggregation Layer
-<ul>
-<li>We focus on building a universal proof aggregation layer on our distributed proof generation service, deployed on the third-party prover network.</li>
-</ul></li>
-</ul>
-<h1 id="business-parnters">Business Parnters</h1>
-<ul>
-<li>Fourier Labs</li>
-<li>zkPass</li>
-<li>Powdr Labs</li>
-<li>Ever4land</li>
-<li>Metis Foundation</li>
-</ul>
+<h1 id="data-availability">Data Availability</h1>
+<p>In the context of blockchain, data availability refers to the assurance by network participants that the data published by users is faithfully proposed and stored in certain nodes of the network, and that these nodes can prove this property to other participants.</p>
+<p>DAS: data availability sampling, is the new primitive that enables DA provider’s light nodes to verify DA efficiently. Instead of downloading all data, light nodes only download a tiny portion of each block. Data Segmentation: The blockchain data is divided into small pieces or chunks. Random Sampling by Nodes: Nodes in the network randomly select and download only some of these chunks rather than the entire data set. Probabilistic Verification: By analyzing these samples, nodes can probabilistically verify the availability of the entire data set. If the sampled chunks are available and valid, it is highly likely that the rest of the data is also available and valid.</p>
+<p>Since we use zkVM to support different L1 for scalalibity, like ETH, Cardano or TON. Some L1s provide cheap on-chain blob storage, and most of them not. Eigen zkVM integrates with some DA solution and enables developers to publish and verify their data.</p>
 
 <hr/>
 <h4>See a mistake? Open a pull request.</h4>
-<a href="https://github.com/0xEigenLabs/0xeigenlabs.github.io/blob/main/src/guides/application.md">https://github.com/0xEigenLabs/0xeigenlabs.github.io/blob/master/src/guides/application.md</a>
+<a href="https://github.com/0xEigenLabs/0xeigenlabs.github.io/blob/main/src/guides/da.md">https://github.com/0xEigenLabs/0xeigenlabs.github.io/blob/master/src/guides/da.md</a>
 </section>
 </main>
 
