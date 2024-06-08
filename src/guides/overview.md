@@ -9,7 +9,7 @@ Enable the developer to write Rusty circuits
 
 * Modular proof system:
 The first Rust eSTARK implementation, and support eSTARK-to-Groth16/Plonk
-Support BN12381 and BN254 for on-chain verification
+Support BLS12381 and BN254 for on-chain verification
 
 * Continuation and proof composition
 Allow the program to be split into multiple chunks, and all the chunks are proved parallelly.
