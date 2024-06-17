@@ -3,10 +3,10 @@ current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io
 creating Makefile
 
 current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io/build/vendor/ruby/3.2.0/gems/sassc-2.4.0/ext
-make DESTDIR\= sitearchdir\=./.gem.20240608-2185-v06rut sitelibdir\=./.gem.20240608-2185-v06rut clean
+make DESTDIR\= sitearchdir\=./.gem.20240617-2111-z4ltlq sitelibdir\=./.gem.20240617-2111-z4ltlq clean
 
 current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io/build/vendor/ruby/3.2.0/gems/sassc-2.4.0/ext
-make DESTDIR\= sitearchdir\=./.gem.20240608-2185-v06rut sitelibdir\=./.gem.20240608-2185-v06rut
+make DESTDIR\= sitearchdir\=./.gem.20240617-2111-z4ltlq sitelibdir\=./.gem.20240617-2111-z4ltlq
 compiling ./libsass/src/ast.cpp
 compiling ./libsass/src/ast2c.cpp
 compiling ./libsass/src/ast_fwd_decl.cpp
@@ -76,8 +76,8 @@ compiling ./libsass/src/values.cpp
 linking shared-object sassc/libsass.so
 
 current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io/build/vendor/ruby/3.2.0/gems/sassc-2.4.0/ext
-make DESTDIR\= sitearchdir\=./.gem.20240608-2185-v06rut sitelibdir\=./.gem.20240608-2185-v06rut install
-/usr/bin/install -c -m 0755 libsass.so ./.gem.20240608-2185-v06rut/sassc
+make DESTDIR\= sitearchdir\=./.gem.20240617-2111-z4ltlq sitelibdir\=./.gem.20240617-2111-z4ltlq install
+/usr/bin/install -c -m 0755 libsass.so ./.gem.20240617-2111-z4ltlq/sassc
 
 current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io/build/vendor/ruby/3.2.0/gems/sassc-2.4.0/ext
-make DESTDIR\= sitearchdir\=./.gem.20240608-2185-v06rut sitelibdir\=./.gem.20240608-2185-v06rut clean
+make DESTDIR\= sitearchdir\=./.gem.20240617-2111-z4ltlq sitelibdir\=./.gem.20240617-2111-z4ltlq clean
