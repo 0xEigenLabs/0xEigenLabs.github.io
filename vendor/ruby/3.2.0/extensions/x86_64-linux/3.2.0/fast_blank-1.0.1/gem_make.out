@@ -3,16 +3,16 @@ current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io
 creating Makefile
 
 current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io/build/vendor/ruby/3.2.0/gems/fast_blank-1.0.1/ext/fast_blank
-make DESTDIR\= sitearchdir\=./.gem.20240617-2111-vpb5zf sitelibdir\=./.gem.20240617-2111-vpb5zf clean
+make DESTDIR\= sitearchdir\=./.gem.20240625-2162-3ijbif sitelibdir\=./.gem.20240625-2162-3ijbif clean
 
 current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io/build/vendor/ruby/3.2.0/gems/fast_blank-1.0.1/ext/fast_blank
-make DESTDIR\= sitearchdir\=./.gem.20240617-2111-vpb5zf sitelibdir\=./.gem.20240617-2111-vpb5zf
+make DESTDIR\= sitearchdir\=./.gem.20240625-2162-3ijbif sitelibdir\=./.gem.20240625-2162-3ijbif
 compiling fast_blank.c
 linking shared-object fast_blank.so
 
 current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io/build/vendor/ruby/3.2.0/gems/fast_blank-1.0.1/ext/fast_blank
-make DESTDIR\= sitearchdir\=./.gem.20240617-2111-vpb5zf sitelibdir\=./.gem.20240617-2111-vpb5zf install
-/usr/bin/install -c -m 0755 fast_blank.so ./.gem.20240617-2111-vpb5zf
+make DESTDIR\= sitearchdir\=./.gem.20240625-2162-3ijbif sitelibdir\=./.gem.20240625-2162-3ijbif install
+/usr/bin/install -c -m 0755 fast_blank.so ./.gem.20240625-2162-3ijbif
 
 current directory: /home/runner/work/0xEigenLabs.github.io/0xEigenLabs.github.io/build/vendor/ruby/3.2.0/gems/fast_blank-1.0.1/ext/fast_blank
-make DESTDIR\= sitearchdir\=./.gem.20240617-2111-vpb5zf sitelibdir\=./.gem.20240617-2111-vpb5zf clean
+make DESTDIR\= sitearchdir\=./.gem.20240625-2162-3ijbif sitelibdir\=./.gem.20240625-2162-3ijbif clean
