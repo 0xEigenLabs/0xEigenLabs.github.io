@@ -43,7 +43,7 @@ The user calls the `bridgeAsset` method on L1 smart contract, and deposits an am
 Leaf := amount and public key(pk_l2)
 Merkle Proof := <Leaf, Merkle path>
 ```
-After deposit, the Bridge.sol contract will call the GlobalExitRoot.sol contract to update the new L1 EMT root, thereby calculating the new GEMT root. The bridge service listens for events from the GlobalExitRoot.sol contract to get the new GEMT root. The new GEMT root is submitted to the GlobalExitRootL2.sol contract. The L2 bridge contract can get the GMT.
+After deposit, the Bridge.sol contract will call the GlobalExitRoot.sol contract to update the new L1 exit merkle tree(EMT) root, thereby calculating the new global exit merkle tree(GEMT) root. The bridge service listens for events from the GlobalExitRoot.sol contract to get the new GEMT root. The new GEMT root is submitted to the GlobalExitRootL2.sol contract. The L2 bridge contract can get the GMT.
 
 * Claim on L2:
 
@@ -57,10 +57,12 @@ In the L2 bridge contract, it does:
 
 3. Verify the Merkle proof with the leaf over the L1 EMT root;
 
-4. If step 2 succeeds, Mint the L2 token to pk_l2 with `leaf.amount`; or deny the minting request.
+4. If step 3 succeeds, Mint the L2 token to pk_l2 with `leaf.amount`; or deny the minting request.
 
 
 **L2 -> L1**
+
+* Deposit on L2:
 
 The user calls the `bridgeAsset` method on L2 smart contract, and deposits an amount of asset into the bridge contract, the `bridgeAsset` inserts a new leaf on the L2 Merkle tree and emits an event of the `bridgeAsset` paramters, the user watches the on-chain events and calculates the Merkle Proof p_2 locally, where:
 
@@ -68,7 +70,8 @@ The user calls the `bridgeAsset` method on L2 smart contract, and deposits an am
 Leaf := amount and public key(pk_l1)
 Merkle Proof := <Leaf, merkle path>
 ```
-The Bridge.sol contract will call the GlobalExitRootL2.sol contract to update the new L2 EMT. The bridge service listens for events from the GlobalExitRootL2.sol contract to get the new GEMT root. The new GEMT root is submitted to the GlobalExitRoot.sol contract. The L1 bridge contract can get the GMT.
+
+After deposit, the Bridge.sol contract will call the GlobalExitRootL2.sol contract to update the new L2 EMT. The bridge service listens for events from the GlobalExitRootL2.sol contract to get the new rollup exit merkle tree root(REMT root). The new REMT root and the corresponding block number will be stored in the bridge service database. After each block is proved by the eigen-zeth node, the functions sequenceBatches and verifyBatches in the EigenZkVM contract will be called. Before calling verifyBatches, the REMT corresponding to this block will be obtained through the bridge service. After the verifyBatches function is successfully executed, the GEMT of the GlobalExitRoot.sol contract will be updated.
 
 In the L1 bridge contract, it does:
 
@@ -78,3 +81,16 @@ In the L1 bridge contract, it does:
 
 3. If step 2 succeeds, Unlock the L1 token to pk_l1 with `leaf.amount`; or deny the unlocking request.
 
+* Claim on L1:
+
+The user submits a transaction to eigen-zeth, which contains the Merkle proof p_1 as it’s calldata.
+
+In the L1 bridge contract, it does:
+
+1. [NOT NEED]Verify the public key(pk_l2) in the leaf,  is well mapped to the user’s L1 public key, pk_l1;
+
+2. The sequencer synchronizes the L2 EMT root and update the EMT manager on L1. 
+
+3. Verify the Merkle proof with the leaf over the L2 EMT root;
+
+4. If step 3 succeeds, Transfer the L1 token from Bridge.sol contract address to pk_l1 with `leaf.amount`; or deny the minting request.
