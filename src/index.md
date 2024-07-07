@@ -1,7 +1,8 @@
 ## Introduction
 
-Eigen Network builds the general-purpose zkVM with native privacy-preserving technology support on its modular proof system.
+Eigen Network: A Proof Market To Scale Fully Onchain Applications.
 
+We build the general-purpose zkVM with natively support for fully onchain computation on its modular proof system.
 
 ### Source Code
 

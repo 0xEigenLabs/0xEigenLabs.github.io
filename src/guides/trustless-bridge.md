@@ -37,7 +37,7 @@ More details can be found on our [Medium](https://eigenlab.medium.com/ecdsa-vs-e
 
 * Deposit on L1:
 
-The user calls the `bridgeAsset` method on L1 smart contract, and deposits an amount of asset into the bridge contract, the `bridgeAsset` inserts a new leaf on the L1 Merkle tree and emits an event of the `bridgeAsset` paramters, the user watches the on-chain events and calculates the Merkle Proof p_1 locally, where:
+The user calls the `bridgeAsset` method on L1 smart contract, and deposits an amount of asset into the bridge contract, the `bridgeAsset` inserts a new leaf on the L1 Merkle tree and emits an event of the `bridgeAsset` paramters, the user watches the onchain events and calculates the Merkle Proof p_1 locally, where:
 
 ```
 Leaf := amount and public key(pk_l2)
@@ -64,7 +64,7 @@ In the L2 bridge contract, it does:
 
 * Deposit on L2:
 
-The user calls the `bridgeAsset` method on L2 smart contract, and deposits an amount of asset into the bridge contract, the `bridgeAsset` inserts a new leaf on the L2 Merkle tree and emits an event of the `bridgeAsset` paramters, the user watches the on-chain events and calculates the Merkle Proof p_2 locally, where:
+The user calls the `bridgeAsset` method on L2 smart contract, and deposits an amount of asset into the bridge contract, the `bridgeAsset` inserts a new leaf on the L2 Merkle tree and emits an event of the `bridgeAsset` paramters, the user watches the onchain events and calculates the Merkle Proof p_2 locally, where:
 
 ```
 Leaf := amount and public key(pk_l1)

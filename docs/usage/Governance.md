@@ -7,7 +7,7 @@ A Governance Proposal can be created by any user who have enough a special ERC20
 - **Delegation**. You can delegate the votings to someone (including yourself) without transfering them
 - **Checkpoints Recording**. To prevent users from cheating, the voting number for a user is determined by the start time of each proposal. So any user can't gain their votings by any actions. The checkpoints are recorded on the chain to implement this function
 
-The proposal should incorporate feedback from the Consensus Check and is accompanied by executable on-chain code. In our test environment, in order to submit an on-chain Governance proposal, a delegate must have a minimum balance of 0.2m `GovernanceToken`. The voting period lasts 1 hour and a majority vote with a 4m `GovernanceToken` yes-vote threshold wins.
+The proposal should incorporate feedback from the Consensus Check and is accompanied by executable onchain code. In our test environment, in order to submit an on-chain Governance proposal, a delegate must have a minimum balance of 0.2m `GovernanceToken`. The voting period lasts 1 hour and a majority vote with a 4m `GovernanceToken` yes-vote threshold wins.
 
 If a proposal wins, it can be queued by anyone. Another 0.5h delay is need to let people know that the proposal is going to be executed. Then the proposal can be executed, of course, by any one.
 
