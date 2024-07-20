@@ -61,7 +61,7 @@ In the L2 bridge contract, it does:
 
 **Detailed steps:**
 
-1. The user calls deposit through the SDK. 
+1. The user calls [deposit](https://github.com/0xEigenLabs/eigen-sdk-js/blob/master/examples/zkevm/erc20/deposit.js) through the SDK. 
 2. The SDK calls the bridgeAsset function of the Bridge contract with the following parameters:
     - destinationNetwork
     - destinationAddress
@@ -90,7 +90,7 @@ In the L2 bridge contract, it does:
 
 5. The bridge-service then updates the L2's GEMT (GlobalExitRootL2).
 
-6. The user calls deposit_claim through the SDK, requiring the transaction hash of the deposit. 
+6. The user calls [deposit_claim](https://github.com/0xEigenLabs/eigen-sdk-js/blob/master/examples/zkevm/erc20/deposit_claim.js) through the SDK, requiring the transaction hash of the deposit. 
 
 7. The SDK obtains the merkle proof, L1 EMT root, and L2 EMT root from the bridge-service. 
 
@@ -146,7 +146,7 @@ In the L1 bridge contract, it does:
 
 **Detailed steps:**
 
-1. The user calls withdraw through the SDK. 
+1. The user calls [withdraw](https://github.com/0xEigenLabs/eigen-sdk-js/blob/master/examples/zkevm/erc20/withdraw.js) through the SDK. 
 
 2. The SDK calls the bridgeAsset function of the Bridge contract on L2 with the following parameters:
     - destinationNetwork
@@ -190,7 +190,7 @@ In the L1 bridge contract, it does:
 
 10. The ZkVM contract calls the GlobalExitRoot contract to update the GEMT.
 
-11. The user calls withdraw_exit through the SDK and needs to provide the transaction hash of the withdraw.
+11. The user calls [withdraw_exit](https://github.com/0xEigenLabs/eigen-sdk-js/blob/master/examples/zkevm/erc20/withdraw_exit.js) through the SDK and needs to provide the transaction hash of the withdraw.
 
 12. The SDK obtains the merkle proof, L1 EMT root, and L2 EMT root from the bridge-service. 
 
